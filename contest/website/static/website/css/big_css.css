@@ -1,0 +1,69 @@
+/* medium/large screen style */
+
+/* common element style {{{ */
+.page_wrapper { width: 980px; }
+.content .page_wrapper { margin-top: 65px; min-height: 470px; padding-bottom: 30px; }
+.content .page_wrapper > div { display: inline-block; }
+.display_only_pc { display: block; }
+/* common element style }}} */
+
+/* header style {{{ */
+.header .page_wrapper > div { float: left; }
+.header { box-shadow: 0 0 4px 0 #000000; height: 4.0625em; position: fixed; z-index: 999; }
+.navigation_desktop > li { border-radius: 8px; float: left; font-size: 0.77em; margin: 7px 5px; padding: 10px; text-align: center; text-transform: uppercase; }
+.navigation_desktop > li:hover { background-color: #290029; }
+.logo_container { margin-top: 1.125em; }
+.nav_container { margin-left: 50px; margin-top: 10px; }
+/* header style }}} */
+
+/* main content style {{{ */
+/* slider data blocks {{{ */
+.widescreen_slider_block .slider_data_block { position: absolute; width: 300px; }
+.widescreen_slider_block .slider_data_block.slider_data_block1 { left: 10%; top: 70px; }
+.widescreen_slider_block .slider_data_block.slider_data_block2 { left: 15%; top: 150px; }
+.widescreen_slider_block .slider_data_block.slider_data_block3 { right: 14%; top: 20px; }
+/* slider data blocks }}} */
+.widescreen_slider_block { margin-top: 65px; }
+.image_text1 { margin: 0 auto; width: 85%; }
+.image_text1 > div { float: left; }
+.image_text1 .image_container { text-align: center; width: 40%; }
+.image_text1 .text_container { width: 60%; }
+.image_text1 .text_container .text_container_wrapper { float: right; width: 85%; }
+.image_text1 .text_container .text_container_wrapper .title { font-size: 17px; font-weight: bold; margin-bottom: 15px; margin-left: 10px; }
+.image_text1 .text_container .text_container_wrapper .content { border-radius: 5px; font-size: 14px; margin-bottom: 40px; padding: 20px; }
+.about_image_container { margin-top: 25px; width: 100%; }
+.about_image_container > div { float: left; width: 33%; }
+.about_image_container .image1 { left: -80px; position: relative; text-align: right; top: -127px; }
+.about_image_container .image1 img { margin-left: 35px; }
+.about_image_container .image2 img { margin-top: 120px; }
+.page_title_container .title { margin-left: 50px; }
+/* offers page {{{ */
+.single_offer_container { width: 770px; }
+.single_offer_container > .offert_wrapper > .offert_data_container { width: 500px; }
+/* }}} */
+/* contact us page {{{ */
+/* }}} */
+/* our services page {{{ */
+.our_services_structure { width: 800px; }
+.our_services_structure > .left { width: 200px; }
+.our_services_structure > .right { width: 560px; }
+.service_html_container > .description_block_1_container > .left { width: 345px; }
+.service_html_container > .description_block_1_container > .right { width: 200px; }
+.service_html_container > .description_block_1_container > .right img { max-width: 100%; }
+/* }}} */
+/* main content style }}} */
+
+/* footer style {{{ */
+.footer .footer_container { float: none; margin: 1.875em auto 0; padding: 1.25em; width: 47em; }
+.footer .footer_container .footer_container_wrapper { display: inline-block; }
+.footer .footer_container .footer_container_wrapper .footer_block { float: left; margin: 0 2.375em; text-align: center; }
+.footer .footer_container .footer_container_wrapper .footer_block > div { clear: both; float: left; width: 100%; }
+.footer .footer_container .footer_container_wrapper .footer_block_space { }
+.footer .copyright_container { font-size: 0.9em; margin: 4.375em 0 1.625em; text-align: center; width: 100%; }
+.footer .footer_data_container > div { display: table-cell; vertical-align: middle; }
+.footer .footer_block .footer_caption { font-size: 0.83em; font-weight: bold; margin: 0.625em 0 0.8125em 0; text-align: center; text-transform: uppercase; width: 100%; }
+.footer .footer_data_container { font-size: 0.9em; margin: 0.8125em 0 0 2.875em; }
+.footer .footer_data_container .image { width: 3.125em; }
+.footer .footer_data_social_wrapper { display: inline-block; float: none; margin: 0.8125em auto 0; width: auto; }
+.footer .footer_data_social_wrapper > div { float: left; margin: 0 0.625em; }
+/* footer style }}} */

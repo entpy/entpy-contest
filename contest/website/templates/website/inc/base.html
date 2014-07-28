@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+	<!--[if IE 7 ]> <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+	<!--[if IE 8 ]> <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+	<!--[if IE 9 ]>	<html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="it"> <!--<![endif]-->
+	<head>
+		{% block head %}
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		{% block title %}
+		<title></title>
+		{% endblock title %}
+
+		{% block description %}
+		<meta name="description" content="">
+		{% endblock description %}
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="google-site-verification" content="" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<!-- favicon -->
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+		<link rel="apple-touch-icon" href="apple-touch-icon-72×72.png" />
+		<link rel="apple-touch-icon" href="apple-touch-icon-114×114.png" />
+		<link rel="apple-touch-icon-precomposed" href="touch-icon-iphone-precomposed.png" />
+		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-72×72-precomposed.png" />
+		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-114×114-precomposed.png" />
+
+		<!-- CSS common style loading -->
+		{% block loaded_css %}
+		<link rel="stylesheet" href="{% static "website/css/reset.css" %}" >
+		<link rel="stylesheet" href="{% static "website/css/common.css" %}">
+		<link rel="stylesheet" href="{% static "website/css/main.css" %}">
+		<!--[if lt IE 9]>
+			<link rel="stylesheet" type="text/css" href="css/big_css.css" />
+		<![endif]-->
+
+		<!-- CSS fix style sheets -->
+		<!--[if lt IE 8]>
+			<link rel="stylesheet" type="text/css" href="css/ie7_fix.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+		{% endblock loaded_css %}
+
+		<!-- javascript loading -->
+		{% block loaded_script %}
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{% static "website/js/snap.svg-min.js" %}"></script>
+		<script src="{% static "website/js/common.js" %}"></script>
+		{% endblock loaded_script %}
+
+		<!--[if lt IE 9]>
+			<script src="{% static "website/js/html5shiv.js" %}"></script>
+		<![endif]-->
+		<script src="{% static "website/js/modernizr.custom.73277.js" %}"></script>
+
+		<!-- Google analytics script -->
+		{# TODO: implements google analytics here #}
+		{% endblock head %}
+	</head>
+	<body>
+		<section>
+			{% block main_content %}
+			{# put main content here #}
+			{% endblock main_content %}
+		</section>
+		{% block custom_page_script %}
+		{% endblock custom_page_script %}
+	</body>
+</html>
