@@ -20,45 +20,29 @@ $(document).ready(function(){
 		s.append(svg);
 		var entpy_universe = s.select("#svg5571");
 		var entpy_logo = s.select("#g4538-6");
-		var galaxy = s.select("#g33");
+		var galaxy = s.select("#path35");
+		var galaxy2 = s.select("#path37");
 
-		// entpy logo entering
-		entpy_logo.transform('matrix(0.00,0,0,0.00,60,868.50045)');
-		entpy_logo.animate({ transform: 'matrix(0.10,0,0,0.10,35,868.50045)' }, 2000, mina.bounce);
+		// entpy logo entering XXX: OK
+		/*entpy_logo.transform('matrix(0.00,0,0,0.00,60,868.50045)');
+		entpy_logo.animate({ transform: 'matrix(0.10,0,0,0.10,35,868.50045)' }, 5000, mina.bounce);
+		*/
 
-		galaxy.animate({ transform: 'rotate(360, 0.00025, 0.002)' }, 2000, mina.bounce);
+		// galaxy.animate( { transform: "matrix(0.1224681,0,0,0.1224681,265.99041,985.0055)" }, 1000 );
+		enableGalaxyAnimation(galaxy, 'r20', '-1916.3996,-641.4472', 5000);
+		enableGalaxyAnimation(galaxy2, 'r20', '-1966.5809,-604.8831', 2000);
 
-		// entpy_logo.animate({ transform: 'r12' }, 2000;
+		var galaxy_details = s.select("#g33").getBBox();
+		console.log(galaxy_details);
 
-		// adding background to div
-		// s.add(f);
-
-		// define svg main elements
-		// var ufo = s.select("#g4213-4");
-		/*var logo = f.select("#g4538-6");
-		var galaxy = s.select("#g5065-5");
-		var computer = s.select("#g4219-3");
-		var moon = s.select("#path4427-7");*/
-
-		/*
-		galaxy.drag();
-		computer.drag();
-		moon.drag();
-
-		ufo.attr({fill: "#5D9170"});*/
-		// main elements events
-                /*ufo.click(function () {
-			ufo.animate({y: -50,x: 10}, 1000);
-                });*/
 	}
 
-	/*var bigCircle = s.circle(150, 150, 100);
-	// By default its black, lets change its attributes
-	bigCircle.attr({
-		fill: "#bada55",
-		stroke: "#000",
-		strokeWidth: 5
-	});
+	function enableGalaxyAnimation(galaxy, radius, position, time) {
+		galaxy.animate({ transform: radius + "," + position }, time);
+	}
 
-	bigCircle.animate({r: 50}, 1000);*/
+	function resetGalaxyAnimation(galaxy, radius, position, time) {
+		galaxy.animate({ transform: radius + "," + position }, time);
+	}
+
 });
