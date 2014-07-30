@@ -1,5 +1,18 @@
 $(document).ready(function(){
-	var s = Snap("#svg_container");
+	var s = Snap("#svg");
+	var s2 = Snap(500,500);
+	// Lets create big circle in the middle:
+	/*var bigCircle = s.circle(100, 100, 100);
+
+	bigCircle.attr({
+		fill: "#bada55",
+		stroke: "#000",
+		strokeWidth: 5
+	});
+
+	var smallCircle = s.circle(180, 100, 100);
+
+	smallCircle.animate({r: 50}, 1000);*/
 	Snap.load("static/website/img/entpy-universe2.svg", onSVGLoaded);
        
 	function onSVGLoaded (svg){
@@ -7,8 +20,15 @@ $(document).ready(function(){
 		s.append(svg);
 		var entpy_universe = s.select("#svg5571");
 		var entpy_logo = s.select("#g4538-6");
+		var galaxy = s.select("#g33");
 
-		entpy_logo.animate({ transform: '' }, 2000);		
+		// entpy logo entering
+		entpy_logo.transform('matrix(0.00,0,0,0.00,60,868.50045)');
+		entpy_logo.animate({ transform: 'matrix(0.10,0,0,0.10,35,868.50045)' }, 2000, mina.bounce);
+
+		galaxy.animate({ transform: 'rotate(360, 0.00025, 0.002)' }, 2000, mina.bounce);
+
+		// entpy_logo.animate({ transform: 'r12' }, 2000;
 
 		// adding background to div
 		// s.add(f);
