@@ -1,6 +1,10 @@
 $(document).ready(function(){
+
+	// setting svg aspect ratio
+	// $("#svg > svg").attr("preserveAspectRatio", "xMinYMin slice");
+
 	var s = Snap("#svg");
-	var s2 = Snap(500,500);
+
 	// Lets create big circle in the middle:
 	/*var bigCircle = s.circle(100, 100, 100);
 
@@ -14,10 +18,20 @@ $(document).ready(function(){
 
 	smallCircle.animate({r: 50}, 1000);*/
 	Snap.load("static/website/img/entpy-universe2.svg", onSVGLoaded);
-       
+
 	function onSVGLoaded (svg){
 
-		s.append(svg);
+		s.add(svg);
+
+		// var svgData = s.select("#g13").getBBox();
+		// var viewBox_h = svgData["y2"] - svgData["y"];
+
+		s.select("#svg2").attr({
+			preserveAspectRatio : "xMinYMin slice"
+		});
+
+		//$("#svg2").attr("height", viewBox_h * 10);
+
 		var entpy_universe = s.select("#svg5571");
 		var entpy_logo = s.select("#g4538-6");
 		var galaxy = s.select("#path35");
@@ -33,7 +47,7 @@ $(document).ready(function(){
 		enableGalaxyAnimation(galaxy2, 'r20', '-1966.5809,-604.8831', 2000);
 
 		var galaxy_details = s.select("#g33").getBBox();
-		console.log(galaxy_details);
+		// console.log(galaxy_details);
 
 	}
 
