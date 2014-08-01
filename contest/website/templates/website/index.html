@@ -2,10 +2,9 @@
 {% load staticfiles %}
 {% block main_content %}
 <style>
-	svg { position:fixed; top:0; bottom:0; left:0; right:0 }
+	body { overflow: hidden; }
+	svg { position: relative; top: 0; bottom: 0; left: 0; right: 0; overflow: hidden; }
 </style>
-<div id="svg">
-</div>
-
+<div id="svg_container"></div>
 {# <object width="10" height="10" id="bgImage" data="static/website/img/entpy-universe2.svg" type="image/svg+xml"></object> #}
 {% endblock main_content %}
