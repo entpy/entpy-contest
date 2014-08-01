@@ -24,3 +24,7 @@ b, .bold { font-weight: bold; }
 .display_none { display: none!important; }
 .display_only_mobile, .display_only_pc { display: none; }
 /* common element style }}} */
+
+/* colors {{{ */
+html { background-color: #175C6F; }
+/* colors }}} */
