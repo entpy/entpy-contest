@@ -1,16 +1,13 @@
 {% extends "website/inc/base_index.html" %}
 {% load staticfiles %}
 {% block main_content %}
-<style>
-</style>
-<div class="svg_container" style="width: 100%;">
-	<object id="svg_object" height="100%" width="100%" data="static/website/img/entpy-universe2.svg" type="image/svg+xml">
-		<!-- put content for old browsers or IE here, it
-		will get displayed instead of the SVG. You can 
-		embed a raster version of the image here, but remember it 
-		will get loaded by the SVG capable browsers as well, 
-		even if they don't display it! That may slow your 
-		page down significantly. -->
-	</object>
+<div class="logo_container">
+	<img class="check_image entpy_logo_image" alt="Entpy" src="static/website/img/logo.svg">
+</div>
+<div class="logo_container_after_animation_pt1 display_none">
+	<img class="check_image entpy_logo_image_pt2" alt="Entpy" src="static/website/img/logo.svg">
+</div>
+<div class="bg_container scroll_to_element1">
+	<img class="check_image entpy_universe_image" alt="Entpy universe" src="static/website/img/bg.svg">
 </div>
 {% endblock main_content %}
