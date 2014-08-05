@@ -11,6 +11,7 @@
 		<img class="width_78_100" src="static/website/img/planet.svg" alt="Planet">
 	</div>
 </div>
+<div class="vertical_spacing"></div>
 {# Entpy universe container #}
 <div class="bg_container scroll_to_element1">
 	{# Bottom logo container (first Entpy entrance) #}
@@ -23,4 +24,12 @@
 	</div>
 	<img class="check_image entpy_universe_image" alt="Entpy universe" src="static/website/img/bg.svg">
 </div>
+<script>
+$(document).ready(function(){
+	var universe_image_position = $(".entpy_universe_image").position();
+	var universe_image_offset = $(".entpy_universe_image").position();
+	console.log(universe_image_position);
+	console.log(universe_image_offset);
+});
+</script>
 {% endblock main_content %}

@@ -31,6 +31,7 @@ b, .bold { font-weight: bold; }
 .novisible { opacity: 0; }
 .no_overflow_x { overflow-x: hidden; }
 .display_only_mobile, .display_only_pc { display: none; }
+.vertical_spacing { display: inline-block; height: 60em; }
 /* common element style }}} */
 
 /* page main style {{{ */

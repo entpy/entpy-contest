@@ -7,7 +7,10 @@ $(document).ready(function(){
 	validate_document_img();
 
 	// a bit of color
-	animate_entpy_world();
+	// animate_entpy_world();
+
+	// TODO: remove, debug only
+	page_scrolling()
 });
 
 function validate_document_img() {
