@@ -19,15 +19,23 @@
 	font-weight: normal;
 	font-style: normal;
 }
-body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; overflow-x: hidden; }
+body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 b, .bold { font-weight: bold; }
+.align_left { text-align: left; }
+.align_right { text-align: right; }
+.align_center { text-align: center; }
+.width_78_100 { width: 78%; }
+.width_28_100 { width: 28%; }
+.width_10_100 { width: 10%; }
 .display_none { display: none!important; }
+.novisible { opacity: 0; }
+.no_overflow_x { overflow-x: hidden; }
 .display_only_mobile, .display_only_pc { display: none; }
 /* common element style }}} */
 
 /* page main style {{{ */
 .logo_container { width: 50%; text-align: center; margin: 0 auto; }
-.logo_container .entpy_logo_image { width: 90%; margin-bottom: 60em; margin-top: 3em; }
+.logo_container .entpy_logo_image, .logo_container .entpy_logo_image2 { width: 90%; margin-top: 3em; }
 .entpy_universe_image { width: 100%; }
 /* page main style }}} */
 
@@ -40,16 +48,14 @@ html {
 	background: -o-linear-gradient(top, #001a23 1%,#003547 35%,#0a4554 97%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, #001a23 1%,#003547 35%,#0a4554 97%); /* IE10+ */
 	background: linear-gradient(to bottom, #001a23 1%,#003547 35%,#0a4554 97%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001a23', endColorstr='#0a4554',GradientType=0 ); /* IE6-8 */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001a23', endColorstr='#0a4554',GradientType=0 ); /* IE6-8 */
 }
 /* colors }}} */
 
 /* animation definitions {{{ */
 .logo_container_after_animation_pt1 {
 	left: 100%;
-	margin: 0 0 0 0;
-	position: fixed;
-	width: 50%;
+	position: relative;
 }
 .logo_container_after_animation_pt2 {
 	left: 64%;

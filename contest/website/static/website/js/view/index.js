@@ -26,28 +26,45 @@ function validate_document_img() {
 	return true;
 }
 
-function animate_entpy_world() {
-	// entpy logo bounceInDown
-	$(".entpy_logo_image").addClass('animated bounceInDown');
-	$(".entpy_logo_image").css('animation-duration', "3s");
-	$(".entpy_logo_image").css('animation-delay', "1s");
-	$(".entpy_logo_image").css('animation-iteration-count', "1");
+function animate_element(className, animationName, duration, delay, nIteration, callback) {
+	// function to animate an element by class name
 
-	$(".entpy_logo_image").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+	$(className).addClass('animated');
+
+	// animation details
+	$(className).addClass(animationName);
+	$(className).css('animation-duration', duration);
+	$(className).css('animation-delay', delay);
+	$(className).css('animation-iteration-count', nIteration);
+
+	if (callback) {
+		$(className).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+			callback();
+		});
+	}
+
+	return true;
+}
+
+function animate_entpy_world() {
+	// function to start animation of entpy universe
+
+	animate_element(".logo1AnimationAction", "bounceInDown", "3s", "1s", "1");
+
+	$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+
+		// adding body no_overflow_x class
+		$("body").addClass("no_overflow_x");
+
 		// entpy logo tada
-		$(this).removeClass("bounceInDown");
-		$(this).addClass('tada');
-		$(this).css('animation-duration', "2s");
-		$(this).css('animation-delay', "1s");
-		$(this).css('animation-iteration-count', "1");
+		$(".logo1AnimationAction").removeClass("bounceInDown");
+		animate_element(".logo1AnimationAction", "tada", "2s", "1s", "1");
 
 		$(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+
 			// entpy logo out
-			$(this).removeClass("tada");
-			$(this).addClass('lightSpeedOut');
-			$(this).css('animation-duration', "1s");
-			$(this).css('animation-delay', "1s");
-			$(this).css('animation-iteration-count', "1");
+			$(".logo1AnimationAction").removeClass("tada");
+			animate_element(".logo1AnimationAction", "lightSpeedOut", "1s", "1s", "1");
 
 			// scrolling universe to the city
 			setTimeout(function() { page_scrolling(); }, 3000);
@@ -58,22 +75,22 @@ function animate_entpy_world() {
 }
 
 function page_scrolling() {
+	// function to scroll universe to the city (page bottom)
 
-	// scrolling universe to the city
-	$.scrollTo('.scroll_to_element1', 5500, {easing:'easeOutBounce', onAfter:function(){ logo_swing_enter(); }});//specify an easing equation
+	$.scrollTo('.scroll_to_element1', 5500, { easing : 'easeOutBounce', onAfter : function(){
+			animate_element(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
 
-	return true;
-}
+				$(".logo2AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
 
-function logo_swing_enter() {
-	// entpy logo swing in
+					// bottom logo text in
+					animate_element(".logoBottomTextAction", "zoomInDown", "2s", "1s", "1");
 
-	$(".entpy_logo_image_pt2").addClass('lightSpeedIn');
-	$(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
-		// entpy logo out
-		$(this).removeClass("lightSpeedIn");
-		$(this).addClass('logo_container_after_animation');
-	});
+					$(".logoBottomTextAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+						// bottom logo text in animation end
+					});
+				});
+			}
+		} );
 
 	return true;
 }

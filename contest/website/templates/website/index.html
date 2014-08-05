@@ -1,13 +1,26 @@
 {% extends "website/inc/base_index.html" %}
 {% load staticfiles %}
 {% block main_content %}
+{# Top logo container (first Entpy entrance) #}
 <div class="logo_container">
-	<img class="check_image entpy_logo_image" alt="Entpy" src="static/website/img/logo.svg">
+	<img class="check_image entpy_logo_image logo1AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
 </div>
-<div class="logo_container_after_animation_pt1 display_none">
-	<img class="check_image entpy_logo_image_pt2" alt="Entpy" src="static/website/img/logo.svg">
+{# stars, planet and middle stuff container #}
+<div class="stuff_container">
+	<div class="image_container align_center">
+		<img class="width_78_100" src="static/website/img/planet.svg" alt="Planet">
+	</div>
 </div>
+{# Entpy universe container #}
 <div class="bg_container scroll_to_element1">
+	{# Bottom logo container (first Entpy entrance) #}
+	<div class="logo_container">
+		<img class="check_image entpy_logo_image2 novisible logo2AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+		{# logo bottom text container #}
+		<div class="logo_bottom_container novisible logoBottomTextAction">
+			Contest
+		</div>
+	</div>
 	<img class="check_image entpy_universe_image" alt="Entpy universe" src="static/website/img/bg.svg">
 </div>
 {% endblock main_content %}
