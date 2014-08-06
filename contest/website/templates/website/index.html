@@ -1,35 +1,47 @@
 {% extends "website/inc/base_index.html" %}
 {% load staticfiles %}
 {% block main_content %}
+<style>
+	.entpy_world_image_container { text-align: center; }
+	.entpy_world_image_container > img { width: 70%; }
+</style>
 {# Top logo container (first Entpy entrance) #}
-<div class="logo_container">
-	<img class="check_image entpy_logo_image logo1AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
-</div>
-{# stars, planet and middle stuff container #}
-<div class="stuff_container">
-	<div class="image_container align_center">
-		<img class="width_78_100" src="static/website/img/planet.svg" alt="Planet">
-	</div>
-</div>
-<div class="vertical_spacing"></div>
-{# Entpy universe container #}
-<div class="bg_container scroll_to_element1">
-	{# Bottom logo container (first Entpy entrance) #}
+<div class="wrapper">
 	<div class="logo_container">
-		<img class="check_image entpy_logo_image2 novisible logo2AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
-		{# logo bottom text container #}
-		<div class="logo_bottom_container novisible logoBottomTextAction">
-			Contest
+		<img class="check_image entpy_logo_image logo1AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+	</div>
+	{# stars, planet and middle stuff container #}
+	<div class="stuff_container">
+		<div class="image_container align_center">
+			<img class="check_image width_78_100" src="static/website/img/planet.svg" alt="Entpy universe">
 		</div>
 	</div>
-	<img class="check_image entpy_universe_image" alt="Entpy universe" src="static/website/img/bg.svg">
+	<div class="vertical_spacing"></div>
+	{# Entpy universe container #}
+	<div class="entpy_world_container">
+		{# Bottom logo container (second Entpy entrance) #}
+		<div class="scroll_to_element1"></div>
+		<div class="logo_container logo_container2">
+			<img class="check_image entpy_logo_image2 novisible logo2AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+			{# logo bottom text container #}
+			<div class="logo_bottom_container logoBottomTextAction">
+				Contest
+			</div>
+			<div class="form_container">
+				<form name="validate_coupon_form" method="POST" action="">
+					<div class="input_code_container">
+						<input placeholder="Codice del volantino" type="text" name="code" value="" />
+					</div>
+					<div class="input_submit_container">
+						<input type="submit" name="submit" value="Valida codice" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="entpy_world_image_container">
+			<img class="check_image entpy_world_image" src="static/website/img/bg.svg" alt="Entpy world">
+		</div>
+	</div>
+	<div class="scroll_to_bottom"></div>
 </div>
-<script>
-$(document).ready(function(){
-	var universe_image_position = $(".entpy_universe_image").position();
-	var universe_image_offset = $(".entpy_universe_image").position();
-	console.log(universe_image_position);
-	console.log(universe_image_offset);
-});
-</script>
 {% endblock main_content %}

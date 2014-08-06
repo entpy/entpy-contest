@@ -7,16 +7,16 @@ $(document).ready(function(){
 	validate_document_img();
 
 	// a bit of color
-	// animate_entpy_world();
+	animate_entpy_world();
 
 	// TODO: remove, debug only
-	page_scrolling()
+	// delay_page_scrolling();
 });
 
 function validate_document_img() {
 	// function to use .svg or .png image (depending on browser support)
 
-	if (!Modernizr.svgasimg) {
+	// if (!Modernizr.svgasimg) {
 		$(".check_image").each(function(index) {
 			var old_src_path;
 			var new_src_path;
@@ -24,7 +24,7 @@ function validate_document_img() {
 			new_src_path = old_src_path.replace(".svg", ".png");
 			$(this).attr("src", new_src_path);
 		});
-	}
+	// }
 
 	return true;
 }
@@ -58,6 +58,7 @@ function animate_entpy_world() {
 
 		// adding body no_overflow_x class
 		$("body").addClass("no_overflow_x");
+		// $("html").addClass("no_overflow_x");
 
 		// entpy logo tada
 		$(".logo1AnimationAction").removeClass("bounceInDown");
@@ -67,33 +68,47 @@ function animate_entpy_world() {
 
 			// entpy logo out
 			$(".logo1AnimationAction").removeClass("tada");
-			animate_element(".logo1AnimationAction", "lightSpeedOut", "1s", "1s", "1");
+			animate_element(".logo1AnimationAction", "lightSpeedOut", "0.8s", "1s", "1");
 
 			// scrolling universe to the city
-			setTimeout(function() { page_scrolling(); }, 3000);
+			setTimeout(function() { delay_page_scrolling(); }, 3000);
 		});
 	});
 
 	return true;
 }
 
-function page_scrolling() {
+function delay_page_scrolling() {
 	// function to scroll universe to the city (page bottom)
 
-	$.scrollTo('.scroll_to_element1', 5500, { easing : 'easeOutBounce', onAfter : function(){
-			animate_element(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
-
-				$(".logo2AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
-
-					// bottom logo text in
-					animate_element(".logoBottomTextAction", "zoomInDown", "2s", "1s", "1");
-
-					$(".logoBottomTextAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
-						// bottom logo text in animation end
-					});
-				});
-			}
-		} );
+	// scrolling after a delay
+	setTimeout("scrolling();", 2000);
 
 	return true;
 }
+
+function scrolling() {
+	// scrolling to page bottom...
+
+	$.scrollTo('.scroll_to_bottom', 5500, { easing : 'easeInOutQuart', onAfter : function(){
+			// ...at the end of bottom scrolling, return to logo pt2 animation
+			$.scrollTo('.scroll_to_element1', 5000, { easing : 'easeInOutQuart', onAfter : function(){
+					animate_element(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
+					animate_element(".logoBottomTextAction", "shake", "1s", "1.2s", "1");
+					/*$(".logo2AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+
+						// bottom logo text in
+						animate_element(".logoBottomTextAction", "rubberBand", "2s", "0s", "1");
+
+						$(".logoBottomTextAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+							// bottom logo text in animation end
+						});
+					});*/
+				}
+			});
+		}
+	});
+
+	return true;
+}
+
