@@ -1,23 +1,25 @@
 {% extends "website/inc/base_index.html" %}
 {% load staticfiles %}
 {% block main_content %}
+{# Top logo container (first Entpy entrance) #}
 <div class="wrapper">
-	{# logo container #}
 	<div class="logo_container">
-		<img class="check_image entpy_logo_image transparent logo1AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+		<img class="check_image entpy_logo_image logo1AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
 	</div>
-	{# top image container #}
+	{# stars, planet and middle stuff container #}
 	<div class="stuff_container">
 		<div class="image_container align_center">
 			<img class="check_image width_78_100" src="static/website/img/planet.svg" alt="Entpy universe">
 		</div>
 	</div>
-	{# Bottom logo and form container #}
-	<div class="coupon_code_block">
+	<div class="vertical_spacing"></div>
+	{# Entpy universe container #}
+	<div class="entpy_world_container">
+		{# Bottom logo container (second Entpy entrance) #}
 		<div class="scroll_to_element1"></div>
-		{# logo container #}
-		<div class="logo_container">
-			<img class="check_image entpy_logo_image2 transparent logo2AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+		<div class="logo_container logo_container2">
+			<img class="check_image entpy_logo_image2 novisible logo2AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+			{# logo bottom text container #}
 			<div class="logo_bottom_container logoBottomTextAction">
 				Contest
 			</div>
@@ -32,10 +34,9 @@
 				</form>
 			</div>
 		</div>
-	</div>
-	{# bottom image container #}
-	<div class="entpy_world_container">
-		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.svg" alt="Entpy world">
+		<div class="entpy_world_image_container">
+			<img class="check_image entpy_world_image" src="static/website/img/bg.svg" alt="Entpy world">
+		</div>
 	</div>
 	<div class="scroll_to_bottom"></div>
 </div>
