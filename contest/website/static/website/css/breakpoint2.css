@@ -1,0 +1,8 @@
+/* medium/large screen style */
+
+/* page main style {{{ */
+.logo_container { width: 100%; }
+.logo_container .entpy_logo_image { width: 90%;  }
+.logo_container .entpy_logo_image2 { width: 90%; }
+.entpy_world_container { width: 100%; }
+/* page main style }}} */

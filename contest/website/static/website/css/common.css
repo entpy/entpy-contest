@@ -51,13 +51,12 @@ b, .bold { font-weight: bold; }
 
 /* page main style {{{ */
 .wrapper { display: inline-block; float: left; width: 100%; }
-.logo_container { width: 50%; text-align: center; margin: 0 auto; }
-.logo_container .entpy_logo_image { width: 90%; margin-top: 3em; }
-.logo_container .entpy_logo_image2 { padding-top: 5%; width: 90%; }
-.entpy_world_container { padding-top: 1em; display: inline-block; width: 100%; }
+.logo_container { text-align: center; margin: 0 auto; }
+.logo_container .entpy_logo_image { margin-top: 3em; }
+.logo_container .entpy_logo_image2 { padding-top: 5%; }
+.entpy_world_container { padding-top: 1em; display: inline-block; }
 .entpy_world_container .entpy_world_image { width: 100%; }
 .logo_bottom_container { color: white; font-size: 21px; font-weight: bolder; }
-
 .form_container { margin-top: 4em; }
 .form_container .input_code_container > input { background-color: #001a23; border: 2px solid #28aee2; border-radius: 4px; box-shadow: 0 0 4px 0 #28aee2; color: white; font-size: 30px; margin-bottom: 1.3em; padding: 5px 14px; text-align: center; width: 65%; }
 .form_container .input_code_container > input:hover { box-shadow: 0 0 8px 1px #28aee2; }

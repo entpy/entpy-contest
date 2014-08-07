@@ -53,6 +53,7 @@ function animate_entpy_world() {
 	// function to start animation of entpy universe
 
 	animate_element(".logo1AnimationAction", "bounceInDown", "3s", "1s", "1");
+	$(".logo1AnimationAction").removeClass("transparent");
 
 	$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
 
@@ -90,7 +91,7 @@ function delay_page_scrolling() {
 function scrolling() {
 	// scrolling to page bottom...
 
-	$.scrollTo('.scroll_to_bottom', 5500, { easing : 'easeInOutQuart', onAfter : function(){
+	$.scrollTo('100%', 5500, { easing : 'easeInOutQuart', onAfter : function(){
 			// ...at the end of bottom scrolling, return to logo pt2 animation
 			$.scrollTo('.scroll_to_element1', 5000, { easing : 'easeInOutQuart', onAfter : function(){
 					animate_element(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
