@@ -7,10 +7,10 @@ $(document).ready(function(){
 	validate_document_img();
 
 	// a bit of color
-	animate_entpy_world();
+	// full_animation();
 
 	// TODO: remove, debug only
-	// delay_page_scrolling();
+	delay_page_scrolling();
 });
 
 function validate_document_img() {
@@ -49,7 +49,7 @@ function animate_element(className, animationName, duration, delay, nIteration, 
 	return true;
 }
 
-function animate_entpy_world() {
+function full_animation() {
 	// function to start animation of entpy universe
 
 	animate_element(".logo1AnimationAction", "bounceInDown", "3s", "1s", "1");
@@ -72,7 +72,7 @@ function animate_entpy_world() {
 			animate_element(".logo1AnimationAction", "lightSpeedOut", "0.8s", "1s", "1");
 
 			// scrolling universe to the city
-			setTimeout(function() { delay_page_scrolling(); }, 3000);
+			delay_page_scrolling();
 		});
 	});
 
@@ -83,17 +83,17 @@ function delay_page_scrolling() {
 	// function to scroll universe to the city (page bottom)
 
 	// scrolling after a delay
-	setTimeout("scrolling();", 2000);
+	setTimeout("scrolling();", 3000);
 
 	return true;
 }
 
 function scrolling() {
-	// scrolling to page bottom...
+	// function to scrolling at page bottom...
 
-	$.scrollTo('100%', 5500, { easing : 'easeInOutQuart', onAfter : function(){
+	$.scrollTo('.scroll_to_bottom', 5500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
 			// ...at the end of bottom scrolling, return to logo pt2 animation
-			$.scrollTo('.scroll_to_element1', 5000, { easing : 'easeInOutQuart', onAfter : function(){
+			$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
 					animate_element(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
 					animate_element(".logoBottomTextAction", "shake", "1s", "1.2s", "1");
 					/*$(".logo2AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
@@ -113,3 +113,7 @@ function scrolling() {
 	return true;
 }
 
+// TODO
+function simple_animation() {
+
+}

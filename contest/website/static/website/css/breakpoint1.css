@@ -1,2 +1,10 @@
 /* small screen style */
 
+/* page main style {{{ */
+
+.logo_bottom_container { margin-top: 0.09em; }
+.form_container { margin: 4em auto 0; padding: 1.3em 0.4em; width: 90%; }
+.logo_container > img { width: 80%; }
+.form_container .input_code_container > input { font-size: 1.2em; margin-bottom: 1.3em; padding: 0.7em 0; width: 80%; }
+.form_container .input_submit_container > input { font-size: 1.3em; padding: 0.23em 0; width: 70%; }
+/* page main style }}} */

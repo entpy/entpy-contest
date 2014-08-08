@@ -5,4 +5,7 @@
 .logo_container .entpy_logo_image { width: 90%;  }
 .logo_container .entpy_logo_image2 { width: 90%; }
 .entpy_world_container { width: 100%; }
+
+.form_container .input_code_container > input { font-size: 1.4em; margin-bottom: 1.3em; padding: 0.7em 4em; }
+.form_container .input_submit_container > input { font-size: 1.8em; padding: 0.23em 3em; }
 /* page main style }}} */
