@@ -7,8 +7,8 @@ $(document).ready(function(){
 	validate_document_img();
 
 	// a bit of color
-	// var ciakObj = ciakWrapper;
-	// ciakObj.doAnimationEasy();
+	/*var ciakObj = ciakWrapper;
+	ciakObj.doAnimationEasy();*/
 
 	// TODO: remove, debug only
 	// delay_page_scrolling();
@@ -90,8 +90,8 @@ var ciakWrapper = {
 
 	animate : function() {
 
-		if (getAnimationType) {
-			eval(getAnimationType +"()");
+		if (this.getAnimationType()) {
+			eval("this." + this.getAnimationType() +"()");
 		}
 	},
 
@@ -105,9 +105,9 @@ var ciakWrapper = {
 	},
 
 	advancedAnimation : function() {
-		// method to start an advanced animation
+		// method to start advanced animation
 
-		this.animateViaCssClass(".logo1AnimationAction", "bounceInDown", "3s", "1s", "1");
+		ciakWrapper.animateViaCssClass(".logo1AnimationAction", "bounceInDown", "3s", "1s", "1");
 		$(".logo1AnimationAction").removeClass("transparent");
 
 		$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
@@ -118,18 +118,18 @@ var ciakWrapper = {
 
 			// entpy logo tada
 			$(".logo1AnimationAction").removeClass("bounceInDown");
-			this.animateViaCssClass(".logo1AnimationAction", "tada", "2s", "1s", "1");
+			ciakWrapper.animateViaCssClass(".logo1AnimationAction", "tada", "2s", "1s", "1");
 
-			$(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+			$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
 
 				// entpy logo out
 				$(".logo1AnimationAction").removeClass("tada");
-				this.animateViaCssClass(".logo1AnimationAction", "lightSpeedOut", "0.8s", "1s", "1");
+				ciakWrapper.animateViaCssClass(".logo1AnimationAction", "lightSpeedOut", "0.8s", "1s", "1");
 
 				// scrolling universe to the city
 				// delay_page_scrolling();
 				var scrollingObj = scrollingWrapper;
-				scrollingObj.doScrollingEasy(scrollingObj.scrolling1, 2000);
+				scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling1, 2500);
 			});
 		});
 
@@ -149,9 +149,9 @@ var scrollingWrapper = {
 
 	scrollingDelay : false,
 
-	doScrollingEasy : function(scrollingType, delay) {
+	doScrollingEasy : function(scrollName, delay) {
 		this.scrollingDelay = delay;
-		this.setScrollType(scrollingType);
+		this.setScrollType(scrollName);
 		this.scrollScene();
 	},
 
@@ -165,13 +165,19 @@ var scrollingWrapper = {
 		}
 	},
 
-	getScrollType : function() { return this._scrollType },
+	getScrollType : function() { return this._scrollType; },
 
 	scrollScene : function() {
 		if (this.getScrollType()) {
-			// must be safe
-			setTimeout('eval(this.getScrollType+"()");', this.scrollingDelay);
+			// scrolling delay
+			setTimeout('scrollingWrapper.scrollDelay();', this.scrollingDelay);
 		}
+	},
+
+	scrollDelay : function() { 
+		// must be safe
+		eval("this." + this.getScrollType() + "()");
+		return true;
 	},
 
 	// eval functions {{{
@@ -180,11 +186,8 @@ var scrollingWrapper = {
 
 		$.scrollTo('.scroll_to_bottom', 5500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
 				// ...at the end of bottom scrolling, return to logo pt2 animation
-				$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
-						ciakWrapper.animate_element(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
-						ciakWrapper.animate_element(".logoBottomTextAction", "shake", "1s", "1.2s", "1");
-					}
-				});
+				var scrollingObj = scrollingWrapper;
+				scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 4000);
 			}
 		});
 
@@ -193,7 +196,11 @@ var scrollingWrapper = {
 
 	scrolling2 : function() {
 		// function to scroll directly to entpy logo
-		console.log("implement this!");
+		$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
+				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "shake", "1s", "1.2s", "1");
+			}
+		});
 	}
 	// eval functions }}}
 };
