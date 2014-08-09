@@ -7,8 +7,8 @@ $(document).ready(function(){
 	validate_document_img();
 
 	// a bit of color
-	/*var ciakObj = ciakWrapper;
-	ciakObj.doAnimationEasy();*/
+	var ciakObj = ciakWrapper;
+	ciakObj.doAnimationEasy();
 
 	// TODO: remove, debug only
 	// delay_page_scrolling();
