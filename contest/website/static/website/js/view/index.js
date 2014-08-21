@@ -45,7 +45,7 @@ var ciakWrapper = {
 
 	preActions : function() {
 		// $(".form_container").css("visibility", "hidden");
-		$(".old_browser_container").remove();
+		// $(".old_browser_container").remove();
 	},
 
 	postActions : function() {

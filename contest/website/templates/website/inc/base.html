@@ -36,13 +36,9 @@
 		<link rel="stylesheet" href="{% static "website/css/common.css" %}">
 		<link rel="stylesheet" href="{% static "website/css/main.css" %}">
 		<!--[if lt IE 9]>
-			<link rel="stylesheet" type="text/css" href="css/big_css.css" />
+			<link rel="stylesheet" type="text/css" href="{% static "website/css/breakpoint3.css" %}" />
 		<![endif]-->
 
-		<!-- CSS fix style sheets -->
-		<!--[if lt IE 8]>
-			<link rel="stylesheet" type="text/css" href="css/ie7_fix.css" />
-		<![endif]-->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
 		{% endblock loaded_css %}
 
