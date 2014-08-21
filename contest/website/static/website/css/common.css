@@ -44,6 +44,23 @@ b, .bold { font-weight: bold; }
 	/* Good browsers */
 	opacity: 0;
 }
+
+.no-transparent {
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)"!important;
+
+	/* IE 5-7 */
+	filter: alpha(opacity=1)!important;
+
+	/* Netscape */
+	-moz-opacity: 1!important;
+
+	/* Safari 1.x */
+	-khtml-opacity: 1!important;
+
+	/* Good browsers */
+	opacity: 1!important;
+}
 .no_overflow_x { overflow-x: hidden; }
 .display_only_mobile, .display_only_pc { display: none; }
 .coupon_code_block { height: 60em; }

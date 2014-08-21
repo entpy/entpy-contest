@@ -117,6 +117,16 @@ var ciakWrapper = {
 		}
 	},
 
+	showAdvancedForm : function() {
+		// remove transparent class
+		$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
+		$(".new_browser_container .form_container").removeClass("transparent");
+
+		// add no-transparent class
+		$(".new_browser_container .entpy_logo_image2").addClass("no-transparent");
+		$(".new_browser_container .form_container").addClass("no-transparent");
+	},
+
 	// eval functions {{{
 	noneAnimation : function() {
 		console.log("implement this!");
@@ -242,12 +252,7 @@ var scrollingWrapper = {
 				$(".form_container").removeClass("transparent");*/
 				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1s", "0s", "1");
 				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeIn", "1s", "0s", "1");
-				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", function(){ 
-					$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
-					$(".new_browser_container .form_container").removeClass("transparent");
-					$(".new_browser_container .entpy_logo_image2").style("opacity: 1;");
-					$(".new_browser_container .form_container").style("opacity: 1;");
-				});
+				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", function(){ ciakWrapper.showAdvancedForm(); });
 
 				// exec actions post animation
 				ciakWrapper.postActions();
