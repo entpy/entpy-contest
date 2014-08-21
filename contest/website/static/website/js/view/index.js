@@ -74,14 +74,11 @@ var ciakWrapper = {
 
 	detectAnimationType : function() {
 		// method to recognise animation type (simple or advanced)
-		// TODO
-		// debug only
-		// if cool browser and no code via GET
-		// than -> advanced_animation
-		// else -> simple_animation
+
 		this.setAnimationType(this.animationTypeName.simple_animation);
-		// XXX ok this.setAnimationType(this.animationTypeName.advanced_animation);
+		// this.setAnimationType(this.animationTypeName.advanced_animation);
 		/*
+			TODO
 			Come decidere il tipo di animazione
 			===================================
 
@@ -126,9 +123,8 @@ var ciakWrapper = {
 	},
 
 	simpleAnimation : function() {
-		// method to start simple animation
-		console.log("implement this!");
-		// scrolling universe to code form
+		// method to start simple animation: scrolling universe to code form
+
 		var scrollingObj = scrollingWrapper;
 		scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling3, 500);
 	},
@@ -246,7 +242,10 @@ var scrollingWrapper = {
 				$(".form_container").removeClass("transparent");*/
 				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1s", "0s", "1");
 				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeIn", "1s", "0s", "1");
-				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", "1");
+				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", function(){ 
+					$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
+					$(".new_browser_container .form_container").removeClass("transparent");
+				});
 
 				// exec actions post animation
 				ciakWrapper.postActions();
