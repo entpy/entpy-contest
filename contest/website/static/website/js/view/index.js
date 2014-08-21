@@ -81,6 +81,20 @@ var ciakWrapper = {
 		// else -> simple_animation
 		this.setAnimationType(this.animationTypeName.simple_animation);
 		// XXX ok this.setAnimationType(this.animationTypeName.advanced_animation);
+		/*
+			Come decidere il tipo di animazione
+			===================================
+
+			lato server:
+				se si arriva in questa pagina con il codice via GET (a seguito della lettura del QRCode)
+				se si arriva in per la seconda volta
+				----------
+				inserire un tag HTML come questo 
+					<div class="use_simple_animation">1</div> -> per forzare l'animazione semplice
+
+			lato client:
+				se il browser è obsoleto (e cioè??)
+		*/
 	},
 
 	setAnimationType : function(animationType) {
