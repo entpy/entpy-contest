@@ -75,8 +75,8 @@ var ciakWrapper = {
 	detectAnimationType : function() {
 		// method to recognise animation type (simple or advanced)
 
-		this.setAnimationType(this.animationTypeName.simple_animation);
-		// this.setAnimationType(this.animationTypeName.advanced_animation);
+		// this.setAnimationType(this.animationTypeName.simple_animation);
+		this.setAnimationType(this.animationTypeName.advanced_animation);
 		/*
 			TODO
 			Come decidere il tipo di animazione
