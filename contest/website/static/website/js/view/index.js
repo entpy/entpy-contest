@@ -245,6 +245,8 @@ var scrollingWrapper = {
 				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", function(){ 
 					$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
 					$(".new_browser_container .form_container").removeClass("transparent");
+					$(".new_browser_container .entpy_logo_image2").style("opacity: 1;");
+					$(".new_browser_container .form_container").style("opacity: 1;");
 				});
 
 				// exec actions post animation
