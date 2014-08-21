@@ -4,14 +4,12 @@ Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.
 $(document).ready(function(){
 
 	// validating svg image
-	validate_document_img();
+	// validate_document_img();
 
 	// a bit of color
 	var ciakObj = ciakWrapper;
+	ciakObj.preActions();
 	ciakObj.doAnimationEasy();
-
-	// TODO: remove, debug only
-	// delay_page_scrolling();
 });
 
 function validate_document_img() {
@@ -45,6 +43,15 @@ var ciakWrapper = {
 		this.animate();
 	},
 
+	preActions : function() {
+		// $(".form_container").css("visibility", "hidden");
+		$(".old_browser_container").remove();
+	},
+
+	postActions : function() {
+		$(".code_input").focus();
+	},
+
 	animateViaCssClass : function(className, animationName, duration, delay, nIteration, callback) {
 		// method to animate an element by class name
 
@@ -69,7 +76,11 @@ var ciakWrapper = {
 		// method to recognise animation type (simple or advanced)
 		// TODO
 		// debug only
-		this.setAnimationType(this.animationTypeName.advanced_animation);
+		// if cool browser and no code via GET
+		// than -> advanced_animation
+		// else -> simple_animation
+		this.setAnimationType(this.animationTypeName.simple_animation);
+		// XXX ok this.setAnimationType(this.animationTypeName.advanced_animation);
 	},
 
 	setAnimationType : function(animationType) {
@@ -101,7 +112,11 @@ var ciakWrapper = {
 	},
 
 	simpleAnimation : function() {
+		// method to start simple animation
 		console.log("implement this!");
+		// scrolling universe to code form
+		var scrollingObj = scrollingWrapper;
+		scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling3, 500);
 	},
 
 	advancedAnimation : function() {
@@ -127,7 +142,6 @@ var ciakWrapper = {
 				ciakWrapper.animateViaCssClass(".logo1AnimationAction", "lightSpeedOut", "0.8s", "1s", "1");
 
 				// scrolling universe to the city
-				// delay_page_scrolling();
 				var scrollingObj = scrollingWrapper;
 				scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling1, 2500);
 			});
@@ -144,7 +158,8 @@ var scrollingWrapper = {
 
 	scrollTypeName : {
 		scrolling1 : "scrolling1",
-		scrolling2 : "scrolling2"
+		scrolling2 : "scrolling2",
+		scrolling3 : "scrolling3"
 	},
 
 	scrollingDelay : false,
@@ -161,6 +176,8 @@ var scrollingWrapper = {
 				this._scrollType = this.scrollTypeName.scrolling1;
 			} else if (this.scrollTypeName.scrolling2 == scrollName) {
 				this._scrollType = this.scrollTypeName.scrolling2;
+			} else if (this.scrollTypeName.scrolling3 == scrollName) {
+				this._scrollType = this.scrollTypeName.scrolling3;
 			}
 		}
 	},
@@ -187,7 +204,7 @@ var scrollingWrapper = {
 		$.scrollTo('.scroll_to_bottom', 5500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
 				// ...at the end of bottom scrolling, return to logo pt2 animation
 				var scrollingObj = scrollingWrapper;
-				scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 4000);
+				scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 1000);
 			}
 		});
 
@@ -197,8 +214,28 @@ var scrollingWrapper = {
 	scrolling2 : function() {
 		// function to scroll directly to entpy logo
 		$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
-				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "lightSpeedIn", "1s", "1s", "1");
-				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "shake", "1s", "1.2s", "1");
+				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1.5s", "0s", "1");
+				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "lightSpeedIn", "1s", "2.8s", "1");
+				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "4.5s", "1");
+
+				// exec actions post animation
+				ciakWrapper.postActions();
+			}
+		});
+	},
+
+	scrolling3 : function() {
+		// function to scroll directly to entpy logo
+		$.scrollTo('.scroll_to_element1', 2000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+				/*$(".logoBottomTextAction").removeClass("transparent");
+				$(".logo2AnimationAction").removeClass("transparent");
+				$(".form_container").removeClass("transparent");*/
+				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1s", "0s", "1");
+				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeIn", "1s", "0s", "1");
+				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", "1");
+
+				// exec actions post animation
+				ciakWrapper.postActions();
 			}
 		});
 	}

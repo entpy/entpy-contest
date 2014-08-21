@@ -2,22 +2,11 @@
 {% load staticfiles %}
 {% block main_content %}
 <div class="wrapper">
-	{# logo container #}
-	<div class="logo_container">
-		<img class="check_image entpy_logo_image transparent logo1AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
-	</div>
-	{# top image container #}
-	<div class="stuff_container">
-		<div class="image_container align_center">
-			<img class="check_image width_78_100" src="static/website/img/planet.svg" alt="Entpy universe">
-		</div>
-	</div>
-	{# Bottom logo and form container #}
-	<div class="coupon_code_block">
-		<div class="scroll_to_element1"></div>
+	{# Bottom logo and form container only for old browsers {{{ #}
+	<div class="old_browser_container">
 		{# logo container #}
 		<div class="logo_container">
-			<img class="check_image entpy_logo_image2 transparent logo2AnimationAction" alt="Entpy" src="static/website/img/logo.svg">
+			<img class="check_image entpy_logo_image2 logo2AnimationAction" alt="Entpy" src="static/website/img/logo.png">
 			<div class="logo_bottom_container logoBottomTextAction">
 				Contest
 			</div>
@@ -33,9 +22,39 @@
 			</div>
 		</div>
 	</div>
+	{# Bottom logo and form container only for old browsers }}} #}
+	{# logo container #}
+	<div class="logo_container">
+		<img class="check_image entpy_logo_image transparent logo1AnimationAction" alt="Entpy" src="static/website/img/logo.png">
+	</div>
+	{# top image container #}
+	<div class="stuff_container">
+		<div class="image_container align_center">
+			<img class="check_image width_78_100" src="static/website/img/planet.png" alt="Entpy universe">
+		</div>
+	</div>
+	{# Bottom logo and form container {{{ #}
+	<div class="coupon_code_block">
+		<div class="scroll_to_element1"></div>
+		{# logo container #}
+		<div class="logo_container">
+			<img class="check_image entpy_logo_image2 transparent logo2AnimationAction" alt="Entpy" src="static/website/img/logo.png">
+			<div class="form_container transparent">
+				<form name="validate_coupon_form" method="POST" action="">
+					<div class="input_code_container">
+						<input class="code_input" placeholder="Codice del volantino" type="text" name="code" value="" />
+					</div>
+					<div class="input_submit_container">
+						<input type="submit" name="submit" value="Valida codice" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{# Bottom logo and form container }}} #}
 	{# bottom image container #}
 	<div class="entpy_world_container">
-		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.svg" alt="Entpy world">
+		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.png" alt="Entpy world">
 	</div>
 	<div class="scroll_to_bottom"></div>
 </div>

@@ -1,17 +1,16 @@
 /* medium/large screen style */
 
 /* page main style {{{ */
-.logo_container { width: 100%; }
-.logo_container .entpy_logo_image { width: auto; height: 6em; }
-.logo_container .entpy_logo_image2 { width: auto; height: 6em; }
+.logo_container { width: 80%; }
+.logo_container .entpy_logo_image { width: auto; height: 5em; }
+.logo_container .entpy_logo_image2 { width: auto; height: 5em; }
 .logo_bottom_container { font-size: 1.2em; margin-top: 0.3em; }
 .entpy_world_container { width: 100%; }
 
 .form_container {
 	margin: 4em auto 0;
-	padding: 2.6em 1em;
-	width: 40em;
+	padding: 2.0em 1em;
 }
-.form_container .input_code_container > input { font-size: 1.4em; margin-bottom: 2.7em; padding: 0.7em 4em; }
-.form_container .input_submit_container > input { font-size: 1.4em; padding: 0.23em 3em; }
+.form_container .input_code_container > input { font-size: 1.1em; margin-bottom: 1.5em; padding: 0.7em 2em; }
+.form_container .input_submit_container > input { font-size: 1.15em; padding: 0.23em 3em; }
 /* page main style }}} */
