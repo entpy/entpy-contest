@@ -49,7 +49,7 @@ var ciakWrapper = {
 	},
 
 	postActions : function() {
-		$(".code_input").focus();
+		// $(".code_input").focus();
 	},
 
 	animateViaCssClass : function(className, animationName, duration, delay, nIteration, callback) {
