@@ -103,3 +103,14 @@ html {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001a23', endColorstr='#0a4554',GradientType=0 ); /* IE6-9 */
 }
 /* colors }}} */
+
+/* animation fix {{{ */
+.logo_container, .form_container {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(0);
+}
+
+.logo_container *, .form_container * {
+	-webkit-transform: translateZ(0);
+}
+/* animation fix }}} */

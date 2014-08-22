@@ -2,23 +2,14 @@
 {% load staticfiles %}
 {% block main_content %}
 <div class="wrapper">
+	{# <div class="device" style="color: #fff;">#}
+		{#Device: {{ device }}<br />#}
+		{#Browser: {{ browser }}<br />#}
+		{#Os: {{ os }}<br />#}
+		{#Animation type: {{ animation_type }}#}
+	{#</div> #}
 	{# Bottom logo and form container only for old browsers {{{ #}
-	<div class="old_browser_container display_none">
-		{# logo container #}
-		<div class="logo_container">
-			<img class="check_image entpy_logo_image2 logo2AnimationAction" alt="Entpy" src="static/website/img/logo.png">
-			<div class="form_container">
-				<form name="validate_coupon_form" method="POST" action="">
-					<div class="input_code_container">
-						<input placeholder="Codice del volantino" type="text" name="code" value="" />
-					</div>
-					<div class="input_submit_container">
-						<input type="submit" name="submit" value="Valida codice" />
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	<div class="old_browser_container"></div>
 	{# Bottom logo and form container only for old browsers }}} #}
 	{# logo container #}
 	<div class="logo_container">
@@ -53,6 +44,7 @@
 	<div class="entpy_world_container">
 		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.png" alt="Entpy world">
 	</div>
+	<div class="animation_type display_none">{{ animation_type }}</div>
 	<div class="scroll_to_bottom"></div>
 </div>
 {% endblock main_content %}

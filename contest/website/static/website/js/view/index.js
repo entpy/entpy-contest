@@ -10,6 +10,13 @@ $(document).ready(function(){
 	var ciakObj = ciakWrapper;
 	ciakObj.preActions();
 	ciakObj.doAnimationEasy();
+
+	/*
+	TODOList:
+		- skip button
+		- reading code from GET
+		- server side
+	*/
 });
 
 function validate_document_img() {
@@ -44,12 +51,17 @@ var ciakWrapper = {
 	},
 
 	preActions : function() {
-		// $(".form_container").css("visibility", "hidden");
-		// $(".old_browser_container").remove();
+		// TODO
+		if (this._animationType = this.animationTypeName.advanced_animation) {
+			// add skip button
+		}
 	},
 
 	postActions : function() {
-		// $(".code_input").focus();
+		// TODO
+		if (this._animationType = this.animationTypeName.advanced_animation) {
+			// remove skip button
+		}
 	},
 
 	animateViaCssClass : function(className, animationName, duration, delay, nIteration, callback) {
@@ -73,25 +85,14 @@ var ciakWrapper = {
 	},
 
 	detectAnimationType : function() {
-		// method to recognise animation type (simple or advanced)
+		// method to recognise animation type (none, simple or advanced)
 
 		// this.setAnimationType(this.animationTypeName.simple_animation);
-		this.setAnimationType(this.animationTypeName.advanced_animation);
-		/*
-			TODO
-			Come decidere il tipo di animazione
-			===================================
+		animation_type = $(".animation_type").html();
 
-			lato server:
-				se si arriva in questa pagina con il codice via GET (a seguito della lettura del QRCode)
-				se si arriva in per la seconda volta
-				----------
-				inserire un tag HTML come questo 
-					<div class="use_simple_animation">1</div> -> per forzare l'animazione semplice
-
-			lato client:
-				se il browser è obsoleto (e cioè??)
-		*/
+		if (this.animationTypeName[animation_type]) {
+			this.setAnimationType(this.animationTypeName[animation_type]);
+		}
 	},
 
 	setAnimationType : function(animationType) {
@@ -129,7 +130,13 @@ var ciakWrapper = {
 
 	// eval functions {{{
 	noneAnimation : function() {
-		console.log("implement this!");
+		// method to write code form inside old browser tag, without animations
+		$(".old_browser_container").html($(".new_browser_container").html());
+		$(".new_browser_container").addClass("display_none");
+
+		// remove transparent class
+		$(".old_browser_container .entpy_logo_image2").removeClass("transparent");
+		$(".old_browser_container .form_container").removeClass("transparent");
 	},
 
 	simpleAnimation : function() {
@@ -252,7 +259,7 @@ var scrollingWrapper = {
 				$(".form_container").removeClass("transparent");*/
 				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1s", "0s", "1");
 				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeIn", "1s", "0s", "1");
-				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "1s", "0s", function(){ ciakWrapper.showAdvancedForm(); });
+				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "0s", setTimeout("ciakWrapper.showAdvancedForm();", 3000));
 
 				// exec actions post animation
 				ciakWrapper.postActions();
