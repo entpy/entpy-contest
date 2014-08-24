@@ -14,8 +14,9 @@ $(document).ready(function(){
 	/*
 	TODOList:
 		- skip button
-		- reading code from GET
 		- server side
+			- AJAX call
+			- admin page to validate the code
 	*/
 });
 
@@ -55,13 +56,24 @@ var ciakWrapper = {
 		if (this._animationType = this.animationTypeName.advanced_animation) {
 			// add skip button
 		}
+
+		// check code via GET to auto fill code form
+		if ($(".code_to_check").html()) {
+			$(".codeInputSetAction").val($(".code_to_check").html());
+		}
 	},
 
 	postActions : function() {
 		// TODO
 		if (this._animationType = this.animationTypeName.advanced_animation) {
 			// remove skip button
+			$(".skipIntroAction").addClass("display_none");
 		}
+
+		// check code via GET to light up validate coupon button
+		/* if ($(".code_to_check").html()) {
+			setTimeout('$(".sendButtonClickAction").click();', 1500);
+		}*/
 	},
 
 	animateViaCssClass : function(className, animationName, duration, delay, nIteration, callback) {

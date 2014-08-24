@@ -11,13 +11,13 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger('django.request')
 
-def index(request):
+def index(request, code_to_check):
 
         # cookie name
         cookie_name = "already_visited"
 
         # code via get
-        code_to_check = False
+        # code_to_check = False
 
         # Device properties
         device = request.user_agent.device  # returns Device(family='iPhone')
@@ -38,35 +38,36 @@ def index(request):
                 ((browser.family == "IE") and (browser.version[0] >= 10)) or
                 ((browser.family == "Mobile Safari") and (browser.version[0] >= 4))
         ):
-                animation_type = "advanced_animation"
+		animation_type = "advanced_animation"
 
-        if (request.COOKIES.get(cookie_name) or code_to_check) :
-
+        if ((request.COOKIES.get(cookie_name) or code_to_check) and animation_type == "advanced_animation"):
                 animation_type = "simple_animation"
 
-        """
-            SCELTA DEL TIPO DI ANIMAZIONE
-            =============================
+	"""
+		SCELTA DEL TIPO DI ANIMAZIONE
+		=============================
 
-            Identific*zione dello useragent -> https://github.com/selwin/django-user_agents
+		Identific*zione dello useragent -> https://github.com/selwin/django-user_agents
 
-            * impostare animation_type = advanced se:
-                    il browser è android con versione >= 4
-                    il browser è firefox con versione > 25
-                    il browser è chrome con versione >= 9
-                    il browser è mobile safari con versione >= 4
+		* impostare animation_type = advanced_animation se:
+			il browser è android con versione >= 4
+			il browser è firefox con versione > 25
+			il browser è chrome con versione >= 9
+			il browser è mobile safari con versione >= 4
 
-            * impostare animation_type = simple se:
-                    ho già visitato la pagina (cookie presente) o sto arrivando con codice via GET
+		* impostare animation_type = simple_animation se:
+			ho già visitato la pagina (cookie presente) o sto arrivando con codice via GET
+			e se advanced_animation è supportata
 
-            * impostare animation_type = none in tutti gli altri casi
-        """
+		* impostare animation_type = none_animation in tutti gli altri casi
+	"""
 
         context = {
                 'device' : device,
                 'browser' : browser,
                 'os' : os,
                 'animation_type' : animation_type,
+		'code_to_check' : code_to_check,
         }
 
         # create cookie

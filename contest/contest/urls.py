@@ -7,7 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	# frontend URLs
-	url(r'^$', 'website.views.index', name='index'),
+	url(r'^(?P<code_to_check>\w*)/?$', 'website.views.index', name='index'),
 
 	# admin URLs
 	url(r'^admin/', include(admin.site.urls)),

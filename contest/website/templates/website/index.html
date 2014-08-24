@@ -30,10 +30,10 @@
 			<div class="form_container transparent">
 				<form name="validate_coupon_form" method="POST" action="">
 					<div class="input_code_container">
-						<input class="code_input" placeholder="Codice del volantino" type="text" name="code" value="" />
+						<input class="codeInputSetAction code_input" placeholder="Codice del volantino" type="text" name="code" value="" />
 					</div>
 					<div class="input_submit_container">
-						<input type="submit" name="submit" value="Valida codice" />
+						<input class="sendButtonClickAction" type="submit" name="submit" value="Valida codice" />
 					</div>
 				</form>
 			</div>
@@ -44,7 +44,14 @@
 	<div class="entpy_world_container">
 		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.png" alt="Entpy world">
 	</div>
+	<div class="skip_button skipIntroAction">
+		<span class="left">Skip intro</span>
+		<span class="right">
+			<img class="" src="static/website/img/skip.png" alt="Salta intro">
+		</span>
+	</div>
 	<div class="animation_type display_none">{{ animation_type }}</div>
+	<div class="code_to_check display_none">{{ code_to_check }}</div>
 	<div class="scroll_to_bottom"></div>
 </div>
 {% endblock main_content %}

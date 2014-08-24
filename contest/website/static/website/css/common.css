@@ -79,6 +79,12 @@ b, .bold { font-weight: bold; }
 .form_container .input_code_container > input:hover { box-shadow: 0 0 6px -1px #28aee2; }
 .form_container .input_submit_container > input { -webkit-appearance: none; background-color: #28aee2; border: none; border-radius: 4px; color: #001a23; cursor: pointer; }
 .form_container .input_submit_container > input:hover { background-color: #84C619; box-shadow: 0 0 6px -1px #84C619; }
+
+/* skip button {{{ */
+.skip_button { opacity: 0.6; bottom: 40px; cursor: pointer; position: fixed; right: 50px; }
+.skip_button:hover { opacity: 1; }
+.skip_button .left { bottom: 13px; color: #075D7D; font-size: 15px; position: relative; right: 7px; font-family: 'helveticaneue-light'; }
+/* skip button }}} */
 /* page main style }}} */
 
 /* colors {{{ */
