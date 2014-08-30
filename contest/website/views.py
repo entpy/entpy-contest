@@ -35,15 +35,18 @@ def index(request, code_to_check):
 
         # default: setting animation type = none
         animation_type = "none_animation"
+	browser_type = "normal_browser"
 
         if (
                 ((browser.family == "Android") and (browser.version[0] >= 4)) or
                 ((browser.family == "Firefox") and (browser.version[0] >= 25)) or
                 ((browser.family == "Chrome") and (browser.version[0] >= 9)) or
+                ((browser.family == "Chromium") and (browser.version[0] >= 30)) or
                 ((browser.family == "IE") and (browser.version[0] >= 10)) or
                 ((browser.family == "Mobile Safari") and (browser.version[0] >= 4))
         ):
 		animation_type = "advanced_animation"
+		browser_type = "advanced_browser";
 
         if ((request.COOKIES.get(cookie_name) or code_to_check) and animation_type == "advanced_animation"):
                 animation_type = "simple_animation"
@@ -76,6 +79,7 @@ def index(request, code_to_check):
                 'os' : os,
                 'animation_type' : animation_type,
 		'code_to_check' : code_to_check,
+		'browser_type' : browser_type,
         }
 
         # create cookie

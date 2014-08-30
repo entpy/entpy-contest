@@ -3,9 +3,6 @@ Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.
 
 $(document).ready(function(){
 
-	// validating svg image
-	// validate_document_img();
-
 	// a bit of color
 	var ciakObj = ciakWrapper;
 	ciakObj.preActions();
@@ -13,7 +10,7 @@ $(document).ready(function(){
 
 	var msgObj = msgWrapper;
 	// msgObj.testMessage(); -> debug only
-	msgObj.showMessageEasy(msgObj.msgTypeList.errorMsg, "Fuck error!", "Fuck description");
+	// msgObj.showMessageEasy(msgObj.msgTypeList.errorMsg, "Error!", "Description");
 
 	// msgObj.removeMessage();
 
@@ -80,30 +77,20 @@ function disable_current_scroll_event() {
 	$.scrollTo.window().stop(true);
 }
 
-function validate_document_img() {
-	// function to use .svg or .png image (depending on browser support)
-
-	// if (!Modernizr.svgasimg) {
-		$(".check_image").each(function(index) {
-			var old_src_path;
-			var new_src_path;
-			old_src_path = $(this).attr("src");
-			new_src_path = old_src_path.replace(".svg", ".png");
-			$(this).attr("src", new_src_path);
-		});
-	// }
-
-	return true;
-}
-
 var ciakWrapper = {
 
 	_animationType: false,
+	_browserType: false,
 
 	animationTypeName : {
 		none_animation : "noneAnimation",
 		simple_animation : "simpleAnimation",
 		advanced_animation : "advancedAnimation"
+	},
+
+	browserTypeName : {
+		simple_browser : "simple_browser",
+		advanced_browser : "advanced_browser"
 	},
 
 	doAnimationEasy : function() {
@@ -112,6 +99,15 @@ var ciakWrapper = {
 	},
 
 	preActions : function() {
+
+		// browser type init
+		this.initBrowserType();
+
+		if (this.getBrowserType() == this.browserTypeName.advanced_browser) {
+			// use svg instead png
+			this.useSvgInstead();
+		}
+
 		if (this.animationTypeName[this.getAnimationFromHtml()] == this.animationTypeName.advanced_animation) {
 			// add skip button
 			$(".skipIntroAction").removeClass("display_none");
@@ -170,6 +166,34 @@ var ciakWrapper = {
 		}
 	},
 
+	setBrowserType : function(browserType) {
+		// method to set browser type inside object
+
+		this._browserType = browserType;
+	},
+
+	getBrowserType : function() {
+		// method to get browser type
+
+		return this._browserType;
+	},
+
+	getBrowserTypeFromHtml : function() {
+		// method to get browser type from html
+
+		return $(".browserTypeAction").html();
+	},
+
+	initBrowserType : function() {
+		// method to set browser type
+
+		// retrieving browser type from HTML
+		browserTypeFromHtml = this.getBrowserTypeFromHtml();
+
+		// setting browser type inside object
+		this.setBrowserType(browserTypeFromHtml);
+	},
+
 	setAnimationType : function(animationType) {
 		if (animationType) {
 			if (this.animationTypeName.none_animation == animationType) {
@@ -184,6 +208,18 @@ var ciakWrapper = {
 
 	getAnimationType : function() {
 		return this._animationType;
+	},
+
+	useSvgInstead : function() {
+		// method to use svg images instead png images
+
+		/*$(".check_image").each(function(index) {
+			var old_src_path;
+			var new_src_path;
+			old_src_path = $(this).attr("src");
+			new_src_path = old_src_path.replace(".png", ".svg");
+			$(this).attr("src", new_src_path);
+		});*/
 	},
 
 	animate : function() {
