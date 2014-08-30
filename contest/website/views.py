@@ -11,6 +11,11 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger('django.request')
 
+def validate_code(request):
+
+	code_to_validate = request.POST.get("code_to_validate", "")
+	return HttpResponse("Validare il codice: " + code_to_validate)
+
 def index(request, code_to_check):
 
         # cookie name
@@ -61,6 +66,9 @@ def index(request, code_to_check):
 
 		* impostare animation_type = none_animation in tutti gli altri casi
 	"""
+
+	# debug only plz remove
+	# animation_type = "advanced_animation"
 
         context = {
                 'device' : device,

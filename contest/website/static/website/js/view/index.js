@@ -11,14 +11,74 @@ $(document).ready(function(){
 	ciakObj.preActions();
 	ciakObj.doAnimationEasy();
 
+	var msgObj = msgWrapper;
+	// msgObj.testMessage(); -> debug only
+	msgObj.showMessageEasy(msgObj.msgTypeList.errorMsg, "Fuck error!", "Fuck description");
+
+	// msgObj.removeMessage();
+
 	/*
 	TODOList:
-		- skip button
+		- success/error messages
 		- server side
-			- AJAX call
+			- AJAX call & code check
 			- admin page to validate the code
 	*/
+	
+	// skip button animation
+	$(document).on("mouseenter", ".skipIntroAction", function() {
+		var ciakObj = ciakWrapper;
+		ciakObj.animateViaCssClass(".skipIntroAction", "tada", "1s", "0s", "1");
+
+		$(".skipIntroAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+			$(this).removeClass("animated tada");
+		});
+	});
+
+	// skip button click action
+	$(document).on("click", ".skipIntroAction", function() {
+		disable_current_scroll_event();
+		var scrollingObj = scrollingWrapper;
+		scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling3, 500);
+	});
+
+	// validate code submit button click
+	$(document).on("click", ".sendButtonClickAction", function() {
+
+		var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
+		var code_to_validate = $(".codeInputAction").val();
+
+		if (code_to_validate) {
+			var ajaxCallData = {
+				url : "/validate-code/",
+				data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
+				async : false,
+				success : function(result) {
+					alert(result);
+				},
+				error : function(result) {
+					// ...fuck
+				}
+			}
+
+			loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
+		}
+
+		return false;
+	});
 });
+
+function show_message_msg(message, type) {
+	// function to show a message (success or error)
+
+	// type can be: success | error
+	// message: string
+}
+
+function disable_current_scroll_event() {
+	$(".skipAnimationAction").html("1");
+	$.scrollTo.window().stop(true);
+}
 
 function validate_document_img() {
 	// function to use .svg or .png image (depending on browser support)
@@ -52,25 +112,24 @@ var ciakWrapper = {
 	},
 
 	preActions : function() {
-		// TODO
-		if (this._animationType = this.animationTypeName.advanced_animation) {
+		if (this.animationTypeName[this.getAnimationFromHtml()] == this.animationTypeName.advanced_animation) {
 			// add skip button
+			$(".skipIntroAction").removeClass("display_none");
 		}
 
 		// check code via GET to auto fill code form
 		if ($(".code_to_check").html()) {
-			$(".codeInputSetAction").val($(".code_to_check").html());
+			$(".codeInputAction").val($(".code_to_check").html());
 		}
 	},
 
 	postActions : function() {
-		// TODO
-		if (this._animationType = this.animationTypeName.advanced_animation) {
+		if (this.animationTypeName[this.getAnimationFromHtml()] == this.animationTypeName.advanced_animation) {
 			// remove skip button
 			$(".skipIntroAction").addClass("display_none");
 		}
 
-		// check code via GET to light up validate coupon button
+		// check code via GET to light up validate coupon button (...mah...)
 		/* if ($(".code_to_check").html()) {
 			setTimeout('$(".sendButtonClickAction").click();', 1500);
 		}*/
@@ -96,11 +155,15 @@ var ciakWrapper = {
 		return true;
 	},
 
+	getAnimationFromHtml : function() {
+		return $(".animationTypeAction").html();
+	},
+
 	detectAnimationType : function() {
 		// method to recognise animation type (none, simple or advanced)
 
 		// this.setAnimationType(this.animationTypeName.simple_animation);
-		animation_type = $(".animation_type").html();
+		animation_type = this.getAnimationFromHtml();
 
 		if (this.animationTypeName[animation_type]) {
 			this.setAnimationType(this.animationTypeName[animation_type]);
@@ -240,27 +303,34 @@ var scrollingWrapper = {
 	scrolling1 : function() {
 		// function to scroll at page bottom and than to entpy logo
 
-		$.scrollTo('.scroll_to_bottom', 5500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
-				// ...at the end of bottom scrolling, return to logo pt2 animation
-				var scrollingObj = scrollingWrapper;
-				scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 1000);
-			}
-		});
+		if (!$(".skipAnimationAction").html()) {
+			$.scrollTo('.scroll_to_bottom', 5500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+					// ...at the end of bottom scrolling, return to logo pt2 animation
+					var scrollingObj = scrollingWrapper;
+					scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 1000);
+				}
+			});
+		}
 
 		return true;
 	},
 
 	scrolling2 : function() {
 		// function to scroll directly to entpy logo
-		$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
-				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1.5s", "0s", "1");
-				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "lightSpeedIn", "1s", "2.8s", "1");
-				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "4.5s", "1");
 
-				// exec actions post animation
-				ciakWrapper.postActions();
-			}
-		});
+		if (!$(".skipAnimationAction").html()) {
+			$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+					ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1.5s", "0s", "1");
+					ciakWrapper.animateViaCssClass(".logo2AnimationAction", "lightSpeedIn", "1s", "2.8s", "1");
+					ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "4.5s", "1");
+
+					// exec actions post animation
+					ciakWrapper.postActions();
+				}
+			});
+		}
+
+		return true;
 	},
 
 	scrolling3 : function() {
@@ -278,5 +348,100 @@ var scrollingWrapper = {
 			}
 		});
 	}
-	// eval functions }}}
+};
+
+var msgWrapper = {
+
+	/* private vars {{{ */
+	_msg_container_class : ".msgContainerAction",
+	_msg_title_class : ".msgTitleAction",
+	_msg_content_class : ".msgContentAction",
+	_msg_type : false,
+	_msg_title : false,
+	_msg_content : false,
+	/* private vars }}} */
+
+	// list of all message type availables
+	msgTypeList : {
+		successMsg : "success",
+		errorMsg : "error",
+		alertMsg : "alert",
+		tipMsg : "tip",
+	},
+
+	/* private get/set methods {{{ */
+	setMsgType : function(val) {
+		this._msg_type = val;
+	},
+
+	setMsgTitle : function(val) {
+		this._msg_title = val;
+	},
+
+	setMsgContent : function(val) {
+		this._msg_content = val;
+	},
+
+	getMsgType : function() {
+		return this._msg_type;
+	},
+
+	getMsgTitle : function() {
+		return this._msg_title;
+	},
+
+	getMsgContent : function() {
+		return this._msg_content;
+	},
+	/* private get/set methods }}} */
+
+	removeTypeClass : function() {
+		// method to remove all type class from message container
+
+		$(this._msg_container_class).removeClass("success");
+		$(this._msg_container_class).removeClass("error");
+		$(this._msg_container_class).removeClass("alert");
+		$(this._msg_container_class).removeClass("tip");
+	},
+
+	removeMessage : function() {
+		// method to remove message and clean HTML
+
+		this.removeTypeClass();
+		this.setMsgType("");
+		this.setMsgTitle("");
+		this.setMsgContent("");
+		this.showMessage();
+	},
+
+	showMessage : function() {
+		// method to show a loaded message into "this"
+
+		this.removeTypeClass();
+		$(this._msg_container_class).addClass(this.getMsgType());
+		$(this._msg_title_class).html(this.getMsgTitle());
+		$(this._msg_content_class).html(this.getMsgContent());
+	},
+
+	testMessage : function() {
+		// method to print a test message
+
+		this.setMsgType(this.msgTypeList.tipMsg);
+		this.setMsgTitle("Test title");
+		this.setMsgContent("Test description");
+		this.showMessage();
+	},
+
+	showMessageEasy : function(msgType, msgTitle, msgDescription) {
+		// method to show a custom message
+
+		// this must be a valid name: (success | error | alert | tip)
+		if (msgType) {
+			this.setMsgType(msgType);
+		}
+
+		this.setMsgTitle(msgTitle);
+		this.setMsgContent(msgDescription);
+		this.showMessage();
+	}
 };

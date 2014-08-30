@@ -81,10 +81,28 @@ b, .bold { font-weight: bold; }
 .form_container .input_submit_container > input:hover { background-color: #84C619; box-shadow: 0 0 6px -1px #84C619; }
 
 /* skip button {{{ */
-.skip_button { opacity: 0.6; bottom: 40px; cursor: pointer; position: fixed; right: 50px; }
-.skip_button:hover { opacity: 1; }
-.skip_button .left { bottom: 13px; color: #075D7D; font-size: 15px; position: relative; right: 7px; font-family: 'helveticaneue-light'; }
+.skip_button { bottom: 40px; cursor: pointer; display: inline-block; height: 55px; opacity: 0.6; padding: 0; position: fixed; right: 50px; width: 145px; }
+.skip_button:hover { background-color: #002D3B; opacity: 1; }
+.skip_button .left { bottom: 13px; color: #075d7d; font-family: 'helveticaneue-light'; font-size: 15px; left: 7px; position: absolute; top: 21px; }
+.skip_button .right { position: absolute; right: 10px; top: 6px; }
 /* skip button }}} */
+
+/* error/success messages {{{ */
+.msg_container { display: none; margin-bottom: 2em; padding: 1em; text-align: left; width: 50%; }
+.msg_container .icon_container { font-size: 1.5em; margin-right: 10px; }
+.msg_container .msg_title { margin-bottom: 10px; }
+.msg_container .msg_title .right { font-weight: bold; font-size: 1.4em; }
+.msg_container .msg_container { font-size: 1em;  }
+
+.msg_container.success { background-color: #83c61a; color: #001a23; display: inline-block; }
+.msg_container.success .icon_container:after { font-family: FontAwesome; content: "\f118"; }
+.msg_container.error { background-color: #170039; color: white; display: inline-block; }
+.msg_container.error .icon_container:after { font-family: FontAwesome; content: "\f119"; }
+.msg_container.alert { background-color: #ffbd00; color: #e14d00; display: inline-block; }
+.msg_container.alert .icon_container:after { font-family: FontAwesome; content: "\f071"; }
+.msg_container.tip { background-color: #333333; color: white; display: inline-block; }
+.msg_container.tip .icon_container:after { font-family: FontAwesome; content: "\f19d"; }
+/* error/success messages }}} */
 /* page main style }}} */
 
 /* colors {{{ */

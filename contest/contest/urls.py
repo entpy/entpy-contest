@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	# frontend URLs
+	url(r'^validate-code/$', 'website.views.validate_code', name='validate_code'),
 	url(r'^(?P<code_to_check>\w*)/?$', 'website.views.index', name='index'),
 
 	# admin URLs
