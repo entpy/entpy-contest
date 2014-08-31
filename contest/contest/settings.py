@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for contest project.
 
@@ -50,6 +52,18 @@ MIDDLEWARE_CLASSES = (
     'django_user_agents.middleware.UserAgentMiddleware',
 )
 
+# postgreSQL
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': 'entpy_contest',
+		'USER': 'testuser',
+		'PASSWORD': 'testuser',
+		'HOST': '127.0.0.1',
+		'PORT': '5432',
+	}
+}
+
 ROOT_URLCONF = 'contest.urls'
 
 WSGI_APPLICATION = 'contest.wsgi.application'
@@ -95,7 +109,6 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
-"""
 LOGGING = {
 	'version': 1,
 	'disable_existing_loggers': False,
@@ -119,4 +132,3 @@ LOGGING = {
 		},
 	},
 }
-"""

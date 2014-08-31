@@ -8,8 +8,9 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	# frontend URLs
 	url(r'^validate-code/$', 'website.views.validate_code', name='validate_code'),
-	url(r'^(?P<code_to_check>\w*)/?$', 'website.views.index', name='index'),
-
 	# admin URLs
 	url(r'^admin/', include(admin.site.urls)),
+	# coupon code via GET
+	url(r'^(?P<code_to_check>\w*)/?$', 'website.views.index', name='index'),
+
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
