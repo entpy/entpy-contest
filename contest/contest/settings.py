@@ -28,7 +28,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -53,6 +52,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 # postgreSQL
+"""
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -62,6 +62,19 @@ DATABASES = {
 		'HOST': '127.0.0.1',
 		'PORT': '5432',
 	}
+}
+"""
+
+# MySQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'entpy_contest',
+        'USER': 'testuser',
+        'PASSWORD': 'testuser',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
 }
 
 ROOT_URLCONF = 'contest.urls'

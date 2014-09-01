@@ -14,14 +14,6 @@ $(document).ready(function(){
 
 	// msgObj.removeMessage();
 
-	/*
-	TODOList:
-		- success/error messages
-		- server side
-			- AJAX call & code check
-			- admin page to validate the code
-	*/
-	
 	// skip button animation
 	$(document).on("mouseenter", ".skipIntroAction", function() {
 		var ciakObj = ciakWrapper;
@@ -51,7 +43,9 @@ $(document).ready(function(){
 				data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
 				async : false,
 				success : function(result) {
-					alert(result);
+					// console.log(result);
+					// function to manage JSON response
+					manage_json_response(result);
 				},
 				error : function(result) {
 					// ...fuck
@@ -65,11 +59,69 @@ $(document).ready(function(){
 	});
 });
 
-function show_message_msg(message, type) {
-	// function to show a message (success or error)
+function manage_json_response(json) {
+	// function to manage a JSON response
+	
+	var returnVar = false;
 
-	// type can be: success | error
-	// message: string
+	if (json) {
+		// retrieving message type name
+		msg_type = map_code_type_to_message(json.code_type);
+
+		// showing message
+		var msgWrapperObj = msgWrapper;
+		msgWrapperObj.showMessageEasy(msg_type, json.code_type_description, json.content, build_expiring_in_string(json.expiring_in_days));
+	}
+
+	return returnVar;
+}
+
+function build_expiring_in_string(days) {
+	// function to build an expiring in string
+
+	var returnVar = "";
+
+	if (days === 0) {
+		returnVar = "Affrettati, l'offerta scade OGGI";
+	}
+
+	if (days === 1) {
+		returnVar = "L'offerta scade domani";
+	}
+
+	if (days > 1) {
+		returnVar = "L'offerta scade tra " + days + " giorni";
+	}
+
+	return returnVar;
+}
+
+function map_code_type_to_message(code_type) {
+	// function to map promotion type name to msg type class name
+
+	var returnVar = false;
+
+	if (code_type) {
+		msgWrapperObj = msgWrapper;
+
+		if (code_type == "success_code") {
+			returnVar = msgWrapperObj.successMsg;
+		}
+
+		if (code_type == "error_code") {
+			returnVar = msgWrapperObj.errorMsg;
+		}
+
+		if (code_type == "alert_code") {
+			returnVar = msgWrapperObj.alertMsg;
+		}
+
+		if (code_type == "tip_code") {
+			returnVar = msgWrapperObj.tipMsg;
+		}
+	}
+
+	return returnVar;
 }
 
 function disable_current_scroll_event() {
@@ -392,12 +444,15 @@ var msgWrapper = {
 	_msg_container_class : ".msgContainerAction",
 	_msg_title_class : ".msgTitleAction",
 	_msg_content_class : ".msgContentAction",
+	_msg_extra_param_class : ".msgExtraParamAction",
 	_msg_type : false,
 	_msg_title : false,
 	_msg_content : false,
+	_msg_extra_param : false, 
 	/* private vars }}} */
 
 	// list of all message type availables
+	// plz after adding a new type see "map_code_type_to_message" function
 	msgTypeList : {
 		successMsg : "success",
 		errorMsg : "error",
@@ -418,6 +473,10 @@ var msgWrapper = {
 		this._msg_content = val;
 	},
 
+	setMsgExtraParam : function(val) {
+		this._msg_extra_param = val;
+	},
+
 	getMsgType : function() {
 		return this._msg_type;
 	},
@@ -428,6 +487,10 @@ var msgWrapper = {
 
 	getMsgContent : function() {
 		return this._msg_content;
+	},
+
+	getMsgExtraParam : function(val) {
+		this._msg_extra_param;
 	},
 	/* private get/set methods }}} */
 
@@ -447,6 +510,7 @@ var msgWrapper = {
 		this.setMsgType("");
 		this.setMsgTitle("");
 		this.setMsgContent("");
+		this.setMsgExtraParam("");
 		this.showMessage();
 	},
 
@@ -457,6 +521,7 @@ var msgWrapper = {
 		$(this._msg_container_class).addClass(this.getMsgType());
 		$(this._msg_title_class).html(this.getMsgTitle());
 		$(this._msg_content_class).html(this.getMsgContent());
+		$(this._msg_extra_param_class).html(this.getMsgExtraParam());
 	},
 
 	testMessage : function() {
@@ -465,10 +530,11 @@ var msgWrapper = {
 		this.setMsgType(this.msgTypeList.tipMsg);
 		this.setMsgTitle("Test title");
 		this.setMsgContent("Test description");
+		this.setMsgExtraParam("Test extra param");
 		this.showMessage();
 	},
 
-	showMessageEasy : function(msgType, msgTitle, msgDescription) {
+	showMessageEasy : function(msgType, msgTitle, msgDescription, msgExtraParam) {
 		// method to show a custom message
 
 		// this must be a valid name: (success | error | alert | tip)
@@ -478,6 +544,7 @@ var msgWrapper = {
 
 		this.setMsgTitle(msgTitle);
 		this.setMsgContent(msgDescription);
+		this.setMsgExtraParam(msgExtraParam);
 		this.showMessage();
 	}
 };
