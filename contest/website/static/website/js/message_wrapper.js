@@ -78,7 +78,7 @@ var msgWrapper = {
 	},
 
 	getMsgExtraParam : function(val) {
-		this._msg_extra_param;
+		return this._msg_extra_param;
 	},
 	/* private get/set methods }}} */
 

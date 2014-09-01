@@ -131,19 +131,19 @@ function map_code_type_to_message(code_type) {
 		msgWrapperObj = msgWrapper;
 
 		if (code_type == "success_code") {
-			returnVar = msgWrapperObj.successMsg;
+			returnVar = msgWrapperObj.msgTypeList.successMsg;
 		}
 
 		if (code_type == "error_code") {
-			returnVar = msgWrapperObj.errorMsg;
+			returnVar = msgWrapperObj.msgTypeList.errorMsg;
 		}
 
 		if (code_type == "alert_code") {
-			returnVar = msgWrapperObj.alertMsg;
+			returnVar = msgWrapperObj.msgTypeList.alertMsg;
 		}
 
 		if (code_type == "tip_code") {
-			returnVar = msgWrapperObj.tipMsg;
+			returnVar = msgWrapperObj.msgTypeList.tipMsg;
 		}
 	}
 

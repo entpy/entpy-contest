@@ -21,6 +21,7 @@ def validate_code(request):
 	code_to_validate = request.POST.get("code_to_validate", "")
         error = 0
         success = 0
+	promo_details = None
 
         # retrieving promotion details
         promotionalcode_obj = PromotionalCode()
@@ -46,7 +47,7 @@ def validate_code(request):
                 promotionalcode_obj.send_email(code=code_to_validate)
 
         # build JSON response
-        response_data = promotionalcode_obj.build_json_response(self, error, success, promo_details):
+        response_data = promotionalcode_obj.build_json_response(error, success, promo_details)
 
         return HttpResponse(json.dumps(response_data), content_type="application/json")
 

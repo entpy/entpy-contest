@@ -92,7 +92,26 @@ b, .bold { font-weight: bold; }
 .msg_container .icon_container { font-size: 1.5em; margin-right: 10px; }
 .msg_container .msg_title { margin-bottom: 10px; }
 .msg_container .msg_title .right { font-weight: bold; font-size: 1.4em; }
-.msg_container .msg_container { font-size: 1em;  }
+.msg_container .msg_container { font-size: 1em; }
+.msg_container .msg_extra_param {
+	font-size: 0.96em;
+	margin-top: 0.73em;
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.7)"!important;
+
+	/* IE 5-7 */
+	filter: alpha(opacity=0.7)!important;
+
+	/* Netscape */
+	-moz-opacity: 0.7!important;
+
+	/* Safari 1.x */
+	-khtml-opacity: 0.7!important;
+
+	/* Good browsers */
+	opacity: 0.7!important;
+	text-align: right;
+}
 
 .msg_container.success { background-color: #83c61a; color: #001a23; display: inline-block; }
 .msg_container.success .icon_container:after { font-family: FontAwesome; content: "\f118"; }

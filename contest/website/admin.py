@@ -118,7 +118,7 @@ class CodeTypeAdmin(admin.ModelAdmin):
 class CodeContentAdmin(admin.ModelAdmin):
 
         # table list fields
-        list_display = ('content')
+        list_display = ('content',)
 
 admin.site.register(PromotionalCode, PromotionalCodeAdmin)
 admin.site.register(CodeType, CodeTypeAdmin)

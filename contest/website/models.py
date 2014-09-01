@@ -12,6 +12,7 @@
 
 from django.db import models
 from django.utils import timezone
+from django.core.mail import EmailMessage
 import datetime, string, random, logging, sys
 from datetime import datetime
 
