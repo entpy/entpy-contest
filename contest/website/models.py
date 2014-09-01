@@ -98,7 +98,7 @@ class PromotionalCode(models.Model):
                         response_data['code_type'] = promo_details['code_type']
                         response_data['code_type_description'] = promo_details['code_type_description']
                         response_data['expiring_in_days'] = promo_details['expiring_in_days']
-                else if (error):
+                elif (error):
                         response_data['content'] = message
                         response_data['code_type'] = 'error_code'
                         response_data['code_type_description'] = "Ops..."
