@@ -14,50 +14,76 @@ $(document).ready(function(){
 
 	// msgObj.removeMessage();
 
-	// skip button animation
+	// skip button hover animation
 	$(document).on("mouseenter", ".skipIntroAction", function() {
-		var ciakObj = ciakWrapper;
-		ciakObj.animateViaCssClass(".skipIntroAction", "tada", "1s", "0s", "1");
-
-		$(".skipIntroAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
-			$(this).removeClass("animated tada");
-		});
+		animate_button(".skipIntroAction");
+		return true;
 	});
 
 	// skip button click action
 	$(document).on("click", ".skipIntroAction", function() {
-		disable_current_scroll_event();
-		var scrollingObj = scrollingWrapper;
-		scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling3, 500);
+		skip_animation();
+		return true;
 	});
 
 	// validate code submit button click
 	$(document).on("click", ".sendButtonClickAction", function() {
-
-		var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
-		var code_to_validate = $(".codeInputAction").val();
-
-		if (code_to_validate) {
-			var ajaxCallData = {
-				url : "/validate-code/",
-				data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
-				async : false,
-				success : function(result) {
-					// console.log(result);
-					// function to manage JSON response
-					manage_json_response(result);
-				},
-				error : function(result) {
-					// ...fuck
-				}
-			}
-
-			loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
-		}
-
+		submit_promo_code();
 		return false;
 	});
 });
+
+function animate_button(elementToAnimate) {
+	// function to animate a button
+	
+	if (elementToAnimate) {
+		var ciakObj = ciakWrapper;
+		ciakObj.animateViaCssClass(elementToAnimate, "tada", "1s", "0s", "1");
+
+		$(elementToAnimate).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
+			$(elementToAnimate).removeClass("animated tada");
+		});
+	}
+
+	return true;
+}
+
+function skip_animation() {
+	// function to skip entpy animation
+
+	disable_current_scroll_event();
+	var scrollingObj = scrollingWrapper;
+	scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling3, 500);
+
+	return true;
+}
+
+function submit_promo_code() {
+	// function to send promo code
+
+	var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
+	var code_to_validate = $(".codeInputAction").val();
+
+	if (code_to_validate) {
+		var ajaxCallData = {
+			url : "/validate-code/",
+			data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
+			async : false,
+			success : function(result) {
+				// console.log(result);
+				// function to manage JSON response
+				manage_json_response(result);
+			},
+			error : function(result) {
+				// ...fuck
+			}
+		}
+
+		loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
+	}
+
+	return true;
+}
 
 function manage_json_response(json) {
 	// function to manage a JSON response
@@ -125,10 +151,15 @@ function map_code_type_to_message(code_type) {
 }
 
 function disable_current_scroll_event() {
+	// Function to disable current scroll event
+
 	$(".skipAnimationAction").html("1");
 	$.scrollTo.window().stop(true);
+
+	return true;
 }
 
+// Wrapper to manage animation and other funny stuff
 var ciakWrapper = {
 
 	_animationType: false,
@@ -342,6 +373,7 @@ var ciakWrapper = {
 	// eval functions }}}
 };
 
+// Wrapper to manage scrolling
 var scrollingWrapper = {
 
 	_scrollType : false,
@@ -424,9 +456,6 @@ var scrollingWrapper = {
 	scrolling3 : function() {
 		// function to scroll directly to entpy logo
 		$.scrollTo('.scroll_to_element1', 2000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
-				/*$(".logoBottomTextAction").removeClass("transparent");
-				$(".logo2AnimationAction").removeClass("transparent");
-				$(".form_container").removeClass("transparent");*/
 				ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1s", "0s", "1");
 				ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeIn", "1s", "0s", "1");
 				ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "0s", setTimeout("ciakWrapper.showAdvancedForm();", 3000));
@@ -436,115 +465,5 @@ var scrollingWrapper = {
 			}
 		});
 	}
-};
-
-var msgWrapper = {
-
-	/* private vars {{{ */
-	_msg_container_class : ".msgContainerAction",
-	_msg_title_class : ".msgTitleAction",
-	_msg_content_class : ".msgContentAction",
-	_msg_extra_param_class : ".msgExtraParamAction",
-	_msg_type : false,
-	_msg_title : false,
-	_msg_content : false,
-	_msg_extra_param : false, 
-	/* private vars }}} */
-
-	// list of all message type availables
-	// plz after adding a new type see "map_code_type_to_message" function
-	msgTypeList : {
-		successMsg : "success",
-		errorMsg : "error",
-		alertMsg : "alert",
-		tipMsg : "tip",
-	},
-
-	/* private get/set methods {{{ */
-	setMsgType : function(val) {
-		this._msg_type = val;
-	},
-
-	setMsgTitle : function(val) {
-		this._msg_title = val;
-	},
-
-	setMsgContent : function(val) {
-		this._msg_content = val;
-	},
-
-	setMsgExtraParam : function(val) {
-		this._msg_extra_param = val;
-	},
-
-	getMsgType : function() {
-		return this._msg_type;
-	},
-
-	getMsgTitle : function() {
-		return this._msg_title;
-	},
-
-	getMsgContent : function() {
-		return this._msg_content;
-	},
-
-	getMsgExtraParam : function(val) {
-		this._msg_extra_param;
-	},
-	/* private get/set methods }}} */
-
-	removeTypeClass : function() {
-		// method to remove all type class from message container
-
-		$(this._msg_container_class).removeClass("success");
-		$(this._msg_container_class).removeClass("error");
-		$(this._msg_container_class).removeClass("alert");
-		$(this._msg_container_class).removeClass("tip");
-	},
-
-	removeMessage : function() {
-		// method to remove message and clean HTML
-
-		this.removeTypeClass();
-		this.setMsgType("");
-		this.setMsgTitle("");
-		this.setMsgContent("");
-		this.setMsgExtraParam("");
-		this.showMessage();
-	},
-
-	showMessage : function() {
-		// method to show a loaded message into "this"
-
-		this.removeTypeClass();
-		$(this._msg_container_class).addClass(this.getMsgType());
-		$(this._msg_title_class).html(this.getMsgTitle());
-		$(this._msg_content_class).html(this.getMsgContent());
-		$(this._msg_extra_param_class).html(this.getMsgExtraParam());
-	},
-
-	testMessage : function() {
-		// method to print a test message
-
-		this.setMsgType(this.msgTypeList.tipMsg);
-		this.setMsgTitle("Test title");
-		this.setMsgContent("Test description");
-		this.setMsgExtraParam("Test extra param");
-		this.showMessage();
-	},
-
-	showMessageEasy : function(msgType, msgTitle, msgDescription, msgExtraParam) {
-		// method to show a custom message
-
-		// this must be a valid name: (success | error | alert | tip)
-		if (msgType) {
-			this.setMsgType(msgType);
-		}
-
-		this.setMsgTitle(msgTitle);
-		this.setMsgContent(msgDescription);
-		this.setMsgExtraParam(msgExtraParam);
-		this.showMessage();
-	}
+	// eval functions }}}
 };

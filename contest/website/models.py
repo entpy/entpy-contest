@@ -73,6 +73,38 @@ class PromotionalCode(models.Model):
 	def __unicode__(self):
 		return str(self.code)
 
+        def build_json_response(self, error, success, promo_details):
+                """
+                Function to generate a JSON response
+                """
+
+                response_data = {}
+
+                # checking if code exists
+                if (error == 1):
+                        message = "Codice promozionale non esistente."
+
+                # checking if code is not already validated
+                if (error == 2):
+                        message = "Codice promozionale già validato."
+
+                # checking if campaign is not expired
+                if (error == 3):
+                        message = "Codice promozionale scaduto."
+
+                # build success/error response
+                if (success):
+                        response_data['content'] = promo_details['content']
+                        response_data['code_type'] = promo_details['code_type']
+                        response_data['code_type_description'] = promo_details['code_type_description']
+                        response_data['expiring_in_days'] = promo_details['expiring_in_days']
+                else if (error):
+                        response_data['content'] = message
+                        response_data['code_type'] = 'error_code'
+                        response_data['code_type_description'] = "Ops..."
+
+                return response_data
+
 	def generate_random_code(self, depth = 0):
 		"""
 		Generating a random promo code, if the generated code already
@@ -106,6 +138,7 @@ class PromotionalCode(models.Model):
                 """
 
                 return_var = False
+                code = code.upper()
 
                 try:
                         promotionalcode_obj = PromotionalCode.objects.select_related().get(code=code)
@@ -135,6 +168,7 @@ class PromotionalCode(models.Model):
 
                 campaign_details = {}
                 promotionalcode_obj = None
+                code = code.upper()
 
                 try:
                         if (code):
@@ -175,6 +209,7 @@ class PromotionalCode(models.Model):
                 """
 
                 return_var = False
+                code = code.upper()
 
                 try:
                         # setting code status = 1 (code used)
@@ -187,5 +222,25 @@ class PromotionalCode(models.Model):
                 except(KeyError, PromotionalCode.DoesNotExist):
                         # code not exists
                         pass
+
+                return return_var
+
+        def send_email(self, code=None):
+                """
+                Function to send an email
+                """
+
+                return_var = False
+
+                if (code is not None):
+                        # building email body
+                        html_body = "<b>Entpy contest<b><br />Trying to validate code: " + code
+
+                        msg = EmailMessage("Entpy contest", html_body, 'info@entpy.com', ['ivan@entpy.com'])
+                        msg.content_subtype = "html"  # Main content is now text/html
+                        msg.send()
+                        return_var = True
+
+                # logger.error("EMAIL SENT TO: " + campaign_details["receiver_email"])
 
                 return return_var
