@@ -91,10 +91,20 @@ b, .bold { font-weight: bold; }
 .entpy_world_container .entpy_world_image { width: 100%; }
 .logo_bottom_container { color: #115367; font-size: 21px; font-weight: bold; }
 
+/* code form {{{ */
 .form_container .input_code_container > input { -webkit-appearance: none; background-color: transparent; border: 2px solid #28aee2; border-radius: 4px; color: #28aee2; font-weight: bold; text-align: center; }
 .form_container .input_code_container > input:hover { box-shadow: 0 0 6px -1px #28aee2; }
 .form_container .input_submit_container > input { -webkit-appearance: none; background-color: #28aee2; border: none; border-radius: 4px; color: #001a23; cursor: pointer; }
 .form_container .input_submit_container > input:hover { background-color: #84C619; box-shadow: 0 0 6px -1px #84C619; }
+/* code form }}} */
+
+/* sendmail form {{{ */
+.send_mail_container { text-align: center; }
+.send_mail_container .sendmail_body { resize: none; width: 90%; }
+.send_mail_container .sendmail_email { width: 90%; }
+.send_mail_container .sendmail_button_container { width: 100%; }
+.send_mail_container .sendmail_button_container .sendmail_button {  }
+/* sendmail form }}} */
 
 /* skip button {{{ */
 .skip_button { bottom: 40px; cursor: pointer; display: inline-block; height: 55px; opacity: 0.6; padding: 0; position: fixed; right: 50px; width: 145px; }

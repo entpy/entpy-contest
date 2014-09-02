@@ -241,11 +241,11 @@ class PromotionalCode(models.Model):
                         # print expiring in string
                         if (promo_details["expiring_in_days"] is not None):
                                 if (promo_details["expiring_in_days"] == 0):
-                                        return_var += str("<b>Scadenza:<b> scade OGGI<br />")
+                                        return_var += "<b>Scadenza:<b> scade OGGI<br />"
                                 elif (promo_details["expiring_in_days"] == 1):
-                                        return_var += str("<b>Scadenza:<b> Scade domani<br />")
+                                        return_var += "<b>Scadenza:<b> Scade domani<br />"
                                 elif (promo_details["expiring_in_days"] > 1):
-                                        return_var += str("<b>Scadenza:<b> scade tra " + promo_details["expiring_in_days"] + " giorni<br />")
+                                        return_var += "<b>Scadenza:<b> scade tra " + str(promo_details["expiring_in_days"]) + " giorni<br />"
 
                 return return_var
 
