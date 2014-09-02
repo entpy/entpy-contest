@@ -52,6 +52,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 # postgreSQL
+"""
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -75,7 +76,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-"""
 
 ROOT_URLCONF = 'contest.urls'
 
@@ -106,14 +106,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # inside app
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/tmp/'
-MEDIA_URL = '/tmp/'
 
 #inside project
 STATICFILES_DIRS = (

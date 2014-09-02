@@ -1,20 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# TODO
-"""
-	V funzione per creare un codice personalizzato
-	V funzione per generare un codice random tenendo conto di eventuali conflitti
-	V  admin custom form per creare codici (con contenuto, data di scadenza, tipo)
-
-	V  funzione per validare un codice promozionale
-	V  admin form per validare i codici promzionali
-"""
-
 from django.db import models
 from django.utils import timezone
 from django.core.mail import EmailMessage
 import datetime, string, random, logging, sys
 from datetime import datetime
+import json
 
 # force utf8 read data
 reload(sys);
@@ -27,13 +18,14 @@ class CodeType(models.Model):
 
 	# promotion type selector for admin
 	TYPES_SELECTOR = (
-                ("tip_code", "Easter egg"),
-                ("success_code", "Sito gratuito"),
-                ("alert_code", "Sconto"),
+                ("tip_code", "Codice tip"),
+                ("success_code", "Codice di successo"),
+                ("alert_code", "Codice di allerta"),
+                ("error_code", "Codice di errore"),
 	)
 
 	id_code_type = models.AutoField(primary_key=True)
-	code_type = models.CharField("Tipo di codice", max_length=100, choices=TYPES_SELECTOR)
+	code_type = models.CharField("Tipo di codice", max_length=50, choices=TYPES_SELECTOR)
 	description = models.CharField("Descrizione del tipo", max_length=100)
 
 	class Meta:
@@ -93,7 +85,7 @@ class PromotionalCode(models.Model):
                 if (error == 3):
                         message = "Codice promozionale scaduto."
 
-                # build success/error response
+                # build success/error response {{{
                 if (success):
                         response_data['content'] = promo_details['content']
                         response_data['code_type'] = promo_details['code_type']
@@ -103,8 +95,9 @@ class PromotionalCode(models.Model):
                         response_data['content'] = message
                         response_data['code_type'] = 'error_code'
                         response_data['code_type_description'] = "Ops..."
+                # build success/error response }}}
 
-                return response_data
+                return json.dumps(response_data)
 
 	def generate_random_code(self, depth = 0):
 		"""
@@ -226,22 +219,121 @@ class PromotionalCode(models.Model):
 
                 return return_var
 
+        def build_body_email(self, code=None):
+                """
+                Function to build an html email body with promotion details
+                """
+
+                return_var = ""
+                promotionalcode_obj = PromotionalCode()
+
+                if (code is not None):
+                        # retrieving code data
+                        promo_details = promotionalcode_obj.get_promo_details(code)
+
+                        # building email body
+                        return_var = "<b>Entpy contest:<b> è stato validato un codice.<br /><br />"
+                        return_var += "<b>Codice:<b> " + str(promo_details["code"]) + "<br />"
+                        return_var += "<b>Tipo di codice:<b> " + str(promo_details["code_type"]) + "<br />"
+                        return_var += "<b>Titolo:<b> " + str(promo_details["code_type_description"]) + "<br />"
+                        return_var += "<b>Descrizione:<b> " + str(promo_details["content"]) + "<br />"
+
+                        # print expiring in string
+                        if (promo_details["expiring_in_days"] is not None):
+                                if (promo_details["expiring_in_days"] == 0):
+                                        return_var += str("<b>Scadenza:<b> scade OGGI<br />")
+                                elif (promo_details["expiring_in_days"] == 1):
+                                        return_var += str("<b>Scadenza:<b> Scade domani<br />")
+                                elif (promo_details["expiring_in_days"] > 1):
+                                        return_var += str("<b>Scadenza:<b> scade tra " + promo_details["expiring_in_days"] + " giorni<br />")
+
+                return return_var
+
         def send_email(self, code=None):
                 """
                 Function to send an email
                 """
 
                 return_var = False
+                promotionalcode_obj = PromotionalCode()
 
                 if (code is not None):
+
                         # building email body
-                        html_body = "<b>Entpy contest<b><br />Trying to validate code: " + code
+                        html_body = promotionalcode_obj.build_body_email(code)
 
                         msg = EmailMessage("Entpy contest", html_body, 'info@entpy.com', ['ivan@entpy.com'])
                         msg.content_subtype = "html"  # Main content is now text/html
                         msg.send()
                         return_var = True
 
-                # logger.error("EMAIL SENT TO: " + campaign_details["receiver_email"])
+                return return_var
+
+        def detect_animation_type(self, request=None, code_to_check=None):
+                """
+                Function to detect animation type -> (simple_animation | advanced_animation | none_animation) 
+                and browser type -> (normal_browser | advanced_browser)
+
+		SCELTA DEL TIPO DI ANIMAZIONE
+		=============================
+
+		Identific*zione dello useragent -> https://github.com/selwin/django-user_agents
+
+		* impostare animation_type = advanced_animation se:
+			il browser è android con versione >= 4
+			il browser è firefox con versione > 25
+			il browser è chrome con versione >= 9
+			il browser è mobile safari con versione >= 4
+
+		* impostare animation_type = simple_animation se:
+			ho già visitato la pagina (cookie presente) o sto arrivando con codice via GET
+			e se advanced_animation è supportata
+
+		* impostare animation_type = none_animation in tutti gli altri casi
+                """
+
+                return_var = {
+                        'device' : "",
+                        'browser' : "",
+                        'os' : "",
+                        'animation_type' : "",
+                        'browser_type' : "",
+                        'cookie_name' : "already_visited" # cookie name
+                }
+
+                if (request):
+                        # Device properties
+                        device = request.user_agent.device  # returns Device(family='iPhone')
+
+                        # Accessing user agent's browser attributes
+                        browser = request.user_agent.browser  # returns Browser(family=u'Mobile Safari', version=(5, 1), version_string='5.1')
+
+                        # Operating System properties
+                        os = request.user_agent.os  # returns OperatingSystem(family=u'iOS', version=(5, 1), version_string='5.1')
+
+                        # default: setting animation type = none
+                        animation_type = "none_animation"
+                        browser_type = "normal_browser"
+
+                        if (
+                                ((browser.family == "Android") and (browser.version[0] >= 4)) or
+                                ((browser.family == "Firefox") and (browser.version[0] >= 25)) or
+                                ((browser.family == "Chrome") and (browser.version[0] >= 9)) or
+                                ((browser.family == "Chromium") and (browser.version[0] >= 30)) or
+                                ((browser.family == "IE") and (browser.version[0] >= 10)) or
+                                ((browser.family == "Mobile Safari") and (browser.version[0] >= 4))
+                        ):
+                                animation_type = "advanced_animation"
+                                browser_type = "advanced_browser"
+
+                        if ((request.COOKIES.get(return_var["cookie_name"]) or code_to_check) and animation_type == "advanced_animation"):
+                                animation_type = "simple_animation"
+
+                        # buld return var data
+                        return_var["device"] = device
+                        return_var["browser"] = browser
+                        return_var["os"] = os
+                        return_var["animation_type"] = animation_type
+                        return_var["browser_type"] = str(browser_type)
 
                 return return_var

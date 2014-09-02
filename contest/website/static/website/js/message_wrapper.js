@@ -33,10 +33,12 @@ var msgWrapper = {
 	_msg_title_class : ".msgTitleAction",
 	_msg_content_class : ".msgContentAction",
 	_msg_extra_param_class : ".msgExtraParamAction",
+	_msg_bottom_container_class : ".msgBottomContainerAction",
 	_msg_type : false,
 	_msg_title : false,
 	_msg_content : false,
 	_msg_extra_param : false, 
+	_msg_bottom_content : false, 
 	/* private vars }}} */
 
 	// list of all message type availables
@@ -65,6 +67,10 @@ var msgWrapper = {
 		this._msg_extra_param = val;
 	},
 
+	setMsgBottomContent : function(val) {
+		this._msg_bottom_content = val;
+	},
+
 	getMsgType : function() {
 		return this._msg_type;
 	},
@@ -79,6 +85,10 @@ var msgWrapper = {
 
 	getMsgExtraParam : function(val) {
 		return this._msg_extra_param;
+	},
+
+	getMsgBottomContent : function(val) {
+		return this._msg_bottom_content;
 	},
 	/* private get/set methods }}} */
 
@@ -99,6 +109,8 @@ var msgWrapper = {
 		this.setMsgTitle("");
 		this.setMsgContent("");
 		this.setMsgExtraParam("");
+		this.setMsgBottomContent("");
+
 		this.showMessage();
 	},
 
@@ -110,6 +122,7 @@ var msgWrapper = {
 		$(this._msg_title_class).html(this.getMsgTitle());
 		$(this._msg_content_class).html(this.getMsgContent());
 		$(this._msg_extra_param_class).html(this.getMsgExtraParam());
+		$(this._msg_bottom_container_class).html(this.getMsgBottomContent());
 	},
 
 	testMessage : function() {
@@ -119,10 +132,11 @@ var msgWrapper = {
 		this.setMsgTitle("Test title");
 		this.setMsgContent("Test description");
 		this.setMsgExtraParam("Test extra param");
+		this.setMsgBottomContent("Test bottom content");
 		this.showMessage();
 	},
 
-	showMessageEasy : function(msgType, msgTitle, msgDescription, msgExtraParam) {
+	showMessageEasy : function(msgType, msgTitle, msgDescription, msgExtraParam, msgBottomContent) {
 		// method to show a custom message
 
 		// this must be a valid name: (success | error | alert | tip)
@@ -133,6 +147,7 @@ var msgWrapper = {
 		this.setMsgTitle(msgTitle);
 		this.setMsgContent(msgDescription);
 		this.setMsgExtraParam(msgExtraParam);
+		this.setMsgBottomContent(msgBottomContent);
 		this.showMessage();
 	}
 };

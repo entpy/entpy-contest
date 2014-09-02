@@ -96,7 +96,27 @@ function manage_json_response(json) {
 
 		// showing message
 		var msgWrapperObj = msgWrapper;
-		msgWrapperObj.showMessageEasy(msg_type, json.code_type_description, json.content, build_expiring_in_string(json.expiring_in_days));
+		msgWrapperObj.showMessageEasy(msg_type, json.code_type_description, json.content, build_expiring_in_string(json.expiring_in_days), build_contact_us_link(msg_type));
+	}
+
+	return returnVar;
+}
+
+function build_contact_us_link(msgType) {
+	// function to create a contact us link
+
+	var returnVar = false;
+
+	if (msgType) {
+		if (msgType == "success") {
+			returnVar = 'Dubbi o domande? Entpy ha la risposta, <a href="#">contattaci adesso</a>.';
+		} else if (msgType == "error") {
+			returnVar = 'Evita la coda! <a href="#">Contattaci</a> prima di qualcun\'altro.';
+		} else if (msgType == "alert") {
+			returnVar = 'Entpy ti connette: <a href="#">contattaci</a> per soluzioni tecnologicamente avanzate!';
+		} else if (msgType == "tip") {
+			returnVar = 'Rimani incredulo, <a href="#">contattaci</a> per avere soluzioni vincenti!';
+		}
 	}
 
 	return returnVar;

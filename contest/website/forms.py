@@ -9,4 +9,4 @@ class ValidateCodeForm(forms.Form):
         Form to validate a coupon code, this form is not related with any object
         """
 
-        promo_code = forms.CharField(max_length=10, required=True)
+        promo_code = forms.CharField(max_length=5, required=True)
