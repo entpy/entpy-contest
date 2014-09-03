@@ -88,11 +88,13 @@ class PromotionalCode(models.Model):
                 # build success/error response {{{
                 if (success):
                         response_data['content'] = promo_details['content']
+                        response_data['code'] = promo_details['code']
                         response_data['code_type'] = promo_details['code_type']
                         response_data['code_type_description'] = promo_details['code_type_description']
                         response_data['expiring_in_days'] = promo_details['expiring_in_days']
                 elif (error):
                         response_data['content'] = message
+                        response_data['code'] = promo_details['code']
                         response_data['code_type'] = 'error_code'
                         response_data['code_type_description'] = "Ops..."
                 # build success/error response }}}
@@ -219,7 +221,7 @@ class PromotionalCode(models.Model):
 
                 return return_var
 
-        def build_body_email(self, code=None):
+        def build_promo_details_email(self, code=None, main_title=None):
                 """
                 Function to build an html email body with promotion details
                 """
@@ -232,40 +234,57 @@ class PromotionalCode(models.Model):
                         promo_details = promotionalcode_obj.get_promo_details(code)
 
                         # building email body
-                        return_var = "<b>Entpy contest:<b> è stato validato un codice.<br /><br />"
-                        return_var += "<b>Codice:<b> " + str(promo_details["code"]) + "<br />"
-                        return_var += "<b>Tipo di codice:<b> " + str(promo_details["code_type"]) + "<br />"
-                        return_var += "<b>Titolo:<b> " + str(promo_details["code_type_description"]) + "<br />"
-                        return_var += "<b>Descrizione:<b> " + str(promo_details["content"]) + "<br />"
+                        if (main_title):
+                            return_var = "<b>Entpy contest:</b> " + main_title + "<br /><br />"
+                        else:
+                            return_var = "<b>Entpy contest:</b> è stato validato un codice.<br /><br />"
+                        return_var += "<b>Codice:</b> " + str(promo_details["code"]) + "<br />"
+                        return_var += "<b>Tipo di codice:</b> " + str(promo_details["code_type"]) + "<br />"
+                        return_var += "<b>Titolo:</b> " + str(promo_details["code_type_description"]) + "<br />"
+                        return_var += "<b>Descrizione:</b> " + str(promo_details["content"]) + "<br />"
 
                         # print expiring in string
                         if (promo_details["expiring_in_days"] is not None):
                                 if (promo_details["expiring_in_days"] == 0):
-                                        return_var += "<b>Scadenza:<b> scade OGGI<br />"
+                                        return_var += "<b>Scadenza:</b> scade OGGI<br />"
                                 elif (promo_details["expiring_in_days"] == 1):
-                                        return_var += "<b>Scadenza:<b> Scade domani<br />"
+                                        return_var += "<b>Scadenza:</b> Scade domani<br />"
                                 elif (promo_details["expiring_in_days"] > 1):
-                                        return_var += "<b>Scadenza:<b> scade tra " + str(promo_details["expiring_in_days"]) + " giorni<br />"
+                                        return_var += "<b>Scadenza:</b> scade tra " + str(promo_details["expiring_in_days"]) + " giorni<br />"
 
                 return return_var
 
-        def send_email(self, code=None):
+        def build_info_email_body(self, content=None, email=None, code=None):
+                """
+                Function to build an html email body with promotion details
+                """
+
+                return_var = ""
+                promotionalcode_obj = PromotionalCode()
+
+                if (content is not None and email is not None and code is not None):
+                        # retrieving code data
+                        promo_details = promotionalcode_obj.get_promo_details(code)
+
+                        return_var = "<b>Entpy contest:</b> <br /><br />"
+                        # building email body
+                        return_var = promotionalcode_obj.build_promo_details_email(code=code, main_title="hurra, qualcuno chiede informazioni")
+                        return_var += "<b>Email da contattare:</b>" + email + "<br />"
+                        return_var += "<b>Testo inserito:</b><br /><div>" + content + "</div><br />"
+
+                return return_var
+
+        def send_email(self, mail_body=None, mail_subject=None):
                 """
                 Function to send an email
                 """
 
                 return_var = False
-                promotionalcode_obj = PromotionalCode()
 
-                if (code is not None):
-
-                        # building email body
-                        html_body = promotionalcode_obj.build_body_email(code)
-
-                        msg = EmailMessage("Entpy contest", html_body, 'info@entpy.com', ['ivan@entpy.com'])
-                        msg.content_subtype = "html"  # Main content is now text/html
-                        msg.send()
-                        return_var = True
+                msg = EmailMessage(mail_subject, mail_body, 'info@entpy.com', ['ivan@entpy.com'])
+                msg.content_subtype = "html"  # Main content is now text/html
+                msg.send()
+                return_var = True
 
                 return return_var
 

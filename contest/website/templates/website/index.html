@@ -42,10 +42,11 @@
 						<div class="msg_extra_param opacity_70_100 msgExtraParamAction">{# Extra content #}</div>
 						<div class="msg_bottom_container opacity_70_100 msgBottomContainerAction">{# Bottom Content #}</div>
 						<div class="send_mail_container">
-							<textarea class="sendmail_body" name="content" placeholder="Scrivi la mail..."></textarea>
-							<input class="sendmail_email" name="email" placeholder="Inserisci la tua email" value="">
+							<textarea class="sendmail_body sendmailBodyAction" name="sendmail_body" placeholder="Scrivi la mail..."></textarea>
+							<input type="text" class="sendmail_email sendmailUserEmailAction" name="sendmail_email" placeholder="Inserisci la tua email" value="">
+							<input type="hidden" class="sendmail_valid_code sendmailValidCodeAction" name="sendmail_valid_code" value="">
 							<div class="sendmail_button_container">
-								<a class="sendmail_button" href="#">Invia</a>
+								<a class="sendmail_button sendInfoMailAction" href="#">Invia</a>
 							</div>
 						</div>
 					</div>

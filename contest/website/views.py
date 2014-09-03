@@ -5,12 +5,26 @@ from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from website.models import *
-import datetime
-# include constants file
-import logging
+import datetime, logging, json
 
 # Get an instance of a logger
 logger = logging.getLogger('django.request')
+
+def send_info_email(request):
+
+        email_data = json.loads(request.POST.get("call_data", ""))
+        promotionalcode_obj = PromotionalCode()
+
+        # create email body
+        html_body = promotionalcode_obj.build_info_email_body(content=email_data["email_content"], email=email_data["user_email"], code=email_data["promo_code"])
+
+        # send email
+        promotionalcode_obj.send_email(mail_body=html_body, "Entpy contest: richiesta informazioni...evvai bro ;-)")
+
+        # build success/error JSON response, now return always a success response
+        json_response = {"return_status" : "success"}
+
+        return HttpResponse(json.dumps(json_response), content_type="text/html")
 
 def validate_code(request):
         """
@@ -43,7 +57,9 @@ def validate_code(request):
                 # retrieving promo details
                 promo_details = promotionalcode_obj.get_promo_details(code=code_to_validate)
                 # wow...let's sending an email to admin
-                promotionalcode_obj.send_email(code=code_to_validate)
+                # first, build email body
+                html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)
+                promotionalcode_obj.send_email(mail_body=html_body, "Entpy contest: codice validato")
 
         # build JSON response
         response_data = promotionalcode_obj.build_json_response(error, success, promo_details)

@@ -26,6 +26,7 @@
  * 	-wrapper for messages
  *  	-require jquery
  */
+
 var msgWrapper = {
 
 	/* private vars {{{ */

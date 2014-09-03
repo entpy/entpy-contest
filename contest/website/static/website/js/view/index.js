@@ -9,10 +9,12 @@ $(document).ready(function(){
 	ciakObj.doAnimationEasy();
 
 	var msgObj = msgWrapper;
-	// msgObj.testMessage(); -> debug only
-	// msgObj.showMessageEasy(msgObj.msgTypeList.errorMsg, "Error!", "Description");
 
-	// msgObj.removeMessage();
+	/* msg wrapper debug {{{
+	msgObj.testMessage(); // -> debug only
+	msgObj.showMessageEasy(msgObj.msgTypeList.errorMsg, "Error!", "Description");
+	msgObj.removeMessage();
+	msg wrapper debug }}} */
 
 	// skip button hover animation
 	$(document).on("mouseenter", ".skipIntroAction", function() {
@@ -31,155 +33,15 @@ $(document).ready(function(){
 		submit_promo_code();
 		return false;
 	});
+
+	// sending info email to Entpy
+	$(document).on("click", ".sendInfoMailAction", function() {
+		send_info_email();
+		return false;
+	});
 });
 
-function animate_button(elementToAnimate) {
-	// function to animate a button
-	
-	if (elementToAnimate) {
-		var ciakObj = ciakWrapper;
-		ciakObj.animateViaCssClass(elementToAnimate, "tada", "1s", "0s", "1");
-
-		$(elementToAnimate).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
-			$(elementToAnimate).removeClass("animated tada");
-		});
-	}
-
-	return true;
-}
-
-function skip_animation() {
-	// function to skip entpy animation
-
-	disable_current_scroll_event();
-	var scrollingObj = scrollingWrapper;
-	scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling3, 500);
-
-	return true;
-}
-
-function submit_promo_code() {
-	// function to send promo code
-
-	var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
-	var code_to_validate = $(".codeInputAction").val();
-
-	if (code_to_validate) {
-		var ajaxCallData = {
-			url : "/validate-code/",
-			data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
-			async : false,
-			success : function(result) {
-				// console.log(result);
-				// function to manage JSON response
-				manage_json_response(result);
-			},
-			error : function(result) {
-				// ...fuck
-			}
-		}
-
-		loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
-	}
-
-	return true;
-}
-
-function manage_json_response(json) {
-	// function to manage a JSON response
-	
-	var returnVar = false;
-
-	if (json) {
-		// retrieving message type name
-		msg_type = map_code_type_to_message(json.code_type);
-
-		// showing message
-		var msgWrapperObj = msgWrapper;
-		msgWrapperObj.showMessageEasy(msg_type, json.code_type_description, json.content, build_expiring_in_string(json.expiring_in_days), build_contact_us_link(msg_type));
-	}
-
-	return returnVar;
-}
-
-function build_contact_us_link(msgType) {
-	// function to create a contact us link
-
-	var returnVar = false;
-
-	if (msgType) {
-		if (msgType == "success") {
-			returnVar = 'Dubbi o domande? Entpy ha la risposta, <a href="#">contattaci adesso</a>.';
-		} else if (msgType == "error") {
-			returnVar = 'Evita la coda! <a href="#">Contattaci</a> prima di qualcun\'altro.';
-		} else if (msgType == "alert") {
-			returnVar = 'Entpy ti connette: <a href="#">contattaci</a> per soluzioni tecnologicamente avanzate!';
-		} else if (msgType == "tip") {
-			returnVar = 'Rimani incredulo, <a href="#">contattaci</a> per avere soluzioni vincenti!';
-		}
-	}
-
-	return returnVar;
-}
-
-function build_expiring_in_string(days) {
-	// function to build an expiring in string
-
-	var returnVar = "";
-
-	if (days === 0) {
-		returnVar = "Affrettati, l'offerta scade OGGI";
-	}
-
-	if (days === 1) {
-		returnVar = "L'offerta scade domani";
-	}
-
-	if (days > 1) {
-		returnVar = "L'offerta scade tra " + days + " giorni";
-	}
-
-	return returnVar;
-}
-
-function map_code_type_to_message(code_type) {
-	// function to map promotion type name to msg type class name
-
-	var returnVar = false;
-
-	if (code_type) {
-		msgWrapperObj = msgWrapper;
-
-		if (code_type == "success_code") {
-			returnVar = msgWrapperObj.msgTypeList.successMsg;
-		}
-
-		if (code_type == "error_code") {
-			returnVar = msgWrapperObj.msgTypeList.errorMsg;
-		}
-
-		if (code_type == "alert_code") {
-			returnVar = msgWrapperObj.msgTypeList.alertMsg;
-		}
-
-		if (code_type == "tip_code") {
-			returnVar = msgWrapperObj.msgTypeList.tipMsg;
-		}
-	}
-
-	return returnVar;
-}
-
-function disable_current_scroll_event() {
-	// Function to disable current scroll event
-
-	$(".skipAnimationAction").html("1");
-	$.scrollTo.window().stop(true);
-
-	return true;
-}
-
-// Wrapper to manage animation and other funny stuff
+// Wrapper to manage animation and other funny stuff {{{
 var ciakWrapper = {
 
 	_animationType: false,
@@ -392,8 +254,9 @@ var ciakWrapper = {
 	},
 	// eval functions }}}
 };
+// Wrapper to manage animation and other funny stuff }}}
 
-// Wrapper to manage scrolling
+// Wrapper to manage scrolling and other funny stuff {{{
 var scrollingWrapper = {
 
 	_scrollType : false,
@@ -487,3 +350,4 @@ var scrollingWrapper = {
 	}
 	// eval functions }}}
 };
+// Wrapper to manage scrolling and other funny stuff }}}

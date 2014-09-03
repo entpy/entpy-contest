@@ -62,8 +62,8 @@ DATABASES = {
 		'PORT': '5432',
 	}
 }
-"""
 
+"""
 # MySQL
 DATABASES = {
     'default': {
