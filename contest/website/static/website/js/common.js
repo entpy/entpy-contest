@@ -28,11 +28,12 @@
  */
 
 /*
-	tODO list:
+	TODO list:
 	- quando si inserisce un codice far luccicare il pulsante di invio
 	- gestire messaggi (email e contenuto email) mancanti
 	- gestire messaggio email inviata con successo
 	- spostare div con i messaggi dei codici sotto al pulsante invia
+	- inserire un pulsante "come funziona" che spedisca un codice info con gli step da fare
 */
 
 function placeholder_support() {
@@ -76,11 +77,11 @@ function skip_animation() {
 	return true;
 }
 
-function submit_promo_code() {
+function submit_promo_code(code_to_validate) {
 	// function to send promo code
 
 	var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
-	var code_to_validate = $(".codeInputAction").val();
+	// var code_to_validate = $(".codeInputAction").val();
 
 	if (code_to_validate) {
 		var ajaxCallData = {

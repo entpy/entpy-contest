@@ -106,12 +106,16 @@ b, .bold { font-weight: bold; }
 .send_mail_container .sendmail_button_container .sendmail_button {  }
 /* sendmail form }}} */
 
-/* skip button {{{ */
-.skip_button { bottom: 40px; cursor: pointer; display: inline-block; height: 55px; opacity: 0.6; padding: 0; position: fixed; right: 50px; width: 145px; }
-.skip_button:hover { background-color: #001319; opacity: 1; }
-.skip_button .left { bottom: 13px; color: #075d7d; font-family: 'helveticaneue-light'; font-size: 15px; left: 7px; position: absolute; top: 21px; }
-.skip_button .right { position: absolute; right: 10px; top: 6px; }
-/* skip button }}} */
+/* action button (skip animation, help button, ecc...) {{{ */
+.action_button .how_it_works_button { top: 10px; right: 50px; width: 160px; }
+.action_button .skip_button { bottom: 40px; right: 50px; width: 145px; }
+/* buttons common style {{{ */
+.action_button { cursor: pointer; display: inline-block; height: 55px; opacity: 0.6; padding: 0; position: fixed; }
+.action_button:hover { background-color: #001319; opacity: 1; }
+.action_button .left { bottom: 13px; color: #075d7d; font-family: 'helveticaneue-light'; font-size: 15px; left: 7px; position: absolute; top: 21px; }
+.action_button .right { position: absolute; right: 10px; top: 6px; }
+/* buttons common style }}} */
+/* action button (skip animation, help button, ecc...) }}} */
 
 /* error/success messages {{{ */
 .msg_container { display: none; margin-bottom: 2em; padding: 1em; text-align: left; width: 50%; }

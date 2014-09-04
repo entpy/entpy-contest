@@ -30,7 +30,14 @@ $(document).ready(function(){
 
 	// validate code submit button click
 	$(document).on("click", ".sendButtonClickAction", function() {
-		submit_promo_code();
+		var code_to_validate = $(".codeInputAction").val();
+		submit_promo_code(code_to_validate);
+		return false;
+	});
+
+	// opening help box (with help code)
+	$(document).on("click", ".howItWorksAction", function() {
+		submit_promo_code("help");
 		return false;
 	});
 
