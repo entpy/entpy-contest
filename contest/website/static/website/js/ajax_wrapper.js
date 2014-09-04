@@ -44,15 +44,15 @@ var loadDataWrapper = {
 
 	getGenericDataViaAjaxCall : function(ajaxCallData){
 
-		//imposto i dati per la chiamata ajax
+		// setting ajax call data
 		ajaxCallObj.setAjaxData(ajaxCallData);
 
-		//eseguo la chiamata ajax
+		// performing ajax call
 		ajaxCallObj.doAjaxCall();
 	},
 };
 
-//wrapper per il salvataggio dei singoli dati di una data pagina
+// wrapper to save page data
 var saveDataWrapper = {
 
 	__idPage: "",
@@ -80,7 +80,7 @@ var ajaxCallObj = {
 	__error : "",
 	__async: "",
 
-	//alcuni parametri utili per la chiamata ajax sono comuni ad entrambi i wrapper
+	// common wrappers params
 	setAjaxDataEasy : function(){
 
 		this.__type = "POST";
@@ -90,10 +90,10 @@ var ajaxCallObj = {
 		return true;
 	},
 
-	//setto i parametri per la chiamata ajax
+	// setting ajax call params
 	setAjaxData : function(dataToSet){
 
-		//carico i paramentri comuni ai wrapper per la chiamata
+		// loading common wrappers params
 		this.setAjaxDataEasy();
 
 		if(dataToSet.url){
@@ -134,7 +134,7 @@ var ajaxCallObj = {
 		return true;
 	},
 
-	//prelevo i parametri per la chiamata ajax
+	// loading ajax call params
 	getAjaxData : function(){
 
 		return {
@@ -149,7 +149,7 @@ var ajaxCallObj = {
 		};
 	},
 
-	//eseguo la chiamata ajax con i parametri precedentemente impostati
+	// performing ajax call with previously data
 	doAjaxCall : function(){
 
 		$.ajax({

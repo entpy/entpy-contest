@@ -81,7 +81,6 @@ ROOT_URLCONF = 'contest.urls'
 
 WSGI_APPLICATION = 'contest.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 """
