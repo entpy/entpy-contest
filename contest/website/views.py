@@ -51,11 +51,13 @@ def validate_code(request):
         if (not error and not promotionalcode_obj.check_code_validity(code=code_to_validate, validity_check="not_expired")):
                 error = 3
 
+	if (code_to_validate):
+		# retrieving promo details
+		promo_details = promotionalcode_obj.get_promo_details(code=code_to_validate)
+
         # code valid
         if (not error):
                 success = 1
-                # retrieving promo details
-                promo_details = promotionalcode_obj.get_promo_details(code=code_to_validate)
                 # wow...let's sending an email to admin
                 # first, build email body
                 html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)

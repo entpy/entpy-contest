@@ -34,6 +34,7 @@
 	- gestire messaggio email inviata con successo
 	- spostare div con i messaggi dei codici sotto al pulsante invia
 	- inserire un pulsante "come funziona" che spedisca un codice info con gli step da fare
+	- al termine della validazione di un codice far scrollare la pagina nel box del messaggio, posto sotto al pulsante "valida codice"
 */
 
 function placeholder_support() {
