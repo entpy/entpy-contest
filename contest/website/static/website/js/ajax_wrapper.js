@@ -32,13 +32,11 @@ var loadDataWrapper = {
 	htmlLoaded : "",
 
 	setIdPage : function(pageId){
-
 		this.__idPage = pageId;
 		return this.__idPage;
 	},
 
 	getIdPage : function(){
-
 		return this.__idPage;
 	},
 
@@ -58,13 +56,11 @@ var saveDataWrapper = {
 	__idPage: "",
 
 	__setIdPage : function(pageId){
-
 		this.__idPage = pageId;
 		return this.__idPage;
 	},
 
 	getIdPage : function(){
-
 		return this.__idPage;
 	},
 
@@ -79,6 +75,7 @@ var ajaxCallObj = {
 	__success : "",
 	__error : "",
 	__async: "",
+	__headers: "",
 
 	// common wrappers params
 	setAjaxDataEasy : function(){
@@ -97,38 +94,35 @@ var ajaxCallObj = {
 		this.setAjaxDataEasy();
 
 		if(dataToSet.url){
-
 			this.__url = dataToSet.url;
 		}
 
 		if(dataToSet.type){
-
 			this.__type = dataToSet.type;
 		}
 
 		if(dataToSet.data){
-
 			this.__data = dataToSet.data;
 		}
 
 		if(dataToSet.cache){
-
 			this.__cache = dataToSet.cache;
 		}
 
 		if(dataToSet.async === true || dataToSet.async === false){
-
 			this.__async = dataToSet.async;
 		}
 
 		if(dataToSet.success){
-
 			this.__success = dataToSet.success;
 		}
 
 		if(dataToSet.error){
-
 			this.__error = dataToSet.error;
+		}
+
+		if(dataToSet.headers){
+			this.__headers = dataToSet.headers;
 		}
 
 		return true;
@@ -138,14 +132,14 @@ var ajaxCallObj = {
 	getAjaxData : function(){
 
 		return {
-
 			"url" : this.__url,
 			"type" : this.__type,
 			"async" : this.__async,
 			"data" : this.__data,
 			"cache" : this.__cache,
 			"success" : this.__success,
-			"error" : this.__error	
+			"error" : this.__error,
+			"headers" : this.__headers
 		};
 	},
 
@@ -160,6 +154,7 @@ var ajaxCallObj = {
 			cache: this.getAjaxData().cache,
 			success: this.getAjaxData().success,
 			error: this.getAjaxData().error
+			headers: this.getAjaxData().headers
 		});
 	}
 };

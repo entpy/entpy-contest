@@ -78,16 +78,17 @@ function skip_animation() {
 }
 
 function submit_promo_code(code_to_validate) {
-	// function to send promo code
+	// function to send a promo code
 
-	var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
-	// var code_to_validate = $(".codeInputAction").val();
+	// TODO reading csrfmiddlewaretoken from cookie
+	// var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
 
 	if (code_to_validate) {
 		var ajaxCallData = {
 			url : "/validate-code/",
 			data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
 			async : false,
+			headers: {"X-Test-Header": "test-value"}
 			success : function(result) {
 				// console.log(result);
 				// function to manage JSON response
@@ -98,6 +99,7 @@ function submit_promo_code(code_to_validate) {
 			}
 		}
 
+		// performing ajax call
 		loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
 	}
 
@@ -107,7 +109,9 @@ function submit_promo_code(code_to_validate) {
 function send_info_email() {
 	// function to send an info email to Entpy
 
-	var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
+	// TODO reading csrfmiddlewaretoken from cookie
+	// var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
+
 	var user_email = $(".sendmailUserEmailAction").val();
 	var email_content = $(".sendmailBodyAction").val();
 	var code = $(".sendmailValidCodeAction").val();
@@ -140,6 +144,7 @@ function send_info_email() {
 			}
 		}
 
+		// performing ajax call
 		loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
 	}
 
