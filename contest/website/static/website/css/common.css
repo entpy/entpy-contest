@@ -20,6 +20,7 @@
 	font-style: normal;
 }
 body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
+body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
 .align_left { text-align: left; }
 .align_right { text-align: right; }
@@ -99,16 +100,18 @@ b, .bold { font-weight: bold; }
 /* code form }}} */
 
 /* sendmail form {{{ */
-.send_mail_container { text-align: center; }
-.send_mail_container .sendmail_body { resize: none; width: 90%; }
-.send_mail_container .sendmail_email { width: 90%; }
-.send_mail_container .sendmail_button_container { width: 100%; }
-.send_mail_container .sendmail_button_container .sendmail_button {  }
+.send_mail_container { background-color: rgba(255, 255, 255, 0.1); padding: 25px;margin-top: 1em; text-align: center; }
+.send_mail_container .sendmail_body { height: 100px; margin-bottom: 0.3em; }
+.send_mail_container .sendmail_email, .send_mail_container .sendmail_body { border: medium none; border-radius: 0; color: #333; font-family: 'helveticaneue-light'; font-size: 18px; opacity: 0.5; padding: 15px; resize: none; width: 78%; }
+.send_mail_container .sendmail_email:hover, .send_mail_container .sendmail_email:focus, .send_mail_container .sendmail_body:hover, .send_mail_container .sendmail_body:focus { opacity: 0.9; }
+.send_mail_container .sendmail_button_container { margin-bottom: 10px; margin-top: 35px; width: 100%; }
+.send_mail_container .sendmail_button_container .sendmail_button { background-color: #28aee2; border: medium none; border-radius: 4px; color: #001a23; cursor: pointer; font-size: 1.4em; padding: 0.23em 3em; text-decoration: none; }
+.send_mail_container .sendmail_button_container .sendmail_button:hover { background-color: #84C619; box-shadow: 0 0 6px -1px #84C619; }
 /* sendmail form }}} */
 
 /* action button (skip animation, help button, ecc...) {{{ */
-.action_button .how_it_works_button { top: 10px; right: 50px; width: 160px; }
-.action_button .skip_button { bottom: 40px; right: 50px; width: 145px; }
+.action_button.how_it_works_button { top: 10px; right: 50px; width: 160px; }
+.action_button.skip_button { bottom: 40px; right: 50px; width: 145px; }
 /* buttons common style {{{ */
 .action_button { cursor: pointer; display: inline-block; height: 55px; opacity: 0.6; padding: 0; position: fixed; }
 .action_button:hover { background-color: #001319; opacity: 1; }
@@ -118,13 +121,13 @@ b, .bold { font-weight: bold; }
 /* action button (skip animation, help button, ecc...) }}} */
 
 /* error/success messages {{{ */
-.msg_container { display: none; margin-bottom: 2em; padding: 1em; text-align: left; width: 50%; }
+.msg_container { display: none; margin-top: 2em; padding: 1em; text-align: left; width: 50%; }
 .msg_container .icon_container { font-size: 1.5em; margin-right: 10px; }
 .msg_container .msg_title { margin-bottom: 10px; }
 .msg_container .msg_title .right { font-weight: bold; font-size: 1.4em; }
 .msg_container .msg_container { font-size: 1em; }
 .msg_container .msg_extra_param { font-size: 0.96em; margin-top: 0.73em; text-align: right; }
-.msg_container .msg_bottom_container { font-size: 1.2em; margin-top: 0.73em; text-align: right; }
+.msg_container .msg_bottom_container { font-size: 1.2em; margin-top: 2em; text-align: right; }
 .msg_container.success { background-color: #83c61a; color: #001a23; display: inline-block; }
 .msg_container.success .icon_container:after { font-family: FontAwesome; content: "\f118"; }
 .msg_container.error { background-color: #170039; color: white; display: inline-block; }

@@ -52,7 +52,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 # postgreSQL
-"""
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -76,6 +75,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+"""
 
 ROOT_URLCONF = 'contest.urls'
 
