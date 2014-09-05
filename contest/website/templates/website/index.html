@@ -32,6 +32,9 @@
 					{% csrf_token %}
 					<div class="input_code_container">
 						<input class="codeInputAction code_input" placeholder="Codice del volantino" type="text" name="code" value="" />
+						<div class="how_it_works_container">
+							<span class="how_it_works_link howItWorksAction">Come funziona?</span>
+						</div>
 					</div>
 					<div class="input_submit_container">
 						<input class="sendButtonClickAction" type="submit" name="submit" value="Valida codice" />
@@ -47,6 +50,7 @@
 					<div class="msg_bottom_container opacity_70_100 msgBottomContainerAction">{# Bottom Content #}</div>
 					<div class="send_mail_container">
 						<textarea class="sendmail_body sendmailBodyAction" name="sendmail_body" placeholder="Scrivi la mail..."></textarea>
+						<div class="input_vertical_space"></div>
 						<input type="text" class="sendmail_email sendmailUserEmailAction" name="sendmail_email" placeholder="Inserisci la tua email" value="">
 						<input type="hidden" class="sendmail_valid_code sendmailValidCodeAction" name="sendmail_valid_code" value="">
 						<div class="sendmail_button_container">
@@ -63,12 +67,12 @@
 		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.png" alt="Entpy world">
 	</div>
 	{# how it works button {{{ #}
-	<div class="action_button how_it_works_button howItWorksAction display_none">
+	<!-- <div class="action_button how_it_works_button howItWorksAction display_none">
 		<span class="left">Come funziona</span>
 		<span class="right">
 			<img class="" src="static/website/img/skip.png" alt="Salta intro">
 		</span>
-	</div>
+	</div>-->
 	{# how it works button }}} #}
 	{# skip intro button {{{ #}
 	<div class="action_button skip_button skipIntroAction display_none">

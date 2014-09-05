@@ -3,9 +3,21 @@
 /* page main style {{{ */
 
 .logo_bottom_container { margin-top: 0.09em; }
-.form_container { margin: 2em auto 0; padding: 1.3em 0.4em; width: 90%; }
+.form_container { display: inline-block; float: left; margin: 2em auto 0; padding: 1.3em 0; width: 100%; }
 .logo_container > img { width: 75%; }
 .form_container .input_code_container > input { font-size: 1em; margin-bottom: 1.3em; padding: 0.7em 0; width: 80%; }
 .form_container .input_submit_container > input { font-size: 1.05em; padding: 0.23em 0; width: 70%; }
 .coupon_code_block { height: 30em; }
+
+/* send info email {{{ */
+.msg_container { width: 85%; }
+.msg_container .msg_title .right { font-size: 1.2em; }
+.msg_container .msg_bottom_container { font-size: 0.8em; }
+.send_mail_container { padding: 10px; }
+.send_mail_container .sendmail_email, .send_mail_container .sendmail_body { font-size: 0.8em; padding: 13px; width: 80%; }
+.send_mail_container .sendmail_button_container .sendmail_button { font-size: 1em; }
+/* send info email }}} */
+
+/* buttons */
+.action_button.skip_button { bottom: 15px; right: 20px; width: 145px; }
 /* page main style }}} */

@@ -46,6 +46,18 @@ $(document).ready(function(){
 		send_info_email();
 		return false;
 	});
+
+	// validating email content on keyup
+	$(document).on("keyup", ".sendmailBodyAction", function() {
+		validate_sendmail_form(true, false);
+		return false;
+	});
+
+	// validating user email on keyup
+	$(document).on("keyup", ".sendmailUserEmailAction", function() {
+		validate_sendmail_form(false, true);
+		return false;
+	});
 });
 
 // Wrapper to manage animation and other funny stuff {{{
@@ -271,7 +283,8 @@ var scrollingWrapper = {
 	scrollTypeName : {
 		scrolling1 : "scrolling1",
 		scrolling2 : "scrolling2",
-		scrolling3 : "scrolling3"
+		scrolling3 : "scrolling3",
+		scrolling4 : "scrolling4"
 	},
 
 	scrollingDelay : false,
@@ -290,6 +303,8 @@ var scrollingWrapper = {
 				this._scrollType = this.scrollTypeName.scrolling2;
 			} else if (this.scrollTypeName.scrolling3 == scrollName) {
 				this._scrollType = this.scrollTypeName.scrolling3;
+			} else if (this.scrollTypeName.scrolling4 == scrollName) {
+				this._scrollType = this.scrollTypeName.scrolling4;
 			}
 		}
 	},
@@ -354,6 +369,11 @@ var scrollingWrapper = {
 				ciakWrapper.postActions();
 			}
 		});
+	},
+
+	scrolling4 : function() {
+		// function to scroll directly to entpy logo
+		$.scrollTo('.msgContainerAction', 2000, { offset: -10, axis:'y', easing : 'easeInOutQuart', onAfter : function(){} });
 	}
 	// eval functions }}}
 };

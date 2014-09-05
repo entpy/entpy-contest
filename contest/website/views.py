@@ -22,9 +22,10 @@ def send_info_email(request):
         promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: richiesta informazioni...evvai bro ;-)")
 
         # build success/error JSON response, now return always a success response
-        json_response = {"return_status" : "success"}
+        json_response = {}
+        json_response["return_status"] = "success"
 
-        return HttpResponse(json.dumps(json_response), content_type="text/html")
+        return HttpResponse(json.dumps(json_response), content_type="application/json")
 
 def validate_code(request):
         """

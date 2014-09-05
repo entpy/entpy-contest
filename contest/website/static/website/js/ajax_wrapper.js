@@ -153,7 +153,7 @@ var ajaxCallObj = {
 			async: this.getAjaxData().async,
 			cache: this.getAjaxData().cache,
 			success: this.getAjaxData().success,
-			error: this.getAjaxData().error
+			error: this.getAjaxData().error,
 			headers: this.getAjaxData().headers
 		});
 	}

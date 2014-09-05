@@ -30,11 +30,13 @@
 /*
 	TODO list:
 	- quando si inserisce un codice far luccicare il pulsante di invio
-	- gestire messaggi (email e contenuto email) mancanti
-	- gestire messaggio email inviata con successo
-	- spostare div con i messaggi dei codici sotto al pulsante invia
 	- inserire un pulsante "come funziona" che spedisca un codice info con gli step da fare
-	- al termine della validazione di un codice far scrollare la pagina nel box del messaggio, posto sotto al pulsante "valida codice"
+	- fix della posizione del pulsante "skip" nella versione smartphone
+	- test su browser obsoleti e smartphone
+	- V gestire messaggi (email e contenuto email) mancanti
+	- V gestire messaggio email inviata con successo
+	- V spostare div con i messaggi dei codici sotto al pulsante invia
+	- V al termine della validazione di un codice far scrollare la pagina nel box del messaggio, posto sotto al pulsante "valida codice"
 */
 
 function placeholder_support() {
@@ -81,15 +83,16 @@ function skip_animation() {
 function submit_promo_code(code_to_validate) {
 	// function to send a promo code
 
-	// TODO reading csrfmiddlewaretoken from cookie
+	// reading csrfmiddlewaretoken from cookie
+	var csrftoken = $.cookie('csrftoken');
 	// var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
 
 	if (code_to_validate) {
 		var ajaxCallData = {
 			url : "/validate-code/",
-			data : "code_to_validate=" + code_to_validate + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
+			data : "code_to_validate=" + code_to_validate,
 			async : false,
-			headers: {"X-Test-Header": "test-value"}
+			headers: { "X-CSRFToken": csrftoken },
 			success : function(result) {
 				// console.log(result);
 				// function to manage JSON response
@@ -110,7 +113,9 @@ function submit_promo_code(code_to_validate) {
 function send_info_email() {
 	// function to send an info email to Entpy
 
-	// TODO reading csrfmiddlewaretoken from cookie
+	// reading csrfmiddlewaretoken from cookie
+	var csrftoken = $.cookie('csrftoken');
+
 	// var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
 
 	var user_email = $(".sendmailUserEmailAction").val();
@@ -118,7 +123,7 @@ function send_info_email() {
 	var code = $(".sendmailValidCodeAction").val();
 
 	// validate sendmail form data
-	validate_sendmail_form();
+	validate_sendmail_form(true, true, true);
 
 	if (user_email && email_content) {
 
@@ -133,8 +138,9 @@ function send_info_email() {
 
 		var ajaxCallData = {
 			url : "/send-info-email/",
-			data : "call_data=" + ajaxCallParam + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken,
+			data : "call_data=" + ajaxCallParam,
 			async : false,
+			headers: { "X-CSRFToken": csrftoken },
 			success : function(result) {
 				console.log(result);
 				// show success/error message
@@ -152,34 +158,53 @@ function send_info_email() {
 	return true;
 }
 
-function validate_sendmail_form() {
-	// TODO function to validate send email form data
+function validate_sendmail_form(validate_content, validate_email, show_alert) {
+	// function to validate send email form data
 
 	var returnVar = true;
+	var sendmail_body_valid = false;
+	var sendmail_email_valid = false;
+
 	var sendmail_body = $(".sendmailBodyAction").val();
 	var sendmail_email = $(".sendmailUserEmailAction").val();
 
-	if (!sendmail_body) {
-		returnVar = false;
-		alert("Inserisci un messaggio");
+	if (validate_content) {
+		if (!sendmail_body) {
+			returnVar = false;
+			$(".sendmailBodyAction").addClass("email_form_input_error");
+		} else {
+			$(".sendmailBodyAction").removeClass("email_form_input_error");
+			sendmail_body_valid = true;
+		}
 	}
 
-	if (!sendmail_body) {
-		sendmail_email = false;
-		alert("Inserisci la tua mail");
+	if (validate_email) {
+		if (!sendmail_email) {
+			sendmail_email = false;
+			$(".sendmailUserEmailAction").addClass("email_form_input_error");
+		} else {
+			$(".sendmailUserEmailAction").removeClass("email_form_input_error");
+			sendmail_email_valid = true;
+		}
+	}
+
+	if (!sendmail_body_valid || !sendmail_email_valid) {
+		if (show_alert) {
+			alert("Inserisci un messaggio e la tua email");
+		}
 	}
 
 	return returnVar;
 }
 
 function manage_json_info_email_response(json) {
-	// TODO function to manage a JSON info email response
+	// function to manage a JSON info email response
 
 	var returnVar = false;
 
 	if (json) {
 		if (json.return_status == "success") {
-			alert("mail inviata correttamente");
+			alert("Grazie, una risposta ti arriverà a breve!");
 			returnVar = true;
 		}
 	}
@@ -203,6 +228,10 @@ function manage_json_response(json) {
 		// copy code inside valid code block
 		copy_validated_code(json.code);
 		returnVar = true;
+
+		// scrolling to message box
+		var scrollingObj = scrollingWrapper;
+		scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling4, 0);
 	}
 
 	return returnVar;
@@ -231,13 +260,14 @@ function build_contact_us_link(msgType) {
 
 	if (msgType) {
 		if (msgType == "success") {
-			returnVar = 'Dubbi o domande? Entpy ha la risposta, <a href="#">contattaci adesso</a>.';
+			returnVar = 'Dubbi o domande? Entpy ha la risposta, contattaci adesso.';
 		} else if (msgType == "error") {
-			returnVar = 'Evita la coda! <a href="#">Contattaci</a> prima di qualcun\'altro.';
+			returnVar = 'Evita la coda! Contattaci prima di qualcun\'altro.';
 		} else if (msgType == "alert") {
-			returnVar = 'Entpy ti connette: <a href="#">contattaci</a> per soluzioni tecnologicamente avanzate!';
+			// returnVar = 'Entpy ti connette: contattaci per soluzioni tecnologicamente avanzate!';
+			returnVar = 'Vuoi sapere come utilizzare il coupon? Contattaci!';
 		} else if (msgType == "tip") {
-			returnVar = 'Rimani incredulo, <a href="#">contattaci</a> per avere soluzioni vincenti!';
+			returnVar = 'Rimani incredulo, contattaci per avere soluzioni vincenti!';
 		}
 	}
 
