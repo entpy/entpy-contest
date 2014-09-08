@@ -113,8 +113,9 @@ b, .bold { font-weight: bold; }
 /* sendmail form }}} */
 
 /* action button (skip animation, help button, ecc...) {{{ */
-.how_it_works_container { margin: 3px auto 0; text-align: left; }
-.how_it_works_container .how_it_works_link { cursor: pointer; }
+.how_it_works_container { margin: 0.3em auto 0; }
+.how_it_works_container .how_it_works_link { cursor: pointer; color: #fff; }
+.how_it_works_container .how_it_works_link:hover { color: #28aee2; text-decoration: underline; }
 
 .action_button.skip_button { bottom: 40px; right: 50px; width: 145px; }
 /* buttons common style {{{ */

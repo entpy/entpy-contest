@@ -66,7 +66,7 @@ class PromotionalCode(models.Model):
 	def __unicode__(self):
 		return str(self.code)
 
-        def build_json_response(self, error, success, promo_details):
+        def build_json_response(self, error, success, promo_details, code):
                 """
                 Function to generate a JSON response
                 """
@@ -88,13 +88,13 @@ class PromotionalCode(models.Model):
                 # build success/error response {{{
                 if (success):
                         response_data['content'] = promo_details['content']
-                        response_data['code'] = promo_details['code']
+                        response_data['code'] = code
                         response_data['code_type'] = promo_details['code_type']
                         response_data['code_type_description'] = promo_details['code_type_description']
                         response_data['expiring_in_days'] = promo_details['expiring_in_days']
                 elif (error):
                         response_data['content'] = message
-                        response_data['code'] = promo_details['code']
+                        response_data['code'] = code
                         response_data['code_type'] = 'error_code'
                         response_data['code_type_description'] = "Ops..."
                 # build success/error response }}}

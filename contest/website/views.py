@@ -65,7 +65,7 @@ def validate_code(request):
                 promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: codice validato")
 
         # build JSON response
-        response_data = promotionalcode_obj.build_json_response(error, success, promo_details)
+        response_data = promotionalcode_obj.build_json_response(error, success, promo_details, code_to_validate)
 
         return HttpResponse(response_data, content_type="application/json")
 

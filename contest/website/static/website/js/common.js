@@ -100,6 +100,7 @@ function submit_promo_code(code_to_validate) {
 			},
 			error : function(result) {
 				// ...fuck
+				// console.log(result);
 			}
 		}
 
