@@ -51,7 +51,6 @@ MIDDLEWARE_CLASSES = (
     'django_user_agents.middleware.UserAgentMiddleware',
 )
 
-"""
 # postgreSQL
 DATABASES = {
 	'default': {
@@ -76,6 +75,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+"""
 
 ROOT_URLCONF = 'contest.urls'
 

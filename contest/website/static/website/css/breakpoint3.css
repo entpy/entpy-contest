@@ -8,8 +8,8 @@
 .entpy_world_container { width: 100%; }
 .form_container { margin: 3em auto 0; padding: 2.6em 3em; }
 .form_container .input_code_container { margin-bottom: 2.7em; }
-.form_container .input_code_container > input { font-size: 1.4em; padding: 0.7em 4em; width: 12em; }
-.form_container .how_it_works_container { text-align: left; width: 22em; }
+.form_container .input_code_container > input { font-size: 1.4em; padding: 0.7em 2em; width: 320px }
+.form_container .how_it_works_container { text-align: right; width: 370px; }
 .form_container .input_submit_container > input { font-size: 1.4em; padding: 0.23em 3em; }
 
 /* send info email {{{ */
