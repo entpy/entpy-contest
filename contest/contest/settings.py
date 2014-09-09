@@ -79,30 +79,6 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
-LOGGING = {
-	'version': 1,
-	'disable_existing_loggers': False,
-	'handlers': {
-		'file': {
-			'level': 'DEBUG',
-			'class': 'logging.FileHandler',
-			'filename': '/tmp/debug.log',
-		},
-		'console' : {
-			'class' : 'logging.StreamHandler',
-			'level' : 'INFO',
-			'stream' : 'ext://sys.stdout',
-		},
-	},
-	'loggers': {
-		'django.request': {
-			'handlers': ['file'],
-			'level': 'DEBUG',
-			'propagate': True,
-		},
-	},
-}
-
 # loading local settings
 try:
     LOCAL_SETTINGS
