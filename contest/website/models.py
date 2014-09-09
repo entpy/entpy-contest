@@ -336,8 +336,9 @@ class PromotionalCode(models.Model):
 
                         # log debug
                         logger.debug("######## browser details {{{ ##########")
-                        logger.debug("browser family: " + str(browser.family))
-                        logger.debug("browser version: " + str(browser.version[0]))
+                        logger.debug("device: " + str(device))
+                        logger.debug("browser: " + str(browser))
+                        logger.debug("os: " + str(os))
                         logger.debug("######## browser details }}} ##########")
 
                         if (
