@@ -334,6 +334,12 @@ class PromotionalCode(models.Model):
                         animation_type = "none_animation"
                         browser_type = "normal_browser"
 
+                        # log debug
+                        logger.debug("######## browser details {{{ ##########")
+                        logger.debug("browser family: " + str(browser.family))
+                        logger.debug("browser version: " + str(browser.version[0]))
+                        logger.debug("######## browser details }}} ##########")
+
                         if (
                                 ((browser.family == "Android") and (browser.version[0] >= 4)) or
                                 ((browser.family == "Firefox") and (browser.version[0] >= 25)) or
