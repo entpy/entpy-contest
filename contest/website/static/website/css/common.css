@@ -30,7 +30,7 @@ b, .bold { font-weight: bold; }
 .width_10_100 { width: 10%; }
 .opacity_70_100 {
 	/* IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.7)"!important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"!important;
 
 	/* IE 5-7 */
 	filter: alpha(opacity=0.7)!important;
@@ -67,7 +67,7 @@ b, .bold { font-weight: bold; }
 
 .no-transparent {
 	/* IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)"!important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"!important;
 
 	/* IE 5-7 */
 	filter: alpha(opacity=1)!important;
@@ -133,7 +133,6 @@ b, .bold { font-weight: bold; }
 	font-family: 'helveticaneue-light';
 	font-size: 18px;
 	margin: 2px;
-	opacity: 0.5;
 	padding: 15px;
 	resize: none;
 	width: 78%;
@@ -141,13 +140,47 @@ b, .bold { font-weight: bold; }
 	-moz-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
 	-o-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
 	transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+	/* IE 5-7 */
+	filter: alpha(opacity=0.5);
+
+	/* Netscape */
+	-moz-opacity: 0.5;
+
+	/* Old Webkit browsers (Safari, Chrome, various others) */
+	-webkit-opacity: 0.5;
+
+	/* Safari 1.x */
+	-khtml-opacity: 0.5;
+
+	/* Good browsers */
+	opacity: 0.5;
 }
 .send_mail_container .sendmail_email:hover, .send_mail_container .sendmail_email:focus, .send_mail_container .sendmail_body:hover, .send_mail_container .sendmail_body:focus {
-	opacity: 0.9;
 	-webkit-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
 	-moz-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
 	-o-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
 	transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+
+	/* IE 5-7 */
+	filter: alpha(opacity=0.9);
+
+	/* Netscape */
+	-moz-opacity: 0.9;
+
+	/* Old Webkit browsers (Safari, Chrome, various others) */
+	-webkit-opacity: 0.9;
+
+	/* Safari 1.x */
+	-khtml-opacity: 0.9;
+
+	/* Good browsers */
+	opacity: 0.9;
 }
 .send_mail_container .sendmail_button_container { margin-bottom: 10px; margin-top: 35px; width: 100%; }
 .send_mail_container .sendmail_button_container .sendmail_button { background-color: #28aee2; border: medium none; border-radius: 4px; color: #001a23; cursor: pointer; font-size: 1.4em; padding: 0.23em 3em; text-decoration: none; }
@@ -177,8 +210,51 @@ b, .bold { font-weight: bold; }
 
 .action_button.skip_button { bottom: 40px; right: 50px; width: 145px; }
 /* buttons common style {{{ */
-.action_button { cursor: pointer; display: inline-block; height: 55px; opacity: 0.6; padding: 0; position: fixed; }
-.action_button:hover { background-color: #001319; opacity: 1; }
+.action_button {
+	cursor: pointer;
+	display: inline-block;
+	height: 55px;
+	padding: 0;
+	position: fixed;
+
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+
+	/* IE 5-7 */
+	filter: alpha(opacity=0.6);
+
+	/* Netscape */
+	-moz-opacity: 0.6;
+
+	/* Old Webkit browsers (Safari, Chrome, various others) */
+	-webkit-opacity: 0.6;
+
+	/* Safari 1.x */
+	-khtml-opacity: 0.6;
+
+	/* Good browsers */
+	opacity: 0.6;
+}
+.action_button:hover {
+	background-color: #001319;
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+
+	/* IE 5-7 */
+	filter: alpha(opacity=1);
+
+	/* Netscape */
+	-moz-opacity: 1;
+
+	/* Old Webkit browsers (Safari, Chrome, various others) */
+	-webkit-opacity: 1;
+
+	/* Safari 1.x */
+	-khtml-opacity: 1;
+
+	/* Good browsers */
+	opacity: 1;
+}
 .action_button .left { bottom: 13px; color: #075d7d; font-family: 'helveticaneue-light'; font-size: 15px; left: 7px; position: absolute; top: 21px; }
 .action_button .right { position: absolute; right: 10px; top: 6px; }
 /* buttons common style }}} */
