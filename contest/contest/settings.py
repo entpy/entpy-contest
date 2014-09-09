@@ -14,17 +14,13 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=4)z)is^y_ktnbaja$&j-x^-xkk8sve_7yu3+0mzo+##s=%6ey'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -50,32 +46,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
 )
-
-# postgreSQL
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'entpy_contest',
-		'USER': 'testuser',
-		'PASSWORD': 'testuser',
-		'HOST': '127.0.0.1',
-		'PORT': '5432',
-	}
-}
-
-"""
-# MySQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'entpy_contest',
-        'USER': 'testuser',
-        'PASSWORD': 'testuser',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
-"""
 
 ROOT_URLCONF = 'contest.urls'
 
@@ -141,3 +111,12 @@ LOGGING = {
 		},
 	},
 }
+
+# loading local settings
+try:
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from local_settings import *
+    except ImportError:
+        pass

@@ -53,10 +53,10 @@ coverage.xml
 # Django stuff:
 *.log
 *.pot
+local_settings.py
 
 # Sphinx documentation
 docs/_build/
-website/website/local_settings.py
 
 # Vim swap files
 *.swp
