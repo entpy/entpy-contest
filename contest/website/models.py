@@ -335,11 +335,13 @@ class PromotionalCode(models.Model):
                         browser_type = "normal_browser"
 
                         # log debug
+                        """
                         logger.debug("######## browser details {{{ ##########")
                         logger.debug("device: " + str(device))
                         logger.debug("browser: " + str(browser))
                         logger.debug("os: " + str(os))
                         logger.debug("######## browser details }}} ##########")
+                        """
 
                         if (
                                 # browser type
