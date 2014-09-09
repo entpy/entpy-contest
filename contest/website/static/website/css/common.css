@@ -55,6 +55,9 @@ b, .bold { font-weight: bold; }
 	/* Netscape */
 	-moz-opacity: 0;
 
+	/* Old Webkit browsers (Safari, Chrome, various others) */
+	-webkit-opacity: 0;
+
 	/* Safari 1.x */
 	-khtml-opacity: 0;
 
@@ -71,6 +74,9 @@ b, .bold { font-weight: bold; }
 
 	/* Netscape */
 	-moz-opacity: 1!important;
+
+	/* Old Webkit browsers (Safari, Chrome, various others) */
+	-webkit-opacity: 1!important;
 
 	/* Safari 1.x */
 	-khtml-opacity: 1!important;
@@ -205,11 +211,11 @@ html {
 
 /* animation fix {{{ */
 .logo_container, .form_container {
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(0);
+	/*-webkit-backface-visibility: hidden;*/
+	/*-webkit-transform: translateZ(0);*/
 }
 
 .logo_container *, .form_container * {
-	-webkit-transform: translateZ(0);
+	/*-webkit-transform: translateZ(0);*/
 }
 /* animation fix }}} */

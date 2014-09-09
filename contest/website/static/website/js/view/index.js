@@ -225,6 +225,10 @@ var ciakWrapper = {
 
 	// eval functions {{{
 	noneAnimation : function() {
+
+		/*$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
+		$(".new_browser_container .form_container").removeClass("transparent");*/
+
 		// method to write code form inside old browser tag, without animations
 		$(".old_browser_container").html($(".new_browser_container").html());
 		$(".new_browser_container").addClass("display_none");
@@ -232,6 +236,14 @@ var ciakWrapper = {
 		// remove transparent class
 		$(".old_browser_container .entpy_logo_image2").removeClass("transparent");
 		$(".old_browser_container .form_container").removeClass("transparent");
+
+		// add no-transparent class
+		$(".old_browser_container .entpy_logo_image2").addClass("no-transparent");
+		$(".old_browser_container .form_container").addClass("no-transparent");
+
+		// this.showAdvancedForm();
+
+		// alert($(".new_browser_container").html());
 	},
 
 	simpleAnimation : function() {

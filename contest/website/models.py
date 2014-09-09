@@ -342,12 +342,15 @@ class PromotionalCode(models.Model):
                         logger.debug("######## browser details }}} ##########")
 
                         if (
-                                ((browser.family == "Android") and (browser.version[0] >= 4)) or
+                                # browser type
                                 ((browser.family == "Firefox") and (browser.version[0] >= 25)) or
                                 ((browser.family == "Chrome") and (browser.version[0] >= 9)) or
                                 ((browser.family == "Chromium") and (browser.version[0] >= 30)) or
                                 ((browser.family == "IE") and (browser.version[0] >= 10)) or
-                                ((browser.family == "Mobile Safari") and (browser.version[0] >= 4))
+                                ((browser.family == "Mobile Safari") and (browser.version[0] >= 4)) or
+                                ((browser.family == "Chrome Mobile") and (browser.version[0] >= 18)) or
+                                # os type
+                                ((os.family == "Android") and (os.version[0] >= 4))
                         ):
                                 animation_type = "advanced_animation"
                                 browser_type = "advanced_browser"
@@ -355,11 +358,15 @@ class PromotionalCode(models.Model):
                         if ((request.COOKIES.get(return_var["cookie_name"]) or code_to_check) and animation_type == "advanced_animation"):
                                 animation_type = "simple_animation"
 
+                        # debug only
+                        # animation_type = "none_animation"
+                        # browser_type = "normal_browser"
+
                         # buld return var data
                         return_var["device"] = device
                         return_var["browser"] = browser
                         return_var["os"] = os
                         return_var["animation_type"] = animation_type
-                        return_var["browser_type"] = str(browser_type)
+                        return_var["browser_type"] = browser_type
 
                 return return_var
