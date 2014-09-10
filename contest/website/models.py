@@ -162,7 +162,15 @@ class PromotionalCode(models.Model):
                 Function to retrieve all details about a promotional code.
                 """
 
-                campaign_details = {}
+                campaign_details = {
+                        "code" : "",
+                        "content" : "",
+                        "code_type" : "",
+                        "code_type_description" : "",
+                        "expiring_in" : "",
+                        "expiring_in_days" : ""
+                }
+
                 promotionalcode_obj = None
                 code = code.upper()
 
@@ -238,6 +246,7 @@ class PromotionalCode(models.Model):
                             return_var = "<b>Entpy contest:</b> " + main_title + "<br /><br />"
                         else:
                             return_var = "<b>Entpy contest:</b> è stato validato un codice.<br /><br />"
+
                         return_var += "<b>Codice:</b> " + str(promo_details["code"]) + "<br />"
                         return_var += "<b>Tipo di codice:</b> " + str(promo_details["code_type"]) + "<br />"
                         return_var += "<b>Titolo:</b> " + str(promo_details["code_type_description"]) + "<br />"
@@ -262,13 +271,16 @@ class PromotionalCode(models.Model):
                 return_var = ""
                 promotionalcode_obj = PromotionalCode()
 
-                if (content is not None and email is not None and code is not None):
-                        # retrieving code data
-                        promo_details = promotionalcode_obj.get_promo_details(code)
+                if (content is not None and email is not None):
 
                         return_var = "<b>Entpy contest:</b> <br /><br />"
+
                         # building email body
-                        return_var = promotionalcode_obj.build_promo_details_email(code=code, main_title="hurra, qualcuno chiede informazioni")
+                        if (code is not None):
+                            # retrieving code data
+                            promo_details = promotionalcode_obj.get_promo_details(code)
+                            return_var = promotionalcode_obj.build_promo_details_email(code=code, main_title="hurra, qualcuno chiede informazioni")
+
                         return_var += "<b>Email da contattare:</b>" + email + "<br />"
                         return_var += "<b>Testo inserito:</b><br /><div>" + content + "</div><br />"
 
