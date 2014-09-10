@@ -277,9 +277,9 @@ class PromotionalCode(models.Model):
 
                         # building email body
                         if (code is not None):
-                            # retrieving code data
-                            promo_details = promotionalcode_obj.get_promo_details(code)
-                            return_var = promotionalcode_obj.build_promo_details_email(code=code, main_title="hurra, qualcuno chiede informazioni")
+                                # retrieving code data
+                                promo_details = promotionalcode_obj.get_promo_details(code)
+                                return_var = promotionalcode_obj.build_promo_details_email(code=promo_details["code"], main_title="Richiesta informazioni da Entpy contest")
 
                         return_var += "<b>Email da contattare:</b>" + email + "<br />"
                         return_var += "<b>Testo inserito:</b><br /><div>" + content + "</div><br />"

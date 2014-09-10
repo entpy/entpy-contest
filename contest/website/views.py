@@ -19,7 +19,7 @@ def send_info_email(request):
         html_body = promotionalcode_obj.build_info_email_body(content=email_data["email_content"], email=email_data["user_email"], code=email_data["promo_code"])
 
         # send email
-        promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: richiesta informazioni...evvai bro ;-)")
+        promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: richiesta informazioni...evvai ;-)")
 
         # build success/error JSON response, now return always a success response
         json_response = {}
@@ -62,7 +62,7 @@ def validate_code(request):
                 # wow...let's sending an email to admin
                 # first, build email body
                 html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)
-                promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: codice validato")
+                promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: un codice è stato validato")
 
         # build JSON response
         response_data = promotionalcode_obj.build_json_response(error, success, promo_details, code_to_validate)
