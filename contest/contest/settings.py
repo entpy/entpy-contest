@@ -73,9 +73,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #inside project
+"""
 STATICFILES_DIRS = (
 	os.path.join(BASE_DIR, "static"), #inside project
 )
+"""
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
