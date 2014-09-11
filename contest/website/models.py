@@ -293,7 +293,8 @@ class PromotionalCode(models.Model):
 
                 return_var = False
 
-                msg = EmailMessage(mail_subject, mail_body, 'info@entpy.com', ['ivan@entpy.com'])
+                # subject | body | from email | to email
+                msg = EmailMessage(mail_subject, mail_body, 'contest@entpy.com', ['contest@entpy.com'])
                 msg.content_subtype = "html"  # Main content is now text/html
                 msg.send()
                 return_var = True
