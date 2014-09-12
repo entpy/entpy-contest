@@ -57,7 +57,7 @@ def validate_code(request):
 		promo_details = promotionalcode_obj.get_promo_details(code=code_to_validate)
 
         # code valid
-        if (not error):
+        if (not error and code_to_validate != "help_code"):
                 success = 1
                 # wow...let's sending an email to admin
                 # first, build email body
