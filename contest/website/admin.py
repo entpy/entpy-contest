@@ -17,7 +17,7 @@ logger = logging.getLogger('django.request')
 class PromotionalCodeAdmin(admin.ModelAdmin):
 
         # fileds in add/modify form
-        fields = ('code_types', 'code_contents', 'expiring_date')
+        fields = ('code', 'code_types', 'code_contents', 'expiring_date')
 
         # table list fields
         list_display = ('code', 'code_types', 'code_contents', 'already_used', 'creation_date', 'expiring_date', 'redeem_date')

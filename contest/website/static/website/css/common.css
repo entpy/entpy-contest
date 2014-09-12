@@ -285,14 +285,14 @@ b, .bold { font-weight: bold; }
 .msg_container.alert { background-color: #FFB908; color: #e14d00; display: inline-block; }
 .msg_container.alert .tinymce_ol li { color: #E10303; }
 .msg_container.alert .tinymce_ol li span { color: #AC3A00; }
-.msg_container.alert .tinymce_block a {  }
+.msg_container.alert .tinymce_block a { color: #002c3a; }
 .msg_container.alert .tinymce_block a:hover { color: #161616; }
 .msg_container.alert .icon_container:after { font-family: FontAwesome; content: "\f071"; }
 
 .msg_container.tip { background-color: #333333; color: white; display: inline-block; }
 .msg_container.tip .tinymce_ol li { color: #28AEE2; }
 .msg_container.tip .tinymce_ol li span { color: #fff; }
-.msg_container.tip .tinymce_block a { color: #000; }
+.msg_container.tip .tinymce_block a { color: #84C619; }
 .msg_container.tip .tinymce_block a:hover { color: #161616; }
 .msg_container.tip .icon_container:after { font-family: FontAwesome; content: "\f19d"; }
 /* error/success messages }}} */

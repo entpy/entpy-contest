@@ -53,7 +53,7 @@ class PromotionalCode(models.Model):
 	id_promotional_code = models.AutoField(primary_key=True)
 	code_types = models.ForeignKey(CodeType, db_column="id_code_type", verbose_name="Tipo")
 	code_contents = models.ForeignKey(CodeContent, db_column="id_code_content", verbose_name="Contenuto")
-	code = models.CharField("Codice promozionale", max_length=5)
+	code = models.CharField("Codice", max_length=20, blank=True)
 	already_used = models.BooleanField("Codice già utilizzato", default=0)
 	creation_date = models.DateField("Data di creazione", auto_now_add=True, blank=True, null=True)
 	expiring_date = models.DateField("Data di scadenza", blank=True, null=True)

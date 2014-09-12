@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 	// opening help box (with help code)
 	$(document).on("click", ".howItWorksAction", function() {
-		submit_promo_code("help");
+		submit_promo_code("help_code");
 		return false;
 	});
 

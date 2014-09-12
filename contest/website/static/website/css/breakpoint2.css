@@ -1,19 +1,19 @@
 /* medium/large screen style */
 
 /* page main style {{{ */
-.logo_container { width: 470px; }
+.logo_container { width: 460px; }
 .logo_container .entpy_logo_image { width: auto; height: 5em; }
 .logo_container .entpy_logo_image2 { width: auto; height: 5em; }
 .logo_bottom_container { font-size: 1.2em; margin-top: 0.3em; }
 .entpy_world_container { width: 100%; }
-.form_container { margin: 4em auto 0; padding: 2.0em 1em; }
+.form_container { margin: 4em auto 0; padding: 2.0em 0em; }
 .form_container .input_code_container { margin-bottom: 1.5em; }
 .form_container .input_code_container > input { font-size: 1.1em; padding: 0.7em 2em; width: 340px; }
 .form_container .how_it_works_container { font-size: 0.9em; padding: 0 2em; text-align: right; width: 385px; }
 .form_container .input_submit_container > input { font-size: 1.15em; padding: 0.23em 3em; }
 
 /* send info email {{{ */
-.msg_container { width: 95%; }
+.msg_container { width: 90%; }
 .msg_container .msg_title .right { font-size: 1.4em; }
 .msg_container .msg_bottom_container { font-size: 1em; }
 .send_mail_container { padding: 10px; }
