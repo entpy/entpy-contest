@@ -30,39 +30,15 @@
 /*
 	TODO list:
 	- quando si inserisce un codice far luccicare il pulsante di invio
-	- fix della posizione del pulsante "skip" nella versione smartphone
 	- test su browser obsoleti e smartphone
-	- preparare i vari codici
+	- rimuovere alert del placeholder
+	- V fix della posizione del pulsante "skip" nella versione smartphone
+	- V preparare i vari codici
 	- V inserire un pulsante "come funziona" che spedisca un codice info con gli step da fare
 	- V gestire messaggi (email e contenuto email) mancanti
 	- V gestire messaggio email inviata con successo
 	- V spostare div con i messaggi dei codici sotto al pulsante invia
 	- V al termine della validazione di un codice far scrollare la pagina nel box del messaggio, posto sotto al pulsante "valida codice"
-
-/*
-
-testo codice "HELP" {{{
-Come funziona? (bella domanda)
-1) Inserisci qui sotto il codice presente sul retro del volantino
-
-2) Clicca su "Valida codice"
-
-3) Attendi...
-
-3) Attendi...
-
-4) ...se stai ancora attendendo, qualcosa non ha funzionato...
-
-5) Perfetto, hai scoperto cosa contiene il tuo codice!
-
-6) Impressionato/a? Stupito/a? Meravigliato/a?
-Contattaci, con noi i tuoi tuoi clienti proveranno le stesse emozioni
-Fatti RI-scoprire
-Entpy software www.entpy.com
-"abbiamo visto il futuro, te lo presentiamo sotto forma di software"
-"abbiamo visto il futuro, lui non ancora"
-}}}
-
 */
 
 function placeholder_support() {
@@ -73,6 +49,7 @@ function placeholder_support() {
 		nope: ['/static/website/js/jquery.placeholder.js'],
 		complete: function(){
 			if (!Modernizr.input.placeholder) {
+				alert("added placeholder support");
 				$('input').placeholder();
 				$('textarea').placeholder();
 			}

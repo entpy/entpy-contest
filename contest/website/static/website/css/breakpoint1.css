@@ -7,17 +7,18 @@
 .logo_container > img { width: 75%; }
 .form_container .input_code_container { margin-bottom: 2em; }
 .form_container .input_code_container > input { font-size: 1em; padding: 0.7em 0; width: 80%; }
-.form_container .how_it_works_container { font-size: 0.8em; text-align: right; width: 73%; }
-.form_container .input_submit_container > input { font-size: 1.05em; padding: 0.23em 0; width: 70%; }
+.form_container .how_it_works_container { font-size: 0.877em; margin-top: 9px; text-align: right; width: 73%; }
+.form_container .how_it_works_container .how_it_works_link { padding: 0.3em; }
+.form_container .input_submit_container > input { font-size: 1.12em; padding: 0.23em 0; width: 70%; }
 .coupon_code_block { height: 30em; }
 
 /* send info email {{{ */
-.msg_container { width: 85%; }
+.msg_container { padding: 0.8em; width: 87%; }
 .msg_container .msg_title .right { font-size: 1.2em; }
-.msg_container .msg_bottom_container { font-size: 0.8em; }
+.msg_container .msg_bottom_container { font-size: 1em; }
 .send_mail_container { padding: 10px; }
-.send_mail_container .sendmail_email, .send_mail_container .sendmail_body { font-size: 0.8em; padding: 13px; width: 80%; }
-.send_mail_container .sendmail_button_container .sendmail_button { display: inline-block; font-size: 1em; padding: 0.23em 1em; width: 65%; }
+.send_mail_container .sendmail_email, .send_mail_container .sendmail_body { font-size: 1em; padding: 13px; width: 80%; }
+.send_mail_container .sendmail_button_container .sendmail_button { display: inline-block; font-size: 1.2em; padding: 0.23em 1em; width: 65%; }
 /* send info email }}} */
 
 /* buttons */

@@ -86,7 +86,7 @@ b, .bold { font-weight: bold; }
 }
 .no_overflow_x { overflow-x: hidden; }
 .display_only_mobile, .display_only_pc { display: none; }
-.coupon_code_block { height: 60em; }
+.coupon_code_block { display: inline; height: 60em; }
 /* common element style }}} */
 
 /* page main style {{{ */
@@ -95,7 +95,7 @@ b, .bold { font-weight: bold; }
 .logo_container .entpy_logo_image { margin-top: 3em; }
 .logo_container .entpy_logo_image2 { padding-top: 5%; }
 .entpy_world_container { padding-top: 1em; display: inline-block; }
-.entpy_world_container .entpy_world_image { width: 100%; }
+.entpy_world_container .entpy_world_image { vertical-align: bottom; width: 100%; }
 .logo_bottom_container { color: #115367; font-size: 21px; font-weight: bold; }
 
 /* code form {{{ */
