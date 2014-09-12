@@ -266,8 +266,8 @@ b, .bold { font-weight: bold; }
 .msg_container .msg_title { margin-bottom: 10px; }
 .msg_container .msg_title .right { font-weight: bold; font-size: 1.4em; }
 .msg_container .msg_container { font-size: 1em; }
-.msg_container .msg_extra_param { font-size: 0.96em; margin-top: 0.73em; text-align: right; }
-.msg_container .msg_bottom_container { font-size: 1.2em; margin-top: 2em; text-align: right; }
+.msg_container .msg_extra_param { font-size: 0.96em; margin-top: 2em; }
+.msg_container .msg_bottom_container { font-size: 1.2em; margin-top: 2em; }
 .msg_container.success { background-color: #83c61a; color: #001a23; display: inline-block; }
 .msg_container.success .tinymce_ol li { color: #001a23; }
 .msg_container.success .tinymce_ol li span { color: #001a23; }
