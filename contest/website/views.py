@@ -57,12 +57,13 @@ def validate_code(request):
 		promo_details = promotionalcode_obj.get_promo_details(code=code_to_validate)
 
         # code valid
-        if (not error and code_to_validate != "help_code"):
+        if (not error):
                 success = 1
                 # wow...let's sending an email to admin
                 # first, build email body
-                html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)
-                promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: un codice è stato validato")
+                if (code_to_validate != "help_code"):
+                        html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)
+                        promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: un codice è stato validato")
 
         # build JSON response
         response_data = promotionalcode_obj.build_json_response(error, success, promo_details, code_to_validate)
