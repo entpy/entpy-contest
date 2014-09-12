@@ -39,6 +39,7 @@ class CodeType(models.Model):
 class CodeContent(models.Model):
 	id_code_content = models.AutoField(primary_key=True)
 	content = models.TextField("Contenuto")
+	description = models.CharField("Descrizione del contenuto", max_length=200)
 
 	class Meta:
 		verbose_name = "Contenuto del codice"
@@ -46,7 +47,7 @@ class CodeContent(models.Model):
 
 	# On Python 3: def __str__(self):
 	def __unicode__(self):
-		return self.content
+		return self.description
 
 class PromotionalCode(models.Model):
 	id_promotional_code = models.AutoField(primary_key=True)
@@ -75,15 +76,15 @@ class PromotionalCode(models.Model):
 
                 # checking if code exists
                 if (error == 1):
-                        message = "Codice promozionale non esistente."
+                        message = '<div class="tinymce_block"><h2>Codice promozionale non esistente.</h2><p class="entpy_software_container">Entpy software | <a data-mce-href="http://www.entpy.com" target="_blank" href="http://www.entpy.com" title="Entpy">www.entpy.com</a><br></p><p class="attribution">"abbiamo visto il futuro, lui non ancora"</p></div>'
 
                 # checking if code is not already validated
                 if (error == 2):
-                        message = "Codice promozionale già validato."
+                        message = '<div class="tinymce_block"><h2>Codice promozionale già validato.</h2><p class="entpy_software_container">Entpy software | <a data-mce-href="http://www.entpy.com" target="_blank" href="http://www.entpy.com" title="Entpy">www.entpy.com</a><br></p><p class="attribution">"abbiamo visto il futuro, lui non ancora"</p></div>'
 
                 # checking if campaign is not expired
                 if (error == 3):
-                        message = "Codice promozionale scaduto."
+                        message = '<div class="tinymce_block"><h2>Codice promozionale scaduto.</h2><p class="entpy_software_container">Entpy software | <a data-mce-href="http://www.entpy.com" target="_blank" href="http://www.entpy.com" title="Entpy">www.entpy.com</a><br></p><p class="attribution">"abbiamo visto il futuro, lui non ancora"</p></div>'
 
                 # build success/error response {{{
                 if (success):

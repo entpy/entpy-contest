@@ -116,9 +116,16 @@ class CodeTypeAdmin(admin.ModelAdmin):
         list_display = ('code_type', 'description')
 
 class CodeContentAdmin(admin.ModelAdmin):
-
+        class Media:
+                """
+                js = (
+                        '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+                        '/static/website/js/tiny_mce/tinymce.min.js',
+                        '/static/website/js/tiny_mce/tinymce_settings.js',
+                )*/
+                """
         # table list fields
-        list_display = ('content',)
+        list_display = ('description',)
 
 admin.site.register(PromotionalCode, PromotionalCodeAdmin)
 admin.site.register(CodeType, CodeTypeAdmin)

@@ -65,8 +65,6 @@ Entpy software www.entpy.com
 
 */
 
-*/
-
 function placeholder_support() {
 	// adding placeholder support to old browser
 
