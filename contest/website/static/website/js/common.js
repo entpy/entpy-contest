@@ -73,7 +73,8 @@ function placeholder_support() {
 		nope: ['/static/website/js/jquery.placeholder.js'],
 		complete: function(){
 			if (!Modernizr.input.placeholder) {
-				$('input, textarea').placeholder();
+				$('input').placeholder();
+				$('textarea').placeholder();
 			}
 		}
 	});
