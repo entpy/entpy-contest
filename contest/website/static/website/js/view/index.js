@@ -159,6 +159,8 @@ var ciakWrapper = {
 	},
 
 	getAnimationFromHtml : function() {
+		// method to retrieve animation type from HTML
+
 		return $(".animationTypeAction").html();
 	},
 
