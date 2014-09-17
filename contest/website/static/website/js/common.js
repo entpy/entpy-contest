@@ -27,20 +27,6 @@
  *  	-require jquery
  */
 
-/*
-	TODO list:
-	- quando si inserisce un codice far luccicare il pulsante di invio
-	- test su browser obsoleti e smartphone
-	- rimuovere alert del placeholder
-	- V fix della posizione del pulsante "skip" nella versione smartphone
-	- V preparare i vari codici
-	- V inserire un pulsante "come funziona" che spedisca un codice info con gli step da fare
-	- V gestire messaggi (email e contenuto email) mancanti
-	- V gestire messaggio email inviata con successo
-	- V spostare div con i messaggi dei codici sotto al pulsante invia
-	- V al termine della validazione di un codice far scrollare la pagina nel box del messaggio, posto sotto al pulsante "valida codice"
-*/
-
 function placeholder_support() {
 	// adding placeholder support to old browser
 
@@ -49,7 +35,7 @@ function placeholder_support() {
 		nope: ['/static/website/js/jquery.placeholder.js'],
 		complete: function(){
 			if (!Modernizr.input.placeholder) {
-				alert("added placeholder support");
+				// console.log("added placeholder support");
 				$('input').placeholder();
 				$('textarea').placeholder();
 			}

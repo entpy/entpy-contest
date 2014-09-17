@@ -66,28 +66,20 @@
 	<div class="entpy_world_container">
 		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.png" alt="Entpy world">
 	</div>
-	{# how it works button {{{ #}
-	<!-- <div class="action_button how_it_works_button howItWorksAction display_none">
-		<span class="left">Come funziona</span>
-		<span class="right">
-			<img class="" src="static/website/img/skip.png" alt="Salta intro">
-		</span>
-	</div>-->
-	{# how it works button }}} #}
 	{# skip intro button {{{ #}
 	<div class="action_button skip_button skipIntroAction display_none">
 		<span class="left">Skip intro</span>
 		<span class="right">
-			<img class="" src="static/website/img/skip.png" alt="Salta intro">
+			<img class="" src="static/website/img/skip.png" alt="Skip intro">
 		</span>
 	</div>
 	{# skip intro button }}} #}
-	{# server side - client side middelware vars {{{ #}
+	{# server side -> client side middelware vars {{{ #}
 	<div class="animation_type animationTypeAction display_none">{{ animation_type }}</div>
 	<div class="browser_type browserTypeAction display_none">{{ browser_type }}</div>
 	<div class="skip_animation skipAnimationAction display_none"></div>
-	<div class="code_to_check display_none">{{ code_to_check }}</div>
-	{# server side - client side middelware vars }}} #}
+	<div class="code_to_check codeToCheckAction display_none">{{ code_to_check }}</div>
+	{# server side -> client side middelware vars }}} #}
 	<div class="scroll_to_bottom"></div>
 </div>
 {% endblock main_content %}

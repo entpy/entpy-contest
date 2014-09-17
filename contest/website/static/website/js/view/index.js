@@ -1,3 +1,32 @@
+/**
+ * 	Author: Ivan Torchio <i.torchio at entpy dot com>
+ * 	Version: 0.1.0
+ *
+ * 	License: GPL_v3 {Link: http://gplv3.fsf.org/}
+ *
+ *	Permission is hereby granted, free of charge, to any person obtaining
+ *	a copy of this software and associated documentation files (the
+ *	"Software"), to deal in the Software without restriction, including
+ *	without limitation the rights to use, copy, modify, merge, publish,
+ *	distribute, sublicense, and/or sell copies of the Software, and to
+ *	permit persons to whom the Software is furnished to do so, subject to
+ *	the following conditions:
+ *
+ *	The above copyright notice and this permission notice shall be
+ *	included in all copies or substantial portions of the Software.
+ *
+ *	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ *	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *      NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ *      LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ *      OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ *      WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *	-common js functions used in this project
+ *  	-require jquery
+ */
+
 // adding Modernizr svgasimg method to check if an svg could be used inside img tag
 Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1'));
 
@@ -9,12 +38,6 @@ $(document).ready(function(){
 	ciakObj.doAnimationEasy();
 
 	var msgObj = msgWrapper;
-
-	/* msg wrapper debug {{{
-	msgObj.testMessage(); // -> debug only
-	msgObj.showMessageEasy(msgObj.msgTypeList.errorMsg, "Error!", "Description");
-	msgObj.removeMessage();
-	msg wrapper debug }}} */
 
 	// skip button hover animation
 	$(document).on("mouseenter", ".skipIntroAction", function() {
@@ -89,7 +112,7 @@ var ciakWrapper = {
 
 		if (this.getBrowserType() == this.browserTypeName.advanced_browser) {
 			// use svg instead png
-			this.useSvgInstead();
+			// this.useSvgInstead();
 		}
 
 		if (this.animationTypeName[this.getAnimationFromHtml()] == this.animationTypeName.advanced_animation) {
@@ -98,8 +121,8 @@ var ciakWrapper = {
 		}
 
 		// check code via GET to auto fill code form
-		if ($(".code_to_check").html()) {
-			$(".codeInputAction").val($(".code_to_check").html());
+		if ($(".codeToCheckAction").html()) {
+			$(".codeInputAction").val($(".codeToCheckAction").html());
 		}
 	},
 
@@ -110,7 +133,7 @@ var ciakWrapper = {
 		}
 
 		// check code via GET to light up validate coupon button (...mah...)
-		/* if ($(".code_to_check").html()) {
+		/* if ($(".codeToCheckAction").html()) {
 			setTimeout('$(".sendButtonClickAction").click();', 1500);
 		}*/
 	},
@@ -197,13 +220,13 @@ var ciakWrapper = {
 	useSvgInstead : function() {
 		// method to use svg images instead png images
 
-		/*$(".check_image").each(function(index) {
+		$(".check_image").each(function(index) {
 			var old_src_path;
 			var new_src_path;
 			old_src_path = $(this).attr("src");
 			new_src_path = old_src_path.replace(".png", ".svg");
 			$(this).attr("src", new_src_path);
-		});*/
+		});
 	},
 
 	animate : function() {
@@ -225,25 +248,13 @@ var ciakWrapper = {
 
 	// eval functions {{{
 	noneAnimation : function() {
-
-		/*$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
-		$(".new_browser_container .form_container").removeClass("transparent");*/
+		// showing form without animation
 
 		this.showAdvancedForm();
 
 		// method to write code form inside old browser tag, without animations
 		$(".old_browser_container").html($(".new_browser_container").html());
 		$(".new_browser_container").addClass("display_none");
-
-		// remove transparent class
-		/*$(".old_browser_container .entpy_logo_image2").removeClass("transparent");
-		$(".old_browser_container .form_container").removeClass("transparent");
-
-		// add no-transparent class
-		$(".old_browser_container .entpy_logo_image2").addClass("no-transparent");
-		$(".old_browser_container .form_container").addClass("no-transparent");*/
-
-		// alert($(".new_browser_container").html());
 	},
 
 	simpleAnimation : function() {
