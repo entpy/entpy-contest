@@ -49,7 +49,6 @@ function placeholder_support() {
 		nope: ['/static/website/js/jquery.placeholder.js'],
 		complete: function(){
 			if (!Modernizr.input.placeholder) {
-				alert("added placeholder support");
 				$('input').placeholder();
 				$('textarea').placeholder();
 			}

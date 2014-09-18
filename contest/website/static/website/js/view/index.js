@@ -3,6 +3,9 @@ Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.
 
 $(document).ready(function(){
 
+	// detecting placeholder support
+	placeholder_support();
+
 	// a bit of color
 	var ciakObj = ciakWrapper;
 	ciakObj.preActions();
