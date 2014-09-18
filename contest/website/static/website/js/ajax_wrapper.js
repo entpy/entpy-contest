@@ -23,8 +23,8 @@
  *      OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  *      WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * 	-wrapper for ajax call
- *  	-require jquery
+ * 	- wrapper for ajax call
+ *  	- require jquery
  */
 var loadDataWrapper = {
 

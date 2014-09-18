@@ -23,8 +23,8 @@
  *      OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  *      WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- *	-common js functions used in this project
- *  	-require jquery
+ *	- common js functions used in this project
+ *  	- require jquery
  */
 
 // adding Modernizr svgasimg method to check if an svg could be used inside img tag
