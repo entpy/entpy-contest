@@ -1,4 +1,5 @@
-$(document).ready(function(){
+//$(document).ready(function(){
+$(window).load(function(){
 	// a bit of color
 	var ciakObj = ciakWrapper; // ...wow, so beautiful
 	ciakObj.preActions();
