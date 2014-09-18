@@ -1,5 +1,8 @@
 $(window).load(function(){
 
+	// adding svg test to modernizr
+	modernizrAddSvgTest();
+
 	// detecting placeholder support
 	placeholder_support();
 

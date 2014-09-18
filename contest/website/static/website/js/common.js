@@ -27,8 +27,12 @@
  *  	- require jquery
  */
 
-// adding Modernizr svgasimg method to check if an svg could be used inside img tag
-Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1'));
+function modernizrAddSvgTest() {
+	// function to add Modernizr svgasimg method to check if an svg could be used inside img tag
+
+	Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1'));
+	return true;
+}
 
 function placeholder_support() {
 	// adding placeholder support to old browser
@@ -359,6 +363,10 @@ var ciakWrapper = {
 		if (this.animationTypeName[this.getAnimationFromHtml()] == this.animationTypeName.advanced_animation) {
 			// add skip button
 			$(".skipIntroAction").removeClass("display_none");
+
+			// TODO scrolling to top page
+			var scrollingObj = scrollingWrapper;
+			scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling5, 0);
 		}
 
 		// check code via GET to auto fill code form
@@ -510,7 +518,7 @@ var ciakWrapper = {
 	advancedAnimation : function() {
 		// method to start advanced animation
 
-		ciakWrapper.animateViaCssClass(".logo1AnimationAction", "bounceInDown", "3s", "1s", "1");
+		ciakWrapper.animateViaCssClass(".logo1AnimationAction", "bounceInDown", "4s", "0s", "1");
 		$(".logo1AnimationAction").removeClass("transparent");
 
 		$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
@@ -521,13 +529,13 @@ var ciakWrapper = {
 
 			// entpy logo tada
 			$(".logo1AnimationAction").removeClass("bounceInDown");
-			ciakWrapper.animateViaCssClass(".logo1AnimationAction", "tada", "2s", "1s", "1");
+			ciakWrapper.animateViaCssClass(".logo1AnimationAction", "tada", "1.7s", "1s", "1");
 
 			$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
 
 				// entpy logo out
 				$(".logo1AnimationAction").removeClass("tada");
-				ciakWrapper.animateViaCssClass(".logo1AnimationAction", "lightSpeedOut", "0.8s", "1s", "1");
+				ciakWrapper.animateViaCssClass(".logo1AnimationAction", "zoomOutDown", "1.2s", "1s", "1");
 
 				// scrolling universe to the city
 				var scrollingObj = scrollingWrapper;
@@ -550,7 +558,8 @@ var scrollingWrapper = {
 		scrolling1 : "scrolling1",
 		scrolling2 : "scrolling2",
 		scrolling3 : "scrolling3",
-		scrolling4 : "scrolling4"
+		scrolling4 : "scrolling4",
+		scrolling5 : "scrolling5"
 	},
 
 	scrollingDelay : false,
@@ -571,6 +580,8 @@ var scrollingWrapper = {
 				this._scrollType = this.scrollTypeName.scrolling3;
 			} else if (this.scrollTypeName.scrolling4 == scrollName) {
 				this._scrollType = this.scrollTypeName.scrolling4;
+			} else if (this.scrollTypeName.scrolling5 == scrollName) {
+				this._scrollType = this.scrollTypeName.scrolling5;
 			}
 		}
 	},
@@ -595,10 +606,10 @@ var scrollingWrapper = {
 		// function to scroll at page bottom and than to entpy logo
 
 		if (!$(".skipAnimationAction").html()) {
-			$.scrollTo('.scroll_to_bottom', 5500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+			$.scrollTo('.scroll_to_bottom', 4000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
 					// ...at the end of bottom scrolling, return to logo pt2 animation
 					var scrollingObj = scrollingWrapper;
-					scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 1000);
+					scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 0);
 				}
 			});
 		}
@@ -610,10 +621,10 @@ var scrollingWrapper = {
 		// function to scroll directly to entpy logo
 
 		if (!$(".skipAnimationAction").html()) {
-			$.scrollTo('.scroll_to_element1', 5000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+			$.scrollTo('.scroll_to_element1', 2000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
 					ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1.5s", "0s", "1");
-					ciakWrapper.animateViaCssClass(".logo2AnimationAction", "lightSpeedIn", "1s", "2.8s", "1");
-					ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "4.5s", "1");
+					ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeInUp", "1s", "0.8s", "1");
+					ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "3.5s", "1");
 
 					// exec actions post animation
 					ciakWrapper.postActions();
@@ -640,6 +651,11 @@ var scrollingWrapper = {
 	scrolling4 : function() {
 		// function to scroll directly to entpy logo
 		$.scrollTo('.msgContainerAction', 2000, { offset: -10, axis:'y', easing : 'easeInOutQuart', onAfter : function(){} });
+	},
+
+	scrolling5 : function() {
+		// function to scroll at the top
+		$.scrollTo('.scroll_to_top', 500, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){} });
 	}
 	// eval functions }}}
 };
