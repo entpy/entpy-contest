@@ -529,12 +529,12 @@ var ciakWrapper = {
 
 			// entpy logo tada
 			$(".logo1AnimationAction").removeClass("bounceInDown");
-			ciakWrapper.animateViaCssClass(".logo1AnimationAction", "tada", "1.7s", "1s", "1");
+			ciakWrapper.animateViaCssClass(".logo1AnimationAction", "rubberBand", "1.7s", "1s", "1");
 
 			$(".logo1AnimationAction").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(param){
 
 				// entpy logo out
-				$(".logo1AnimationAction").removeClass("tada");
+				$(".logo1AnimationAction").removeClass("rubberBand");
 				ciakWrapper.animateViaCssClass(".logo1AnimationAction", "zoomOutDown", "1.2s", "1s", "1");
 
 				// scrolling universe to the city
@@ -606,7 +606,7 @@ var scrollingWrapper = {
 		// function to scroll at page bottom and than to entpy logo
 
 		if (!$(".skipAnimationAction").html()) {
-			$.scrollTo('.scroll_to_bottom', 4000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+			$.scrollTo('.scroll_to_bottom', 5000, { axis:'y', easing : 'easeInSine', onAfter : function(){
 					// ...at the end of bottom scrolling, return to logo pt2 animation
 					var scrollingObj = scrollingWrapper;
 					scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling2, 0);
@@ -621,7 +621,7 @@ var scrollingWrapper = {
 		// function to scroll directly to entpy logo
 
 		if (!$(".skipAnimationAction").html()) {
-			$.scrollTo('.scroll_to_element1', 2000, { axis:'y', easing : 'easeInOutQuart', onAfter : function(){
+			$.scrollTo('.scroll_to_element1', 1000, { axis:'y', easing : 'easeOutBack', onAfter : function(){
 					ciakWrapper.animateViaCssClass(".logoBottomTextAction", "fadeIn", "1.5s", "0s", "1");
 					ciakWrapper.animateViaCssClass(".logo2AnimationAction", "fadeInUp", "1s", "0.8s", "1");
 					ciakWrapper.animateViaCssClass(".form_container", "fadeIn", "3s", "3.5s", "1");
