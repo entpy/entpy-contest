@@ -260,11 +260,11 @@ function build_contact_us_link(msgType) {
 		if (msgType == "success") {
 			returnVar = 'Dubbi o domande? Entpy ha la risposta, contattaci adesso.';
 		} else if (msgType == "error") {
-			returnVar = 'Evita la coda! Contattaci prima di qualcun\'altro.';
+			returnVar = 'Evita la coda! Contattaci prima di qualcun altro.';
 		} else if (msgType == "alert") {
 			returnVar = 'Vuoi sapere come utilizzare il coupon? Contattaci!';
 		} else if (msgType == "tip") {
-			returnVar = 'Evita la coda! Contattaci prima di qualcun\'altro.';
+			returnVar = 'Evita la coda! Contattaci prima di qualcun altro.';
 		}
 	}
 
