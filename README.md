@@ -16,6 +16,10 @@ codice sconto
 -------------
 <div class="tinymce_block"><h2>Bene, con questo codice ha ottenuto un buono del 30% da investire su di noi, ecco cosa ti proponiamo:</h2><ol class="tinymce_ol"><li><span>Sconto sulla creazione di un sito statico</span></li><li><span>Sconto sulla creazione di un sito dinamico</span></li><li><span>Sconto sulla creazione di uno strumento per attirare l'attenzione di possibili clienti/acquirenti</span></li><li><span>Fatti notare, noi ti daremo tutte le risposte!</span></li></ol><p class="entpy_software_container">Entpy software | <a title="Entpy" href="http://www.entpy.com" target="_blank" data-mce-href="http://www.entpy.com">www.entpy.com</a><br /></p><p class="attribution">"abbiamo visto il futuro, lui non ancora"</p></div>
 
+TEST list
+---------
+- Testare le opacità della sezione per inviare mail informative
+- Testare le icone dei messaggi si successo, errore, tip, ...
 
 TODO list
 ---------

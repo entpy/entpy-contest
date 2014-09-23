@@ -55,19 +55,15 @@ var msgWrapper = {
 
 	// icons for message
 	msgIconList : {
-		successMsg : "&#xf118;", // \f118,
-		errorMsg : "&#xf119;", // \f119,
-		alertMsg : "&#xf071;", // \f071,
-		tipMsg : "&#xf19d;", // \f19d,
+		this.msgTypeList.successMsg : "&#xf118;", // \f118,
+		this.msgTypeList.errorMsg : "&#xf119;", // \f119,
+		this.msgTypeList.alertMsg : "&#xf071;", // \f071,
+		this.msgTypeList.tipMsg : "&#xf19d;", // \f19d,
 	},
 
 	/* private get/set methods {{{ */
 	setMsgType : function(val) {
 		this._msg_type = val;
-	},
-
-	setMsgIcon : function(val) {
-		this._msg_icon = val;
 	},
 
 	setMsgTitle : function(val) {
@@ -84,6 +80,10 @@ var msgWrapper = {
 
 	setMsgBottomContent : function(val) {
 		this._msg_bottom_content = val;
+	},
+
+	setMsgIcon : function(val) {
+		this._msg_icon = val;
 	},
 
 	getMsgType : function() {
@@ -129,6 +129,7 @@ var msgWrapper = {
 		this.setMsgContent("");
 		this.setMsgExtraParam("");
 		this.setMsgBottomContent("");
+		this.setMsgIcon("");
 
 		this.showMessage();
 	},
@@ -139,6 +140,7 @@ var msgWrapper = {
 		this.removeTypeClass();
 		$(this._msg_container_class).addClass(this.getMsgType());
 		$(this._msg_title_class).html(this.getMsgTitle());
+		$(this._msg_icon_container_class).html(this.getMsgIcon());
 		$(this._msg_content_class).html(this.getMsgContent());
 		$(this._msg_extra_param_class).html(this.getMsgExtraParam());
 		$(this._msg_bottom_container_class).html(this.getMsgBottomContent());
@@ -147,7 +149,11 @@ var msgWrapper = {
 	testMessage : function() {
 		// method to print a test message
 
-		this.setMsgType(this.msgTypeList.tipMsg);
+		// parsing icon list JSON to array
+		var json_icon_list = JSON.parse(this.msgIconList);
+
+		this.setMsgIcon(json_icon_list[this.msgtypelist.tipmsg]);
+		this.setMsgType(this.msgtypelist.tipmsg);
 		this.setMsgTitle("Test title");
 		this.setMsgContent("Test description");
 		this.setMsgExtraParam("Test extra param");
@@ -158,8 +164,9 @@ var msgWrapper = {
 	showMessageEasy : function(msgType, msgTitle, msgDescription, msgExtraParam, msgBottomContent) {
 		// method to show a custom message
 
-		// this must be a valid name: (success | error | alert | tip)
+		// WARNING: this must be a valid name: (success | error | alert | tip)
 		if (msgType) {
+			this.setMsgIcon(this.msgIconList.msgType);
 			this.setMsgType(msgType);
 		}
 
