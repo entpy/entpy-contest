@@ -35,11 +35,13 @@ var msgWrapper = {
 	_msg_content_class : ".msgContentAction",
 	_msg_extra_param_class : ".msgExtraParamAction",
 	_msg_bottom_container_class : ".msgBottomContainerAction",
+	_msg_icon_container_class : ".msgIconContainerAction",
 	_msg_type : false,
 	_msg_title : false,
 	_msg_content : false,
 	_msg_extra_param : false, 
 	_msg_bottom_content : false, 
+	_msg_icon : false,
 	/* private vars }}} */
 
 	// list of all message type availables
@@ -51,9 +53,21 @@ var msgWrapper = {
 		tipMsg : "tip",
 	},
 
+	// icons for message
+	msgIconList : {
+		successMsg : "&#xf118;", // \f118,
+		errorMsg : "&#xf119;", // \f119,
+		alertMsg : "&#xf071;", // \f071,
+		tipMsg : "&#xf19d;", // \f19d,
+	},
+
 	/* private get/set methods {{{ */
 	setMsgType : function(val) {
 		this._msg_type = val;
+	},
+
+	setMsgIcon : function(val) {
+		this._msg_icon = val;
 	},
 
 	setMsgTitle : function(val) {
@@ -90,6 +104,10 @@ var msgWrapper = {
 
 	getMsgBottomContent : function(val) {
 		return this._msg_bottom_content;
+	},
+
+	getMsgIcon : function(val) {
+		return this._msg_icon;
 	},
 	/* private get/set methods }}} */
 
