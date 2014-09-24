@@ -6,23 +6,7 @@
 	<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 	<url>
-		<loc>http://www.entpy.com/</loc>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>http://www.entpy.com/filosofia/</loc>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>http://www.entpy.com/contatti/</loc>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>http://www.entpy.com/lavora-con-noi/</loc>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>http://www.entpy.com/modello/</loc>
+		<loc>http://contest.entpy.com/</loc>
 		<changefreq>monthly</changefreq>
 	</url>
 </urlset>

@@ -3,4 +3,4 @@ User-agent: *
 Disallow: 
 Disallow: /404/
 
-Sitemap: http://www.entpy.com/sitemap.xml
+Sitemap: http://contest.entpy.com/sitemap.xml
