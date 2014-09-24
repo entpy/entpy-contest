@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9	http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+	<url>
+		<loc>http://www.entpy.com/</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.entpy.com/filosofia/</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.entpy.com/contatti/</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.entpy.com/lavora-con-noi/</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.entpy.com/modello/</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+</urlset>
