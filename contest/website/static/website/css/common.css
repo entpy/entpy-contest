@@ -23,7 +23,15 @@ body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
 /* placeholder color */
-::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder { color: #000; }
+:-ms-input-placeholder { color: #666; font-weight: normal; }
+::-moz-placeholder { color: #666; font-weight: normal; }
+:-moz-placeholder { color: #666; font-weight: normal; }
+::-webkit-input-placeholder { color: #666; font-weight: normal; }
+.form_container .input_code_container :-ms-input-placeholder { color: blue; font-weight: normal; }
+.form_container .input_code_container ::-moz-placeholder { color: blue; font-weight: normal; }
+.form_container .input_code_container :-moz-placeholder { color: blue; font-weight: normal; }
+.form_container .input_code_container ::-webkit-input-placeholder { color: blue; font-weight: normal; }
+
 .align_left { text-align: left; }
 .align_right { text-align: right; }
 .align_center { text-align: center; }
@@ -128,7 +136,8 @@ b, .bold { font-weight: bold; }
 /* sendmail form {{{ */
 .send_mail_container {
 	/*background-color: #484848;*/
-	background:rgb(0, 0, 0);
+	background: transparent;
+	background: rgb(0, 0, 0);
 	background: transparent\9;
 	background:rgba(0, 0, 0, 0.2);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000);
@@ -255,7 +264,7 @@ b, .bold { font-weight: bold; }
 
 /* error/success messages {{{ */
 .msg_container { display: none; margin-top: 2em; padding: 1em; text-align: left; width: 50%; }
-.msg_container .icon_container { font-size: 1.5em; margin-right: 10px; }
+.msg_container .icon_container { float: left; font-family: FontAwesome; font-size: 1.5em; margin-right: 10px; }
 .msg_container .msg_title { margin-bottom: 10px; }
 .msg_container .msg_title .right { font-weight: bold; font-size: 1.4em; }
 .msg_container .msg_container { font-size: 1em; }

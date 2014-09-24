@@ -140,7 +140,10 @@ function send_info_email() {
 			async : false,
 			headers: { "X-CSRFToken": csrftoken },
 			success : function(result) {
-				console.log(result);
+				// console.log(result);
+				// clear send email form
+				clear_send_email_form();				
+
 				// show success/error message
 				manage_json_info_email_response(result);
 			},
@@ -152,6 +155,14 @@ function send_info_email() {
 		// performing ajax call
 		loadDataWrapper.getGenericDataViaAjaxCall(ajaxCallData);
 	}
+
+	return true;
+}
+
+function clear_send_email_form() {
+	// function to clear send email form
+	$(".sendmailUserEmailAction").val("");
+	$(".sendmailBodyAction").val("");
 
 	return true;
 }

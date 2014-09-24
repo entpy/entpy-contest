@@ -55,10 +55,10 @@ var msgWrapper = {
 
 	// icons for message
 	msgIconList : {
-		this.msgTypeList.successMsg : "&#xf118;", // \f118,
-		this.msgTypeList.errorMsg : "&#xf119;", // \f119,
-		this.msgTypeList.alertMsg : "&#xf071;", // \f071,
-		this.msgTypeList.tipMsg : "&#xf19d;", // \f19d,
+		"success" : "&#xf118;", // \f118,
+		"error" : "&#xf119;", // \f119,
+		"alert" : "&#xf071;", // \f071,
+		"tip" : "&#xf19d;", // \f19d,
 	},
 
 	/* private get/set methods {{{ */
@@ -150,9 +150,9 @@ var msgWrapper = {
 		// method to print a test message
 
 		// parsing icon list JSON to array
-		var json_icon_list = JSON.parse(this.msgIconList);
+		// var json_icon_list = JSON.parse(this.msgIconList);
 
-		this.setMsgIcon(json_icon_list[this.msgtypelist.tipmsg]);
+		this.setMsgIcon(this.msgIconList[this.msgtypelist.tipmsg]);
 		this.setMsgType(this.msgtypelist.tipmsg);
 		this.setMsgTitle("Test title");
 		this.setMsgContent("Test description");
@@ -166,7 +166,7 @@ var msgWrapper = {
 
 		// WARNING: this must be a valid name: (success | error | alert | tip)
 		if (msgType) {
-			this.setMsgIcon(this.msgIconList.msgType);
+			this.setMsgIcon(this.msgIconList[msgType]);
 			this.setMsgType(msgType);
 		}
 
