@@ -24,21 +24,19 @@ body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
 /* help form placeholder color {{{ */
-.form_container .input_code_container > input:-ms-input-placeholder { color: #28aee2; }
-.form_container .input_code_container > input::-moz-placeholder { color: #28aee2; }
-.form_container .input_code_container > input:-moz-placeholder { color: #28aee2; }
+.form_container .input_code_container > input:-ms-input-placeholder,
+.form_container .input_code_container > input::-moz-placeholder,
+.form_container .input_code_container > input:-moz-placeholder,
 .form_container .input_code_container > input::-webkit-input-placeholder { color: #28aee2; }
 
-.send_mail_container :-ms-input-placeholder { color: red; }
-.send_mail_container ::-moz-placeholder { color: red; }
-.send_mail_container :-moz-placeholder { color: red; }
-.send_mail_container ::-webkit-input-placeholder { color: red; }
-/*
-.send_mail_container :-ms-input-placeholder { color: #444; }
-.send_mail_container ::-moz-placeholder { color: #444; }
-.send_mail_container :-moz-placeholder { color: #444; }
-.send_mail_container ::-webkit-input-placeholder { color: #444; }
-*/
+.send_mail_container input:-ms-input-placeholder,
+.send_mail_container input::-moz-placeholder,
+.send_mail_container input:-moz-placeholder,
+.send_mail_container input::-webkit-input-placeholder,
+.send_mail_container textarea:-ms-input-placeholder,
+.send_mail_container textarea::-moz-placeholder,
+.send_mail_container textarea:-moz-placeholder,
+.send_mail_container textarea::-webkit-input-placeholder { color: red; }
 /* help form placeholder color }}} */
 
 .align_left { text-align: left; }
