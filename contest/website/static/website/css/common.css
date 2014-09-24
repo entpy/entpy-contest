@@ -23,10 +23,10 @@ body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
 /* help form placeholder color {{{ */
-.send_mail_container  :-ms-input-placeholder { color: #666; }
-.send_mail_container  ::-moz-placeholder { color: #666; }
-.send_mail_container  :-moz-placeholder { color: #666; }
-.send_mail_container  ::-webkit-input-placeholder { color: #666; }
+.send_mail_container  :-ms-input-placeholder { color: #444; }
+.send_mail_container  ::-moz-placeholder { color: #444; }
+.send_mail_container  :-moz-placeholder { color: #444; }
+.send_mail_container  ::-webkit-input-placeholder { color: #444; }
 /* help form placeholder color }}} */
 
 .align_left { text-align: left; }
