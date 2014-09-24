@@ -22,15 +22,16 @@
 body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
-/* placeholder color */
-:-ms-input-placeholder { color: #666; font-weight: normal; }
-::-moz-placeholder { color: #666; font-weight: normal; }
-:-moz-placeholder { color: #666; font-weight: normal; }
-::-webkit-input-placeholder { color: #666; font-weight: normal; }
-.form_container .input_code_container :-ms-input-placeholder { color: blue; font-weight: normal; }
-.form_container .input_code_container ::-moz-placeholder { color: blue; font-weight: normal; }
-.form_container .input_code_container :-moz-placeholder { color: blue; font-weight: normal; }
-.form_container .input_code_container ::-webkit-input-placeholder { color: blue; font-weight: normal; }
+/* help form placeholder color {{{ */
+.send_mail_container .sendmail_email :-ms-input-placeholder { color: #666; }
+.send_mail_container .sendmail_email ::-moz-placeholder { color: #666; }
+.send_mail_container .sendmail_email :-moz-placeholder { color: #666; }
+.send_mail_container .sendmail_email ::-webkit-input-placeholder { color: #666; }
+.send_mail_container .sendmail_body :-ms-input-placeholder { color: #666; }
+.send_mail_container .sendmail_body ::-moz-placeholder { color: #666; }
+.send_mail_container .sendmail_body :-moz-placeholder { color: #666; }
+.send_mail_container .sendmail_body ::-webkit-input-placeholder { color: #666; }
+/* help form placeholder color }}} */
 
 .align_left { text-align: left; }
 .align_right { text-align: right; }

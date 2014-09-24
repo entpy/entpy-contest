@@ -35,12 +35,15 @@
 		<link rel="stylesheet" href="{% static "website/css/reset.css" %}" >
 		<link rel="stylesheet" href="{% static "website/css/common.css" %}">
 		<link rel="stylesheet" href="{% static "website/css/main.css" %}">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" type="text/css" href="{% static "website/css/breakpoint3.css" %}" />
 			<link rel="stylesheet" type="text/css" href="{% static "website/css/ie8_fix.css" %}" />
 		<![endif]-->
 
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+		{#<!--[if IE 7]>#}
+			<link rel="stylesheet" href="{% static "website/css/font-awesome-ie7.min.css" %}" />
+		{#<![endif]-->#}
 		{% endblock loaded_css %}
 
 		<!-- javascript loading -->
