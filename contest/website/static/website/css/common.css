@@ -19,14 +19,20 @@
 	font-weight: normal;
 	font-style: normal;
 }
+html { background-color: #002c3a; }
 body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
 /* help form placeholder color {{{ */
-.send_mail_container  :-ms-input-placeholder { color: #444; }
-.send_mail_container  ::-moz-placeholder { color: #444; }
-.send_mail_container  :-moz-placeholder { color: #444; }
-.send_mail_container  ::-webkit-input-placeholder { color: #444; }
+.form_container .input_code_container > input :-ms-input-placeholder { color: #28aee2; }
+.form_container .input_code_container > input ::-moz-placeholder { color: #28aee2; }
+.form_container .input_code_container > input :-moz-placeholder { color: #28aee2; }
+.form_container .input_code_container > input ::-webkit-input-placeholder { color: #28aee2; }
+
+.send_mail_container :-ms-input-placeholder { color: #444; }
+.send_mail_container ::-moz-placeholder { color: #444; }
+.send_mail_container :-moz-placeholder { color: #444; }
+.send_mail_container ::-webkit-input-placeholder { color: #444; }
 /* help form placeholder color }}} */
 
 .align_left { text-align: left; }
@@ -132,12 +138,11 @@ b, .bold { font-weight: bold; }
 
 /* sendmail form {{{ */
 .send_mail_container {
-	/*background-color: #484848;*/
+	background-color: transparent;
 	background: transparent;
-	background: rgb(0, 0, 0);
 	background: transparent\9;
-	background:rgba(0, 0, 0, 0.2);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000);
+	background: rgba(0, 0, 0, 0.2);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000);
 	zoom: 1;
 	padding: 25px;
 	margin-top: 1em;
@@ -296,12 +301,6 @@ b, .bold { font-weight: bold; }
 /*.msg_container.tip .icon_container:after { font-family: FontAwesome; content: "\f19d"; }*/
 /* error/success messages }}} */
 /* page main style }}} */
-
-/* colors {{{ */
-html {
-	background-color: #002c3a;
-}
-/* colors }}} */
 
 /* animation fix {{{ */
 .logo_container, .form_container {
