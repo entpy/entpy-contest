@@ -40,10 +40,6 @@
 			<link rel="stylesheet" type="text/css" href="{% static "website/css/breakpoint3.css" %}" />
 			<link rel="stylesheet" type="text/css" href="{% static "website/css/ie8_fix.css" %}" />
 		<![endif]-->
-
-		{#<!--[if IE 7]>#}
-			<link rel="stylesheet" href="{% static "website/css/font-awesome-ie7.min.css" %}" />
-		{#<![endif]-->#}
 		{% endblock loaded_css %}
 
 		<!-- javascript loading -->
@@ -52,10 +48,9 @@
 		{# <script src="{% static "website/js/snap.svg-min.js" %}"></script> #}
 		<script src="{% static "website/js/common.js" %}"></script>
 		{% endblock loaded_script %}
-
-		<!--[if lt IE 9]>
+		<!--[if lt IE 9]>-->
 			<script src="{% static "website/js/html5shiv.js" %}"></script>
-		<![endif]-->
+		<!-- <![endif]-->
 		<script src="{% static "website/js/modernizr.custom.73277.js" %}"></script>
 
 		<!-- Google analytics script -->
