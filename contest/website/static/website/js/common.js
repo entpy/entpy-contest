@@ -114,8 +114,6 @@ function send_info_email() {
 	// reading csrfmiddlewaretoken from cookie
 	var csrftoken = $.cookie('csrftoken');
 
-	// var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
-
 	var user_email = $(".sendmailUserEmailAction").val();
 	var email_content = $(".sendmailBodyAction").val();
 	var code = $(".sendmailValidCodeAction").val();
@@ -254,7 +252,7 @@ function copy_validated_code(validCouponCode) {
 	if (validCouponCode) {
 
 		// copy valid code
-		$(".sendmailValidCodeAction").val(validCouponCode)
+		$(".sendmailValidCodeAction").val(validCouponCode);
 
 		returnVar = true;
 	}
@@ -375,7 +373,7 @@ var ciakWrapper = {
 			// add skip button
 			$(".skipIntroAction").removeClass("display_none");
 
-			// TODO scrolling to top page
+			// scrolling to top page
 			var scrollingObj = scrollingWrapper;
 			scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling5, 0);
 		}
