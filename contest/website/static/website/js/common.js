@@ -130,7 +130,7 @@ function send_info_email() {
 			"email_content" : email_content,
 			"promo_code" : code
 		};
-		var ajaxCallParam = JSON.stringify(arrAjaxParam);
+		var ajaxCallParam = encodeURIComponent(JSON.stringify(arrAjaxParam));
 
 		var ajaxCallData = {
 			url : "/send-info-email/",
