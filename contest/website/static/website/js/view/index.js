@@ -42,6 +42,12 @@ $(document).ready(function(){
 		validate_sendmail_form(false, true);
 		return false;
 	});
+
+	$(document).on("submit", ".helpMailFormAction", function() {
+		// info email form submit
+		$(".sendInfoMailAction").click();
+		return false;
+	});
 });
 
 // start animation when when DOM and all sub-elements have been completely loaded
