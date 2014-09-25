@@ -171,7 +171,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	var sendmail_email_exists = false;
 	var sendmail_email_valid = false;
 	// /^[0-9a-zA-Z_-]+[0-9a-zA-Z_.-]*@(?:[0-9a-zA-Z_-]+\.)+[0-9a-zA-Z]+$/ -> tested on http://regexpal.com/
-	var checkEmailRegex = new RegExp('^\[0-9a-zA-Z_-\]+\[0-9a-zA-Z_.-\]*@\(?:\[0-9a-zA-Z_-\]+\.\)+\[0-9a-zA-Z\]+$');
+	var checkEmailRegex = new RegExp('^\[0-9a-zA-Z_-\]+\[0-9a-zA-Z_.-\]*@(?:\[0-9a-zA-Z_-\]+\\.)+\[0-9a-zA-Z\]+$');
 
 	var sendmail_body = $(".sendmailBodyAction").val();
 	var sendmail_email = $(".sendmailUserEmailAction").val();
