@@ -210,11 +210,11 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	// error messages
 	if (!sendmail_body_exists || !sendmail_email_exists) {
 		if (show_alert) {
-			alert("La tua e-mail e il messaggio sono obbligatori");
+			alert("Mail e messaggio sono obbligatori");
 		}
 	} else if (sendmail_email_exists && !sendmail_email_valid) {
 		if (show_alert) {
-			alert("Controlla la tua e-mail");
+			alert("Inserisci una mail valida");
 		}
 	}
 
