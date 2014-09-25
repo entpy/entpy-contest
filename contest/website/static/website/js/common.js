@@ -202,6 +202,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 				sendmail_email_valid = true;
 			} else {
 				// please, insert a valid mail
+				returnVar = false;
 				$(".sendmailUserEmailAction").addClass("email_form_input_error");
 			}
 		}
