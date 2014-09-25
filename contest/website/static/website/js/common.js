@@ -176,6 +176,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	var sendmail_body = $(".sendmailBodyAction").val();
 	var sendmail_email = $(".sendmailUserEmailAction").val();
 
+	// validating text
 	if (validate_content) {
 		if (!sendmail_body) {
 			returnVar = false;
@@ -186,14 +187,14 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 		}
 	}
 
+	// validating email
 	if (validate_email) {
 		if (!sendmail_email) {
 			returnVar = false;
 			$(".sendmailUserEmailAction").addClass("email_form_input_error");
 		} else {
-			// TODO mail exists...but is it a valid address?
 			sendmail_email_exists = true;
-
+			// TODO mail exists...but is it a valid address?
 			if (checkEmailRegex.test(sendmail_email)) {
 				// yes, this is a valid email address
 				$(".sendmailUserEmailAction").removeClass("email_form_input_error");
@@ -209,7 +210,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	// error messages
 	if (!sendmail_body_exists || !sendmail_email_exists) {
 		if (show_alert) {
-			alert("Inserisci un messaggio e la tua e-mail");
+			alert("La tua e-mail e il messaggio sono obbligatori");
 		}
 	} else if (sendmail_email_exists && !sendmail_email_valid) {
 		if (show_alert) {
