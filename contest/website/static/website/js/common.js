@@ -118,10 +118,8 @@ function send_info_email() {
 	var email_content = $(".sendmailBodyAction").val();
 	var code = $(".sendmailValidCodeAction").val();
 
-	// validate sendmail form data
-	validate_sendmail_form(true, true, true);
-
-	if (user_email && email_content) {
+	// validate sendmail form data -> TODO: check this
+	if (validate_sendmail_form(true, true, true)) {
 
 		// creating array with data
 		var arrAjaxParam = Array();
