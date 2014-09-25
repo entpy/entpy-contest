@@ -169,8 +169,11 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	// function to validate send email form data
 
 	var returnVar = true;
-	var sendmail_body_valid = false;
+	var sendmail_body_exists = false;
+	var sendmail_email_exists = false;
 	var sendmail_email_valid = false;
+	// /^[0-9a-zA-Z_-]+[0-9a-zA-Z_.-]*@(?:[0-9a-zA-Z_-]+\.)+[0-9a-zA-Z]+$/ -> tested on http://regexpal.com/
+	var checkEmailRegex = new RegExp('^\[0-9a-zA-Z_-\]+\[0-9a-zA-Z_.-\]*@\(?:\[0-9a-zA-Z_-\]+\.\)+\[0-9a-zA-Z\]+$');
 
 	var sendmail_body = $(".sendmailBodyAction").val();
 	var sendmail_email = $(".sendmailUserEmailAction").val();
@@ -181,23 +184,37 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 			$(".sendmailBodyAction").addClass("email_form_input_error");
 		} else {
 			$(".sendmailBodyAction").removeClass("email_form_input_error");
-			sendmail_body_valid = true;
+			sendmail_body_exists = true;
 		}
 	}
 
 	if (validate_email) {
 		if (!sendmail_email) {
-			sendmail_email = false;
+			returnVar = false;
 			$(".sendmailUserEmailAction").addClass("email_form_input_error");
 		} else {
-			$(".sendmailUserEmailAction").removeClass("email_form_input_error");
-			sendmail_email_valid = true;
+			// TODO mail exists...but is it a valid address?
+			sendmail_email_exists = true;
+
+			if (checkEmailRegex.test(sendmail_email)) {
+				// yes, this is a valid email address
+				$(".sendmailUserEmailAction").removeClass("email_form_input_error");
+				sendmail_email_valid = true;
+			} else {
+				// please, insert a valid mail
+				$(".sendmailUserEmailAction").addClass("email_form_input_error");
+			}
 		}
 	}
 
-	if (!sendmail_body_valid || !sendmail_email_valid) {
+	// error messages
+	if (!sendmail_body_exists || !sendmail_email_exists) {
 		if (show_alert) {
-			alert("Inserisci un messaggio e la tua email");
+			alert("Inserisci un messaggio e la tua e-mail");
+		}
+	} else if (sendmail_email_exists && !sendmail_email_valid) {
+		if (show_alert) {
+			alert("Controlla la tua e-mail");
 		}
 	}
 

@@ -1,16 +1,5 @@
-$(window).load(function(){
-
-	// adding svg test to modernizr
-	modernizrAddSvgTest();
-
-	// detecting placeholder support
-	placeholder_support();
-
-	// a bit of color
-	var ciakObj = ciakWrapper; // ...wow, so beautiful
-	ciakObj.preActions();
-	ciakObj.doAnimationEasy();
-
+// attach events after the DOM is ready
+$(document).ready(function(){
 	$(document).on("mouseenter", ".skipIntroAction", function() {
 		// skip button hover animation
 		animate_button(".skipIntroAction");
@@ -53,4 +42,19 @@ $(window).load(function(){
 		validate_sendmail_form(false, true);
 		return false;
 	});
+});
+
+// start animation when when DOM and all sub-elements have been completely loaded
+$(window).load(function(){
+
+	// adding svg test to modernizr
+	modernizrAddSvgTest();
+
+	// detecting placeholder support
+	placeholder_support();
+
+	// a bit of color
+	var ciakObj = ciakWrapper; // ...wow, so beautiful
+	ciakObj.preActions();
+	ciakObj.doAnimationEasy();
 });
