@@ -82,7 +82,6 @@ function submit_promo_code(code_to_validate) {
 
 	// reading csrfmiddlewaretoken from cookie
 	var csrftoken = $.cookie('csrftoken');
-	// var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
 
 	if (code_to_validate) {
 		var ajaxCallData = {
