@@ -518,8 +518,9 @@ var ciakWrapper = {
 		$(".new_browser_container .form_container").removeClass("transparent");
 
 		// add no-transparent class
-		$(".new_browser_container .entpy_logo_image2").addClass("no-transparent");
-		$(".new_browser_container .form_container").addClass("no-transparent");
+		// TODO: working on this
+		/* $(".new_browser_container .entpy_logo_image2").addClass("no-transparent");
+		$(".new_browser_container .form_container").addClass("no-transparent");*/
 	},
 
 	// eval functions {{{
