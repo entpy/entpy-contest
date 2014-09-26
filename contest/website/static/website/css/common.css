@@ -97,6 +97,8 @@ b, .bold { font-weight: bold; }
 	/* Good browsers */
 	opacity: 1!important;
 }
+.visible { visibility: visible!important; }
+.no-visible { visibility: hidden; }
 .no_overflow_x { overflow-x: hidden; }
 .display_only_mobile, .display_only_pc { display: none; }
 .coupon_code_block { display: inline; height: 60em; }
