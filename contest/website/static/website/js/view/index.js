@@ -48,6 +48,12 @@ $(document).ready(function(){
 		$(".sendInfoMailAction").click();
 		return false;
 	});
+
+	$(document).on("submit", ".validateCouponFormAction", function() {
+		// sending code at return press
+		$(".sendButtonClickAction").click();
+		return false;
+	});
 });
 
 // start animation when when DOM and all sub-elements have been completely loaded

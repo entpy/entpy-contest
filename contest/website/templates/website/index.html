@@ -29,7 +29,7 @@
 		<div class="logo_container">
 			<img class="check_image entpy_logo_image2 transparent logo2AnimationAction" alt="Entpy" src="static/website/img/logo.png">
 			<div class="form_container transparent">
-				<form name="validate_coupon_form" method="POST" action="#">
+				<form class="validateCouponFormAction" name="validate_coupon_form" method="POST" action="#">
 					{% csrf_token %}
 					<div class="input_code_container">
 						<input class="codeInputAction code_input" placeholder="Codice del volantino" type="text" name="code" value="" />
