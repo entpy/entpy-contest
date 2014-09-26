@@ -118,7 +118,7 @@ function send_info_email() {
 	var email_content = $(".sendmailBodyAction").val();
 	var code = $(".sendmailValidCodeAction").val();
 
-	// validate sendmail form data -> TODO: check this
+	// validate sendmail form data
 	if (validate_sendmail_form(true, true, true)) {
 
 		// creating array with data
@@ -170,8 +170,8 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	var sendmail_body_exists = false;
 	var sendmail_email_exists = false;
 	var sendmail_email_valid = false;
-	// /^[0-9a-zA-Z_-]+[0-9a-zA-Z_.-]*@(?:[0-9a-zA-Z_-]+\.)+[0-9a-zA-Z]+$/ -> tested on http://regexpal.com/
 	var checkEmailRegex = new RegExp('^\[0-9a-zA-Z_-\]+\[0-9a-zA-Z_.-\]*@(?:\[0-9a-zA-Z_-\]+\\.)+\[0-9a-zA-Z\]+$');
+	// ^---( tested on http://regexpal.com/
 
 	var sendmail_body = $(".sendmailBodyAction").val();
 	var sendmail_email = $(".sendmailUserEmailAction").val();
@@ -194,7 +194,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 			$(".sendmailUserEmailAction").addClass("email_form_input_error");
 		} else {
 			sendmail_email_exists = true;
-			// TODO mail exists...but is it a valid address?
+			// mail exists...but is it a valid address?
 			if (checkEmailRegex.test(sendmail_email)) {
 				// yes, this is a valid email address
 				$(".sendmailUserEmailAction").removeClass("email_form_input_error");
@@ -210,7 +210,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	// error messages
 	if (!sendmail_body_exists || !sendmail_email_exists) {
 		if (show_alert) {
-			alert("Mail e messaggio sono obbligatori");
+			alert("Inserisci la tua *mail* e il *messaggio*");
 		}
 	} else if (sendmail_email_exists && !sendmail_email_valid) {
 		if (show_alert) {
