@@ -36,7 +36,6 @@ function modernizrAddSvgTest() {
 
 function placeholder_support() {
 	// adding placeholder support to old browser
-alert("test");
 	/*Modernizr.load({
 		test: Modernizr.input.placeholder,
 		nope: ['/static/website/js/jquery.placeholder.js'],
@@ -48,6 +47,9 @@ alert("test");
 			}
 		}
 	});*/
+
+	$('input').placeholder();
+	$('textarea').placeholder();
 
 	return true;
 }
