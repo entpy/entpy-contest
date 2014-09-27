@@ -36,8 +36,8 @@ function modernizrAddSvgTest() {
 
 function placeholder_support() {
 	// adding placeholder support to old browser
-
-	Modernizr.load({
+alert("test");
+	/*Modernizr.load({
 		test: Modernizr.input.placeholder,
 		nope: ['/static/website/js/jquery.placeholder.js'],
 		complete: function(){
@@ -47,7 +47,7 @@ function placeholder_support() {
 				$('textarea').placeholder();
 			}
 		}
-	});
+	});*/
 
 	return true;
 }
