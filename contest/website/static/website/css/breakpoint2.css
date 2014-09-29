@@ -20,4 +20,8 @@
 .send_mail_container .sendmail_email, .send_mail_container .sendmail_body { font-size: 0.9em; padding: 13px; width: 85%; }
 .send_mail_container .sendmail_button_container .sendmail_button { font-size: 1.1em; }
 /* send info email }}} */
+
+/* placeholder fix */
+.form_container .input_code_container span.placeholder { font-size: 1.1em!important; height: 1.1em!important; width: 340px!important; }
+.send_mail_container span.placeholder { font-size: 0.9em!important; }
 /* page main style }}} */

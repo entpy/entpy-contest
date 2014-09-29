@@ -23,4 +23,7 @@
 
 /* buttons */
 .action_button.skip_button { bottom: 15px; right: 20px; width: 145px; }
+/* placeholder fix */
+.form_container .input_code_container span.placeholder { font-size: 1em!important; height: 1em!important; }
+.send_mail_container span.placeholder { font-size: 1em!important; }
 /* page main style }}} */
