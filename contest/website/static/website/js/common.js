@@ -563,6 +563,9 @@ var ciakWrapper = {
 		// method to write code form inside old browser tag, without animations
 		$(".old_browser_container").html($(".new_browser_container").html());
 		$(".new_browser_container").addClass("display_none");
+
+		// placeholder init
+		placeholder_support();
 	},
 
 	simpleAnimation : function() {
