@@ -168,6 +168,8 @@ b, .bold { font-weight: bold; }
 }
 .send_mail_container .sendmail_body { height: 100px; }
 .send_mail_container .sendmail_email, .send_mail_container .sendmail_body {
+	-webkit-appearance: none;
+	-webkit-user-modify: read-write-plaintext-only;
 	background: rgb(255, 255, 255);
 	background: transparent\9;
 	background: rgba(255, 255, 255, 0.5);
@@ -191,6 +193,8 @@ b, .bold { font-weight: bold; }
 	filter: none;
 }
 .send_mail_container .sendmail_email:hover, .send_mail_container .sendmail_email:focus, .send_mail_container .sendmail_body:hover, .send_mail_container .sendmail_body:focus {
+	-webkit-appearance: none;
+	-webkit-user-modify: read-write-plaintext-only;
 	background:rgb(255, 255, 255);
 	background: transparent\9;
 	background:rgba(255, 255, 255, 0.9);

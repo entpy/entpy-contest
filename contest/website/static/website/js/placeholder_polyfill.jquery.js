@@ -94,7 +94,7 @@
         this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
         return $(this).each(function(index) {
             var input = $(this),
-                text = input.attr('title'),
+                text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
 
@@ -107,7 +107,7 @@
             }
 
             if(text === "" || text === undefined) {
-              text = input[0].attributes["title"] ? input[0].attributes["title"].value : "";
+              text = input[0].attributes["placeholder"] ? input[0].attributes["placeholder"].value : "";
             }
             label = input.closest('label');
             input.removeAttr('placeholder');
@@ -211,6 +211,6 @@
             log('placeholder:abort because browser has native support');
             return;
         }
-        $('input[title], textarea[title]').placeHolder();
+        $('input[placeholder], textarea[placeholder]').placeHolder();
     });
 }(jQuery));
