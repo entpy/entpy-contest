@@ -6,7 +6,7 @@
 .form_container { display: inline-block; float: left; margin: 2em auto 0; padding: 1.3em 0; width: 100%; }
 .logo_container > img { width: 75%; }
 .form_container .input_code_container { margin-bottom: 2em; }
-.form_container .input_code_container > input { font-size: 1em; padding: 0.7em 0; width: 85%; }
+.form_container .input_code_container > input { background-color: red!important; font-size: 1em; padding: 0.7em 0; width: 85%; }
 .form_container .how_it_works_container { font-size: 0.877em; margin-top: 9px; text-align: right; width: 73%; }
 .form_container .how_it_works_container .how_it_works_link { padding: 0.5em; }
 .form_container .input_submit_container > input { font-size: 1.12em; padding: 0.23em 0; width: 70%; }
