@@ -117,8 +117,9 @@ b, .bold { font-weight: bold; }
 .logo_bottom_container { color: #115367; font-size: 21px; font-weight: bold; }
 
 /* code form {{{ */
-.form_container .input_code_container > input {
+.form_container .input_code_container > input, .form_container .input_code_container > input:focus {
 	-webkit-appearance: none;
+	-webkit-user-modify: read-write-plaintext-only;
 	background-color: transparent;
 	border: 2px solid #28aee2;
 	border-radius: 4px;
