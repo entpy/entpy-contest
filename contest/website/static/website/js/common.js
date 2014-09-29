@@ -441,6 +441,8 @@ var ciakWrapper = {
 		/* if ($(".codeToCheckAction").html()) {
 			setTimeout('$(".sendButtonClickAction").click();', 1500);
 		}*/
+
+		alert("post");
 	},
 
 	animateViaCssClass : function(className, animationName, duration, delay, nIteration, callback) {
@@ -566,6 +568,8 @@ var ciakWrapper = {
 
 		// placeholder init
 		placeholder_support();
+
+		alert("none");
 	},
 
 	simpleAnimation : function() {
