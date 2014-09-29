@@ -27,28 +27,9 @@
  *  	- require jquery
  */
 
-	// overriding default placeholder settings
-	placeHolderConfig = {
-		// css class that is used to style the placeholder
-		className: 'placeholder', 
-		// expose the placeholder text to screenreaders or not
-		visibleToScreenreaders : true,
-		// css class is used to visually hide the placeholder
-		visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader', 
-		// css class used to hide the placeholder for all
-		visibleToNoneHideClass : 'placeholder-hide',
-		// either hide the placeholder on focus or on type
-		hideOnFocus : false, 
-		// remove this class from a label (to fix hidden labels)
-		removeLabelClass : 'visuallyhidden', 
-		// replace the label above with this class
-		hiddenOverrideClass : 'visuallyhidden-with-placeholder', 
-		// allow the replace of the removeLabelClass with hiddenOverrideClass or not
-		forceHiddenOverride : true, 
-		// apply the polyfill even for browser with native support
-		forceApply : true, 
-		// init automatically or not
-		autoInit : true 
+	// placeholder support global var
+	window.placeHolderConfig = {
+		autoInit : false
 	}
 
 function modernizrAddSvgTest() {
@@ -72,31 +53,29 @@ function placeholder_support() {
 		}
 	});*/
 
-	/*$('input').placeholder();
-	$('textarea').placeholder();*/
-
-	/*placeHolderConfig = {
+	// overriding default placeholder settings
+	window.placeHolderConfig = {
 		// css class that is used to style the placeholder
-		className: 'placeholder', 
+		className: 'placeholder',
 		// expose the placeholder text to screenreaders or not
 		visibleToScreenreaders : true,
 		// css class is used to visually hide the placeholder
-		visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader', 
+		visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader',
 		// css class used to hide the placeholder for all
 		visibleToNoneHideClass : 'placeholder-hide',
 		// either hide the placeholder on focus or on type
-		hideOnFocus : false, 
+		hideOnFocus : false,
 		// remove this class from a label (to fix hidden labels)
-		removeLabelClass : 'visuallyhidden', 
+		removeLabelClass : 'visuallyhidden',
 		// replace the label above with this class
-		hiddenOverrideClass : 'visuallyhidden-with-placeholder', 
+		hiddenOverrideClass : 'visuallyhidden-with-placeholder',
 		// allow the replace of the removeLabelClass with hiddenOverrideClass or not
-		forceHiddenOverride : true, 
+		forceHiddenOverride : true,
 		// apply the polyfill even for browser with native support
-		forceApply : true, 
-		// init automatically or not
-		autoInit : true 
-	}*/
+		forceApply : true
+	}
+
+        $('input[placeholder], textarea[placeholder]').placeHolder();
 
 	return true;
 }
@@ -454,6 +433,9 @@ var ciakWrapper = {
 			// remove skip button
 			$(".skipIntroAction").addClass("display_none");
 		}
+
+		// placeholder init
+		placeholder_support();
 
 		// check code via GET to light up validate coupon button (...mah...)
 		/* if ($(".codeToCheckAction").html()) {
