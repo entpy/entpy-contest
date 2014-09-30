@@ -41,6 +41,7 @@ function modernizrAddSvgTest() {
 
 function placeholder_support() {
 	placeholder();
+	$('input[placeholder], textarea[placeholder]').placeholder({ force: true });
 
 	// adding placeholder support to old browser
 	/*Modernizr.load({
