@@ -378,9 +378,6 @@ class PromotionalCode(models.Model):
                         # animation_type = "none_animation"
                         # browser_type = "normal_browser"
 
-                        animation_type = "none_animation"
-                        browser_type = "normal_browser"
-
                         # return var data
                         return_var["device"] = device
                         return_var["browser"] = browser
