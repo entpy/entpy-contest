@@ -33,7 +33,7 @@
 					{% csrf_token %}
 					<div class="input_code_container">
 						{# <label for="input1"></label> #}
-						<input id="input1" class="codeInputAction code_input" data-placeholder-focus=false placeholder="Codice del volantino" type="text" name="code" value="" />
+						<input id="input1" onfocus="this.type='number'" onblur="this.type='text'" class="codeInputAction code_input" data-placeholder-focus=false placeholder="Codice del volantino" type="text" name="code" value="" />
 						<div class="how_it_works_container">
 							<span class="how_it_works_link howItWorksAction">Come funziona?</span>
 						</div>
