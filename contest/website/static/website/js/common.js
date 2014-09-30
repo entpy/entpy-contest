@@ -43,8 +43,6 @@ function placeholder_support() {
 	// function to add placeholder function
 
 	placeholder_load();
-	$('input[placeholder], textarea[placeholder]').placeholder();
-alert("s");
 	return true;
 }
 
