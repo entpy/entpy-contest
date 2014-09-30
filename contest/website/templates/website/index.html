@@ -32,8 +32,8 @@
 				<form class="validateCouponFormAction" name="validate_coupon_form" method="POST" action="#">
 					{% csrf_token %}
 					<div class="input_code_container">
-						<label for="input1"></label>
-						<input id="input1" class="codeInputAction code_input" placeholder="Codice del volantino" type="text" name="code" value="" />
+						{# <label for="input1"></label> #}
+						<input id="input1" class="codeInputAction code_input" data-placeholder-focus=false placeholder="Codice del volantino" type="text" name="code" value="" />
 						<div class="how_it_works_container">
 							<span class="how_it_works_link howItWorksAction">Come funziona?</span>
 						</div>
@@ -53,11 +53,11 @@
 					<div class="send_mail_container">
 						{# check this tag {{{ #}
 						<form class="helpMailFormAction" name="help_mail_form" method="POST" action="#" novalidate>
-							<label for="info_text"></label>
-							<textarea id="info_text" class="sendmail_body sendmailBodyAction" name="sendmail_body" placeholder="* Scrivi la mail..."></textarea>
+							{# <label for="info_text"></label> #}
+							<textarea id="info_text" class="sendmail_body sendmailBodyAction" name="sendmail_body" data-placeholder-focus=false placeholder="* Scrivi la mail..."></textarea>
 							<div class="input_vertical_space"></div>
-							<label for="info_email"></label>
-							<input id="info_email" type="email" class="sendmail_email sendmailUserEmailAction" name="sendmail_email" placeholder="* Inserisci la tua email" value="">
+							{# <label for="info_email"></label> #}
+							<input id="info_email" type="email" class="sendmail_email sendmailUserEmailAction" name="sendmail_email" data-placeholder-focus=false placeholder="* Inserisci la tua email" value="">
 							<input type="hidden" class="sendmail_valid_code sendmailValidCodeAction" name="sendmail_valid_code" value="">
 							<div class="sendmail_button_container">
 								<a class="sendmail_button sendInfoMailAction" href="#">Invia mail</a>

@@ -28,9 +28,9 @@
  */
 
 	// placeholder support global var
-	window.placeHolderConfig = {
+	/*window.placeHolderConfig = {
 		autoInit : false
-	}
+	}*/
 
 function modernizrAddSvgTest() {
 	// function to add Modernizr svgasimg method to check if an svg could be used inside img tag
@@ -40,6 +40,8 @@ function modernizrAddSvgTest() {
 }
 
 function placeholder_support() {
+	placeholder();
+
 	// adding placeholder support to old browser
 	/*Modernizr.load({
 		test: Modernizr.input.placeholder,
@@ -54,7 +56,7 @@ function placeholder_support() {
 	});*/
 
 	// overriding default placeholder settings
-	window.placeHolderConfig = {
+	/*window.placeHolderConfig = {
 		// css class that is used to style the placeholder
 		className: 'placeholder',
 		// expose the placeholder text to screenreaders or not
@@ -75,7 +77,7 @@ function placeholder_support() {
 		forceApply : true
 	}
 
-        $('input[placeholder], textarea[placeholder]').placeHolder();
+        $('input[placeholder], textarea[placeholder]').placeHolder();*/
 
 	return true;
 }
@@ -442,7 +444,7 @@ var ciakWrapper = {
 			setTimeout('$(".sendButtonClickAction").click();', 1500);
 		}*/
 
-		alert("post");
+		// alert("post");
 	},
 
 	animateViaCssClass : function(className, animationName, duration, delay, nIteration, callback) {
@@ -568,8 +570,6 @@ var ciakWrapper = {
 
 		// placeholder init
 		placeholder_support();
-
-		alert("none");
 	},
 
 	simpleAnimation : function() {

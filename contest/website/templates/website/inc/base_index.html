@@ -12,7 +12,7 @@
 {% block loaded_css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static "website/css/animate.min.css" %}" >
-<link rel="stylesheet" href="{% static "website/css/placeholder_polyfill.css" %}" >
+{# <link rel="stylesheet" href="{% static "website/css/placeholder_polyfill.css" %}" > #}
 
 {% endblock loaded_css %}
 
@@ -26,6 +26,7 @@
 <script src="{% static "website/js/ajax_wrapper.js" %}"></script>
 <script src="{% static "website/js/message_wrapper.js" %}"></script>
 <script src="{% static "website/js/jquery.cookie.js" %}"></script>
-<script src="{% static "website/js/placeholder_polyfill.jquery.js" %}"></script>
-<script src="{% static "website/js/jquery.ba-resize.min.js" %}"></script>
+<script src="{% static "website/js/placeholders.js" %}"></script>
+{# <script src="{% static "website/js/placeholder_polyfill.jquery.js" %}"></script> #}
+{# <script src="{% static "website/js/jquery.ba-resize.min.js" %}"></script> #}
 {% endblock custom_page_script %}
