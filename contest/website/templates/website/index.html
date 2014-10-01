@@ -32,8 +32,7 @@
 				<form class="validateCouponFormAction" name="validate_coupon_form" method="POST" action="#">
 					{% csrf_token %}
 					<div class="input_code_container">
-						{# <label for="input1"></label> #}
-						<input class="codeInputAction code_input" data-placeholder-focus=false placeholder="Codice del volantino" type="text" name="code" value="" />
+						<input class="codeInputAction code_input" data-placeholder-focus=false placeholder="Codice del volantino" type="text" name="code" value="">
 						<div class="how_it_works_container">
 							<span class="how_it_works_link howItWorksAction">Come funziona?</span>
 						</div>
