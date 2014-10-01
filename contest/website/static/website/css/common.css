@@ -24,10 +24,10 @@ body { font: normal 100%/1 helveticaneue-light, Helvetica, Arial, sans-serif; }
 body * { font-family: 'helveticaneue-light'; }
 b, .bold { font-weight: bold; }
 /* help form placeholder color {{{ */
-.form_container .input_code_container .code_input *:-ms-input-placeholder { color: #28aee2; text-align: center; }
-.form_container .input_code_container .code_input *::-moz-placeholder { color: #28aee2; text-align: center; }
-.form_container .input_code_container .code_input *:-moz-placeholder { color: #28aee2; text-align: center; }
-.form_container .input_code_container .code_input *::-webkit-input-placeholder { color: #28aee2; text-align: center; }
+.form_container .input_code_container * *:-ms-input-placeholder { color: #28aee2; text-align: center; }
+.form_container .input_code_container * *::-moz-placeholder { color: #28aee2; text-align: center; }
+.form_container .input_code_container * *:-moz-placeholder { color: #28aee2; text-align: center; }
+.form_container .input_code_container * *::-webkit-input-placeholder { color: #28aee2; text-align: center; }
 .send_mail_container * *:-ms-input-placeholder { color: #444; }
 .send_mail_container * *::-moz-placeholder { color: #444; }
 .send_mail_container * *:-moz-placeholder { color: #444; }
