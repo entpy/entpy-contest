@@ -358,7 +358,7 @@ function placeholder_load() {
 
 	    Placeholders.nativeSupport = test.placeholder !== void 0;
 
-	    if (!Placeholders.nativeSupport) {
+	    // if (!Placeholders.nativeSupport) {
 
 		// Get references to all the input and textarea elements currently in the DOM (live NodeList objects to we only need to do this once)
 		inputs = document.getElementsByTagName("input");
@@ -447,7 +447,7 @@ function placeholder_load() {
 			clearInterval(timer);
 		    }
 		}, 100);
-	    }
+	    // }
 
 	    Utils.addEventListener(global, "beforeunload", function () {
 		Placeholders.disable();
