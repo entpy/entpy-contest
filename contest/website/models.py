@@ -367,6 +367,7 @@ class PromotionalCode(models.Model):
                                 ((browser.family == "Chrome Mobile") and (browser.version[0] >= 18)) or
                                 # os type
                                 ((os.family == "Android") and (os.version[0] >= 4))
+                                ((os.family == "iOS") and (os.version[0] >= 5)) # TODO: check this
                         ):
                                 animation_type = "advanced_animation"
                                 browser_type = "advanced_browser"
