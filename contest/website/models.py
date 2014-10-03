@@ -363,7 +363,7 @@ class PromotionalCode(models.Model):
                                 ((browser.family == "Chrome") and (browser.version[0] >= 9)) or
                                 ((browser.family == "Chromium") and (browser.version[0] >= 30)) or
                                 ((browser.family == "IE") and (browser.version[0] >= 10)) or
-                                ((browser.family == "Mobile Safari") and (browser.version[0] >= 4)) or
+                                ((browser.family == "Mobile Safari") and (browser.version[0] >= 5)) or
                                 ((browser.family == "Chrome Mobile") and (browser.version[0] >= 18)) or
                                 # os type
                                 ((os.family == "Android") and (os.version[0] >= 4))
