@@ -57,7 +57,7 @@ var msgWrapper = {
 	msgIconList : {
 		"success" : "&#xf118;", // \f118,
 		"error" : "&#xf119;", // \f119,
-		"alert" : "&#xf071;", // \f071,
+		"alert" : "&#xf005;", // \f005,
 		"tip" : "&#xf19d;", // \f19d,
 	},
 
