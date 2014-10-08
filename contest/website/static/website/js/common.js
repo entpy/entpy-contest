@@ -388,10 +388,18 @@ var ciakWrapper = {
 			scrollingObj.doScrollingEasy(scrollingObj.scrollTypeName.scrolling5, 0);
 		}
 
+		// ### placeholder fix, clear all input before loading placeholder polyfill ###
+		// al caricamento della pagina con F5 se nelle input è presente 
+		// del testo (i placeholder stessi), le input non venivano più pulite al click
+		$(".codeInputAction").val("");
+		$(".sendmailBodyAction").val("");
+		$(".sendmailUserEmailAction").val("");
+
 		// check code via GET to auto fill code form
 		if ($(".codeToCheckAction").html()) {
 			$(".codeInputAction").val($(".codeToCheckAction").html());
 		}
+
 	},
 
 	postActions : function() {

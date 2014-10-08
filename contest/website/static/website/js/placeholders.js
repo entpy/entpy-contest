@@ -18,7 +18,7 @@
 // Defines the global Placeholders object along with various utility methods
 function placeholder_load() {
 	(function (global) {
-		alert("adding placeholder");
+
 	    "use strict";
 
 	    // Cross-browser DOM event binding
