@@ -171,7 +171,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 
 	// validating text
 	if (validate_content) {
-		if (!sendmail_body) {
+		if (!sendmail_body || sendmail_body == "* Scrivi la mail...") { // sendmail_body == "* Scrivi la mail..." -> so bad...so bad (fix dovuto alla compatibilità del placeholder che, nella textarea rimane differentemente dalle input)
 			returnVar = false;
 			$(".sendmailBodyAction").addClass("email_form_input_error");
 		} else {
@@ -203,7 +203,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	// error messages
 	if (!sendmail_body_exists || !sendmail_email_exists) {
 		if (show_alert) {
-			alert("Inserisci la tua *mail* e il *messaggio*");
+			alert("Inserisci la tua mail* e il messaggio*");
 		}
 	} else if (sendmail_email_exists && !sendmail_email_valid) {
 		if (show_alert) {
@@ -515,11 +515,6 @@ var ciakWrapper = {
 		// remove transparent class
 		$(".new_browser_container .entpy_logo_image2").removeClass("transparent");
 		$(".new_browser_container .form_container").removeClass("transparent");
-
-		// add no-transparent class
-		// TODO: working on this
-		/* $(".new_browser_container .entpy_logo_image2").addClass("no-transparent");
-		$(".new_browser_container .form_container").addClass("no-transparent");*/
 	},
 
 	// eval functions {{{
