@@ -171,7 +171,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 
 	// validating text
 	if (validate_content) {
-		if (!sendmail_body || sendmail_body == "* Scrivi la mail...") { // sendmail_body == "* Scrivi la mail..." -> so bad...so bad (fix dovuto alla compatibilità del placeholder che, nella textarea rimane differentemente dalle input)
+		if (!sendmail_body || sendmail_body == "* Scrivi il messaggio...") { // sendmail_body == "* Scrivi il messaggio..." -> so bad...so bad (fix dovuto alla compatibilità del placeholder che, nella textarea rimane differentemente dalle input)
 			returnVar = false;
 			$(".sendmailBodyAction").addClass("email_form_input_error");
 		} else {
@@ -203,7 +203,7 @@ function validate_sendmail_form(validate_content, validate_email, show_alert) {
 	// error messages
 	if (!sendmail_body_exists || !sendmail_email_exists) {
 		if (show_alert) {
-			alert("Inserisci la tua mail* e il messaggio*");
+			alert("Inserisci la tua email e il messaggio");
 		}
 	} else if (sendmail_email_exists && !sendmail_email_valid) {
 		if (show_alert) {
