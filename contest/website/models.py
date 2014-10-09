@@ -105,7 +105,7 @@ class PromotionalCode(models.Model):
 	def generate_random_code(self, depth = 0):
 		"""
 		Generating a random promo code, if the generated code already
-		exists, than recursively call this function to generate a new ones.
+		exists, then call this function recursively to generate a new ones.
 		Max recursion depth: 50
 		"""
 		# generating a random code
@@ -113,7 +113,7 @@ class PromotionalCode(models.Model):
 		try:
 			# checking if code already exists
 			PromotionalCode.objects.get(code=random_code)
-			# than recall this function to generate a new ones
+			# then recall this function to generate a new ones
 			if (depth < 50):
 				random_code = PromotionalCode.generate_random_code(self, depth+1)
 			else:

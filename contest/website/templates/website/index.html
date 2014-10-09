@@ -3,20 +3,13 @@
 {% block main_content %}
 <div class="wrapper">
 	<div class="scroll_to_top"></div>
-	{# <div class="device" style="color: #fff;">#}
-		{#Device: {{ device }}<br />#}
-		{#Browser: {{ browser }}<br />#}
-		{#Os: {{ os }}<br />#}
-		{#Animation type: {{ animation_type }}#}
-	{#</div> #}
-	{# Bottom logo and form container only for old browsers {{{ #}
+	{# Bottom logo and form container only for old browsers #}
 	<div class="old_browser_container"></div>
-	{# Bottom logo and form container only for old browsers }}} #}
-	{# logo container #}
+	{# Logo container #}
 	<div class="logo_container">
 		<img class="check_image entpy_logo_image transparent logo1AnimationAction" alt="Entpy" src="static/website/img/logo.png">
 	</div>
-	{# top image container #}
+	{# Top image container #}
 	<div class="stuff_container">
 		<div class="image_container align_center">
 			<img class="check_image width_78_100" src="static/website/img/planet.png" alt="Entpy universe">
@@ -25,7 +18,7 @@
 	{# Bottom logo and form container {{{ #}
 	<div class="new_browser_container coupon_code_block">
 		<div class="scroll_to_element1"></div>
-		{# logo container #}
+		{# Logo container #}
 		<div class="logo_container">
 			<img class="check_image entpy_logo_image2 transparent logo2AnimationAction" alt="Entpy" src="static/website/img/logo.png">
 			<div class="form_container transparent">
@@ -50,7 +43,6 @@
 					<div class="msg_extra_param opacity_70_100 msgExtraParamAction">{# Extra content #}</div>
 					<div class="msg_bottom_container opacity_70_100 msgBottomContainerAction">{# Bottom Content #}</div>
 					<div class="send_mail_container">
-						{# check this tag {{{ #}
 						<form class="helpMailFormAction" name="help_mail_form" method="POST" action="#" novalidate>
 							<textarea class="sendmail_body sendmailBodyAction" name="sendmail_body" data-placeholder-focus=false placeholder="* Scrivi il messaggio..."></textarea>
 							<div class="input_vertical_space"></div>
@@ -60,31 +52,30 @@
 								<a class="sendmail_button sendInfoMailAction" href="#">Invia mail</a>
 							</div>
 						</form>
-						{# check this tag }}} #}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	{# Bottom logo and form container }}} #}
-	{# bottom image container #}
+	{# Bottom image container #}
 	<div class="entpy_world_container">
 		<img class="check_image entpy_world_image align_center" src="static/website/img/bg.png" alt="Entpy world">
 	</div>
-	{# skip intro button {{{ #}
+	{# Skip intro button {{{ #}
 	<div class="action_button skip_button skipIntroAction display_none">
 		<span class="left">Skip intro</span>
 		<span class="right">
 			<img class="" src="static/website/img/skip.png" alt="Skip intro">
 		</span>
 	</div>
-	{# skip intro button }}} #}
-	{# server side -> client side middelware vars {{{ #}
+	{# Skip intro button }}} #}
+	{# Server side -> client side middelware vars {{{ #}
 	<div class="animation_type animationTypeAction display_none">{{ animation_type }}</div>
 	<div class="browser_type browserTypeAction display_none">{{ browser_type }}</div>
 	<div class="skip_animation skipAnimationAction display_none"></div>
 	<div class="code_to_check codeToCheckAction display_none">{{ code_to_check }}</div>
-	{# server side -> client side middelware vars }}} #}
+	{# Server side -> client side middelware vars }}} #}
 	<div class="scroll_to_bottom"></div>
 </div>
 {% endblock main_content %}

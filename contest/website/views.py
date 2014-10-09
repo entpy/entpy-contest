@@ -59,11 +59,13 @@ def validate_code(request):
         # code valid
         if (not error):
                 success = 1
-                # wow...let's sending an email to admin
-                # first, build email body
+                # wow...let's sending an email to admin -> @@ no longer send email after code validation @@
                 if (code_to_validate != "help_code"):
-                        html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)
-                        promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: un codice è stato validato")
+                        # first, build email body
+                        # html_body = promotionalcode_obj.build_promo_details_email(code_to_validate)
+                        # send code validation email
+                        # promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: un codice è stato validato")
+                        logger.info("### CODE VALIDATED -> '" + str(browser_capabilities) + "' ###")
 
         # build JSON response
         response_data = promotionalcode_obj.build_json_response(error, success, promo_details, code_to_validate)
