@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.core.mail import EmailMessage
 import datetime, string, random, logging, sys
 from datetime import datetime
+from event_counter.models import Event
 import json
 
 # force utf8 read data
@@ -385,5 +386,24 @@ class PromotionalCode(models.Model):
                         return_var["os"] = os
                         return_var["animation_type"] = animation_type
                         return_var["browser_type"] = browser_type
+
+                return return_var
+
+        def update_code_counter(self, code=None):
+                """
+                Function to increase the code validation event counter
+                """
+
+                event_obj = Event()
+                event_slug = "code_validated_" + code
+                return_var = False
+
+                if (code is not None):
+                        # Create a new event to track
+                        event_obj.create_event("Code " + code + " validated", event_slug)
+
+                        # Increment the metric by one
+                        event_obj.track_event(event_slug)
+                        return_var = True
 
                 return return_var
