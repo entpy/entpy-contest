@@ -8,6 +8,9 @@ Event counter is a simple django app to count events
 USAGE
 -----
 
+# object init
+event_obj = Event()
+
 # Create a new event to track
 event_obj.create_event("Test event description", "test_event")
 
@@ -29,7 +32,7 @@ class Event(models.Model):
 
 	# On Python 3: def __str__(self):
 	def __unicode__(self):
-		return self.slug
+		return self.name
 
 	class Meta:
 		verbose_name = "Evento"
@@ -37,7 +40,7 @@ class Event(models.Model):
 
         def create_event(self, name=None, slug=None):
                 """
-                    Function to add a new tracking event
+                Function to add a new tracking event
                 """
 
                 return_var = False
@@ -63,7 +66,7 @@ class Event(models.Model):
 
         def track_event(self, event_slug=None, counter=1):
                 """
-                    Function to track an event (event.counter will be increased by counter)
+                Function to track an event (event.counter will be increased by counter)
                 """
 
                 return_var = False
