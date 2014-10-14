@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.template import RequestContext, loader
 from website.models import *
+from event_counter.admin import *
 from website.forms import *
 import logging
 
@@ -130,3 +131,4 @@ class CodeContentAdmin(admin.ModelAdmin):
 admin.site.register(PromotionalCode, PromotionalCodeAdmin)
 admin.site.register(CodeType, CodeTypeAdmin)
 admin.site.register(CodeContent, CodeContentAdmin)
+admin.site.register(Event, EventCounterAdmin)

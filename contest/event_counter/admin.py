@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+class EventCounterAdmin(admin.ModelAdmin):
+
+        # table list fields
+        list_display = ('name', 'slug', 'counter', 'update_date')
