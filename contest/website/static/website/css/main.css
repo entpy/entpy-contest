@@ -1,6 +1,0 @@
-/* main css to loading custom CSS */
-@import url(breakpoint1.css) screen and (max-width: 490px); /* small screen css layout */
-
-@import url(breakpoint2.css) screen and (min-width: 491px) and (max-width: 750px); /* big screen css layout */
-
-@import url(breakpoint3.css) screen and (min-width: 751px); /* big screen css layout */
