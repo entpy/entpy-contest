@@ -1,0 +1,17 @@
+.send_mail_container {
+	filter: none!important;
+}
+.msg_container .msg_bottom_container {
+	/* IE 8 */
+	-ms-filter: none!important;
+
+	/* IE 5-7 */
+	filter: none!important;
+}
+.send_mail_container .sendmail_email:hover, .send_mail_container .sendmail_email:focus, .send_mail_container .sendmail_body:hover, .send_mail_container .sendmail_body:focus {
+	background-color: white;
+}
+
+.send_mail_container .sendmail_email, .send_mail_container .sendmail_body {
+	background-color: white;
+}
