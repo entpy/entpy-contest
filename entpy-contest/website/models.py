@@ -283,8 +283,8 @@ class PromotionalCode(models.Model):
                                 promo_details = promotionalcode_obj.get_promo_details(code)
                                 return_var = promotionalcode_obj.build_promo_details_email(code=promo_details["code"], main_title="Richiesta informazioni da Entpy contest")
 
-                        return_var += "<b>Email:</b>" + email + "<br />"
-                        return_var += "<b>Testo:</b><br /><div>" + content + "</div><br />"
+                        return_var += "<b>Email:</b>" + str(email) + "<br />"
+                        return_var += "<b>Richiesta:</b><br /><div>" + str(content) + "</div><br />"
 
                 return return_var
 
@@ -296,7 +296,7 @@ class PromotionalCode(models.Model):
                 return_var = False
 
                 # subject | body | from email | to email
-                msg = EmailMessage(mail_subject, mail_body, 'noreply@entpy.com', ['contest@entpy.com'])
+                msg = EmailMessage(mail_subject, mail_body, 'no-reply@entpy.com', ['info@entpy.com'])
                 msg.content_subtype = "html"  # Main content is now text/html
                 msg.send()
                 return_var = True
