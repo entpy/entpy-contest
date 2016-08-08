@@ -19,7 +19,7 @@ def send_info_email(request):
         html_body = promotionalcode_obj.build_info_email_body(content=email_data["email_content"], email=email_data["user_email"], code=email_data["promo_code"])
 
         # send email
-        promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: richiesta informazioni...evvai ;-)")
+        promotionalcode_obj.send_email(mail_body=html_body, mail_subject="Entpy contest: richiesta informazioni")
 
         # build success/error JSON response, now return always a success response
         json_response = {}
